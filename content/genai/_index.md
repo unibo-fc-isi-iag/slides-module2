@@ -564,7 +564,7 @@ These are themselves __LLM-based agentic software__: the kind of system this mod
 | Combination | Example |
 |---|---|
 | (1) + (2) | the letter-extraction script, written with a _coding assistant_ |
-| (2) + (3) | an agent whose _tools_ are themselves LLM-based _workflows_ (e.g. the [tender example](#/genai-workflow)) |
+| (2) + (3) | an agent whose _tools_ are themselves LLM-based _workflows_ (e.g. the [GenAI lifecycle example](#/genai-workflow)) |
 | (1) + (3) | an agentic _product_ built with a _coding agent_ |
 | (1) + (2) + (3) | an assistant for a PhD admission committee (our [running example](../#/running-example)): _workflows_ to extract data from candidates' documents, an _agent_ to answer the committee's questions, all _coded_ with a coding agent |
 
@@ -862,27 +862,27 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 
 {{% small "85%" %}}
 
-> Support public officers in managing tenders through a GenAI assistant that understands and compares procurement decisions transparently.
+> Support a PhD admission committee in evaluating applications through a GenAI assistant (our [running example](../#/running-example)), transparently and under the committee's control.
 
 __Scope__
 
 1. __Problem Framing__:
-    - _Content Generation_: draft and justify _comparisons_ among suppliers' offers vs. technical specs
-    - _Interpretation_: understand regulatory documents and technical language
-    - _Automation_: score offers against _check-lists_ derived from the technical specs
-    - _Interaction_: enable officers to query and validate results through natural language
-    - i.e. a _workflow_ (dimension 2) for scoring, plus an _agent_ (dimension 3) for the officers' questions
+    - _Interpretation_: read candidates' documents (passports and transcripts as _pictures_, presentation letters as _text_)
+    - _Automation_: extract structured data (name, age, grades, ...) and score letters against the committee's _rubric_
+    - _Content Generation_: draft review reports, outcome letters, and replies to candidates' e-mails
+    - _Interaction_: enable committee members to query and validate results through natural language
+    - i.e. _workflows_ (dimension 2) for extraction and scoring, plus an _agent_ (dimension 3) for the committee's questions
 
-2. __Data Collection__: past tenders' technical specifications and acts; regulatory documents; previous evaluations (with the officers' scores)
+2. __Data Collection__: candidates' applications (passport, transcript of records, presentation letter); regulations of the PhD programme; previous evaluations (with the committee's scores)
 
 3. __Data Preparation__:
-    - devise useful data schema & extract relevant data from documents
-    - anonymize sensitive info (personal data; supplier identities, to reduce bias)
-    - segment documents and index by topic (law, SLA, price table, etc.)
+    - devise useful data schemas (e.g. one per document type) & extract relevant data from documents
+    - anonymize sensitive info (personal data; candidates' names and nationalities, to reduce bias)
+    - segment the regulations by article, and the letters by paragraph
 
 __Select__
 
-4. __Foundation Model Selection__: multi-lingual? specialized in legal/technical text? cost constraints? support for tools? where does it run (data protection)?
+4. __Foundation Model Selection__: multi-modal (to read pictures)? multi-lingual? cost constraints? support for tools and structured outputs? where does it run (data protection)?
     * try out candidate prompts on candidate models
 
 {{% /small %}}
@@ -893,28 +893,28 @@ __Select__
 
 __Adapt and align__
 
-5. __Vector stores__: embeddings for tender documents & specs, legal texts & guidelines, previous evaluations, templates
+5. __Vector stores__: embeddings for regulations, letters, previous evaluations, templates
     * choose embedding model and chunking strategy, populate the store, engineer retrieval strategies
 
-6. __Prompt Engineering__: templates for check-list extraction, justification, and Q&A
-    * role-based system prompts (`You are a procurement evaluator…`), placeholders for retrieved chunks, iterate on manual tests
+6. __Prompt Engineering__: templates for data extraction, letter scoring, report writing, and Q&A
+    * role-based system prompts (`You are a member of a PhD admission committee…`), placeholders for retrieved chunks, iterate on manual tests
 
-7. __Evaluations__: past tenders (with the officers' scores) as validation set
-    * exact checks on extracted check-lists and scores; [LLM-as-a-judge](../validating/#/llm-as-a-judge) on justifications (e.g. is every claim backed by a cited document?)
+7. __Evaluations__: the candidates' documents (with the expected data and the committee's scores) as test set
+    * exact checks on extracted data; [LLM-as-a-judge](../validating/#/llm-as-a-judge) on reports (e.g. is every claim backed by a document?)
     * re-run at every change of prompts or models
 
 __Application integration__
 
-8. __Tools__: regulation lookup API, tender database query API, report generation out of document templates
-    * scores are computed by _deterministic_ code out of the (validated) check-lists: the LLM _proposes_, software _verifies_
+8. __Tools__: read applications, look up regulations, query the candidates' database, send e-mails (upon approval)
+    * rankings are computed by _deterministic_ code out of the (validated) data and scores: the LLM _proposes_, software _verifies_
 
 9. __Workflow__ + __Agent__:
-    * _workflow_: extract check-lists $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ generate comparison report
-    * _agent_: answers officers' questions, orchestrating RAG and tool invocations
+    * _workflow_: extract data $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ generate review report
+    * _agent_: answers the committee's questions, orchestrating RAG and tool invocations
 
 10. __Tracking__ & __Oversight__:
     * log prompts, retrieved chunks, tool calls, and scores, for traceability and auditing
-    * the system _proposes_, the officer _decides_ (and signs off); comply with GDPR and the AI Act (cf. [governance](../governance/#/regulation))
+    * the system _proposes_, the committee _decides_ (and signs off); comply with GDPR and the AI Act (admission is a _high-risk_ use, cf. [governance](../governance/#/regulation))
 
 {{% /section %}}
 
