@@ -652,6 +652,8 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 
 ## Let's explain the nomenclature
 
+{{% small "85%" %}}
+
 - __Foundation models__ (FM, always _pre-trained_): large neural-networks trained on massive datasets to learn general skills (e.g. 'understanding' and generating text, images, code), most commonly accessed _as-a-Service_ via API, as provided by third-party companies
     * e.g. GPT (OpenAI), Claude (Anthropic), Gemini (Google), Llama (Meta), Mistral, Qwen (Alibaba), etc.
     * some are _proprietary_ (usable only via the provider's API), others are _open-weight_ (downloadable and runnable locally, cf. [on-premise deployment](../llmaas/#/ollama) and [open models](../governance/#/open-models))
@@ -669,6 +671,8 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 - __Agents__: software systems that _orchestrate_ the interaction between FMs and tools, enabling dynamic decision-making and task execution based on the context and user input
     * e.g. a chatbot that uses a FM for conversation and invokes a weather API when asked about the weather
     * e.g. an assistant that uses a FM to understand user requests and a database to fetch relevant information
+
+{{% /small %}}
 
 ---
 
@@ -763,6 +767,8 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 
 ## Concept: Model Context Protocol (MCP)
 
+{{% small "90%" %}}
+
 {{< image src="./mcp.svg" width="100%" max-h="60vh" alt="Model Context Protocol (MCP) concept">}}
 
 - MCP $\approx$ _standard_ protocol for LLM-based applications to _discover_ and _call_ __external tools__ (cf. [specification](https://modelcontextprotocol.io/specification))
@@ -770,6 +776,8 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 - Each MCP __server__ exposes its _own_ tools (names, descriptions, input schemas), plus possibly _resources_ (data) and _prompts_ (templates)
 - The _host_ application (e.g. Claude Code, or your agent) runs one MCP __client__ per server it connects to
     + optionally, a __gateway__ may _aggregate_ several servers behind a single endpoint
+
+{{% /small %}}
 
 ---
 
@@ -852,6 +860,8 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 
 ## Example of GenAI lifecycle (pt. 1)
 
+{{% small "85%" %}}
+
 > Support public officers in managing tenders through a GenAI assistant that understands and compares procurement decisions transparently.
 
 __Scope__
@@ -874,6 +884,8 @@ __Select__
 
 4. __Foundation Model Selection__: multi-lingual? specialized in legal/technical text? cost constraints? support for tools? where does it run (data protection)?
     * try out candidate prompts on candidate models
+
+{{% /small %}}
 
 ---
 
