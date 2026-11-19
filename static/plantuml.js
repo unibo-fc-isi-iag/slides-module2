@@ -1719,7 +1719,7 @@ function plantumlImageFromServer(server, format, content) {
 }
 
 function plantumlImage(format, content) {
-    return plantumlImageFromServer("http://www.plantuml.com", format, content);
+    return plantumlImageFromServer("https://www.plantuml.com", format, content);
 }
 
 function handlePlantumlFigure(element) {
@@ -1730,7 +1730,9 @@ function handlePlantumlFigure(element) {
             element.removeAttribute(attribute);
         }
     });
-    element.innerHTML = '<img' + attributes + 'src="' + plantumlImage("svg", element.innerText) + '">';
+    // source is base64-encoded, so that Markdown (e.g. inside {{% section %}}) cannot smarten quotes/dashes in it
+    var source = element.dataset.source ? new TextDecoder().decode(Uint8Array.from(atob(element.dataset.source), c => c.charCodeAt(0))) : element.innerText;
+    element.innerHTML = '<img' + attributes + 'src="' + plantumlImage("svg", source) + '">';
 }
 
 function handlePlantumlFigureByID(id) {
