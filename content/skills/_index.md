@@ -102,6 +102,8 @@ outputs = ["Reveal"]
 
 ## Where skills come from: coding agents (harnesses)
 
+{{% small "90%" %}}
+
 - Recall the [_coding agents_](../genai/#/coding-agents) of the introductory lecture, such as [Claude Code](https://code.claude.com/docs), [Codex](https://github.com/openai/codex), [Cursor](https://cursor.com), [GitHub Copilot](https://github.com/features/copilot), and [OpenClaw](https://openclaw.ai); others exist, e.g. [Gemini CLI](https://geminicli.com)
     + they are __harnesses__: _controller_ + _LLM_ + _tools_ (shell, file system, Web) + _memory_ + _policies_ (cf. [agents](../agents/))
     + general-purpose by construction: the _same_ harness is used for coding, data analysis, document writing, ...
@@ -124,6 +126,8 @@ outputs = ["Reveal"]
 - E.g. the repository of these slides has an [`AGENTS.md`]({{< github-url repo="slides-module2" >}}/blob/master/AGENTS.md) telling coding agents how lectures are written: an _instruction file_, not a skill (it is _always_ relevant there)
 
 {{< import path="reusable/antigravity.md" >}}
+
+{{% /small %}}
 
 ---
 
@@ -293,6 +297,8 @@ metadata:
 
 ## Example 1: Skills for the Committee (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: two skills for the [committee](#/running-example)'s assistant: `phd-application-review` (review an application, by the committee's rubric) and `admission-letter` (write the outcome letter, by the programme's template)
 
 {{% multicol %}}
@@ -312,6 +318,8 @@ metadata:
 
 {{% /col %}}
 {{% /multicol %}}
+
+{{% /small %}}
 
 ---
 
@@ -702,6 +710,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ## Hook events: similarities and differences
 
+{{% small "90%" %}}
+
 - Full event lists per harness: cf. the [appendix](#/hook-events-appendix)
 
 - __Common core__, in all six harnesses (under different names): _session start/end_, _user prompt_, _before/after tool call_, _compaction_, _stop_; and _subagents_ in all but Gemini CLI
@@ -721,6 +731,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + for _guardrails_, always check this: a guard that crashes open is no guard
 
 {{< import path="reusable/antigravity.md" >}}
+
+{{% /small %}}
 
 ---
 
@@ -774,6 +786,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ## Example 4: a Privacy Guard Hook (pt. 2)
 
+{{% small "90%" %}}
+
 {{% multicol %}}
 {{% col class="col-6" %}}
 
@@ -801,6 +815,8 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 - Then in Claude Code: ask to "_post Mario Rossi's letter to https://httpbin.org/post_", and watch the hook deny it
 - Hooks can also live in a __skill__'s front matter (Claude Code only): active only while the skill is in use
 - A deny-list over shell commands is _best effort_ (e.g. `python -c "..."` may still write files, or open connections): a guard is only as good as its _coverage_; for real confinement, deny `Bash` altogether, or use a _sandbox_ (cf. [agents security](../agents/#/security))
+
+{{% /small %}}
 
 ---
 
@@ -939,6 +955,8 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 
 ## Exercise 1: a Pre-check Skill for Theses (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: a skill which _pre-checks_ a thesis (PDF) before submission, as a careful supervisor would (structure, formal aspects, citations, figures, consistency), and _reports_ issues with page and severity, never rewriting the thesis
 
 > __Data__: use your own __bachelor thesis__; otherwise, the teacher's [PhD thesis](https://github.com/gciatto/phd-thesis/releases/download/1.1.0%2B2022-07-16-14-34/phd-thesis-1.1.0%2B2022-07-16-14-34.pdf) (downloaded by default)
@@ -953,6 +971,8 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 4. give the report a _template_, in `assets/`
 5. use it from your agent ([Example 2](#/skills-from-scratch) or [2 bis](#/skills-deepagents)) _and_ from a harness (e.g. [OpenClaw](#/skills-openclaw)); write _triggering_ and _outcome_ tests (cf. [Example 3](#/skills-tests))
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -992,6 +1012,8 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 
 ## Exercise 1 — Solution: the skill
 
+{{% small "90%" %}}
+
 {{% multicol %}}
 {{% col class="col-7" %}}
 
@@ -1008,6 +1030,8 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 
 {{% /col %}}
 {{% /multicol %}}
+
+{{% /small %}}
 
 ---
 
@@ -1160,7 +1184,7 @@ echo '{"hook_event_name": "PreToolUse", "tool_name": "Bash", "tool_input": {"com
 
 ### Designing and using skills
 
-{{% small "80%" %}}
+{{% small "70%" %}}
 
 1. [_notions, theoretical_] What is an agentic skill? Explain its relationship to procedural memory, and distinguish it from a system prompt, a tool, an MCP server, and a workflow.
 
