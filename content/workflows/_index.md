@@ -71,6 +71,8 @@ outputs = ["Reveal"]
 
 ## Workflows: an intuitive example
 
+{{% small "85%" %}}
+
 {{< image src="./admission-workflow.svg" max-h="42vh" alt="The admission workflow as a graph: start, then one read-transcript LLM step per candidate in parallel, then check eligibility (data step: Master's degree, Art. 3); if some candidate is eligible, score letters (LLM step, eligible candidates only), then rank (data step: grade plus letter, Art. 8, top 2 to the interview); if nobody is eligible, straight to the committee approval; the committee approval is a user-input step (an interrupt: the run stops and resumes upon the answer); if approved, notify candidates (action step, idempotent e-mails), otherwise end with nothing sent. Underneath, the state (run, candidates, transcripts, problems, scores, ranking, approved, notified), saved after each step as a checkpoint" >}}
 
 - The _same_ process, as an agent, would be a system prompt saying "_extract, check, score, rank, ask, notify_", hoping the LLM follows it, in that order, every time
@@ -80,6 +82,8 @@ outputs = ["Reveal"]
     + __testable__: steps in isolation, paths through the graph enumerable
     + __less flexible__: unforeseen requests need a _new version_ of the workflow
 - vs. [skills](../skills/#/skills-vs-others): procedures owned by domain experts (skills) vs. reliable, auditable ones (workflows)
+
+{{% /small %}}
 
 ---
 
@@ -645,6 +649,8 @@ Generalising [plan before acting](../agents/#/plan-before-acting) beyond plans:
 
 ## Multi-agent architectures
 
+{{% small "90%" %}}
+
 {{< image src="./multi-agent.svg" max-h="42vh" alt="Four multi-agent architectures: supervisor (one agent delegates questions to worker agents, used as tools, and gets their answers), hierarchical (a supervisor of team leads, each with its agents), handoffs or swarm (triage, regulations, and status agents transferring control to each other, one active at a time), shared state or blackboard (agents reading and writing a common state, while a workflow decides who acts next)" >}}
 
 - __Supervisor__: one agent delegates to _worker_ agents (often exposed to it as _tools_); simplest to reason about
@@ -653,6 +659,8 @@ Generalising [plan before acting](../agents/#/plan-before-acting) beyond plans:
 - __Handoffs__ (or _swarm_): agents _transfer control_ to each other (e.g. triage $\rightarrow$ billing $\rightarrow$ refunds); one agent active at a time
 - __Shared state__ (or _blackboard_): agents communicate through a common state, while a _workflow_ decides who acts next
 - Communication: via the __shared state__ (same process, same framework) or via __messages__ (possibly across processes and organisations: protocols)
+
+{{% /small %}}
 
 ---
 
@@ -960,6 +968,8 @@ sequenceDiagram
 
 ## Example 5: Streaming and Tracing the Admission Workflow (pt. 2)
 
+{{% small "90%" %}}
+
 3. Let's try it (full code [here](../lab-snippets/snippets/lecture_workflows/example5/observe.py)), then browse the traces:
 
     ```bash
@@ -993,14 +1003,20 @@ sequenceDiagram
 
 5. Project structure: [`example5/observe.py`](../lab-snippets/snippets/lecture_workflows/example5/observe.py), plus the workflow of [Example 1 (bis)](#/workflow-langgraph); env vars as in [Example 1](#/workflow-scratch)
 
+{{% /small %}}
+
 ---
 
 ## Example 5: the trace, in MLflow
 
-{{< image src="./mlflow-trace.png" max-h="62vh" alt="The MLflow trace of the admission workflow, up to the committee's approval: on the left, the tree of spans (LangGraph, then read_transcript three times, each with its ChatOpenAI call taking from 32 seconds to 1.7 minutes, then check_eligibility, score_letters, ...), with durations and tokens; on the right, the inputs and outputs of the whole graph, i.e. the state: the transcripts as extracted (Mario Rossi's final grade misread as 1055 out of 110) and the problems found by check_eligibility (an implausible grade, to be checked)" >}}
+{{% small "85%" %}}
+
+{{< image src="./mlflow-trace.png" max-h="50vh" alt="The MLflow trace of the admission workflow, up to the committee's approval: on the left, the tree of spans (LangGraph, then read_transcript three times, each with its ChatOpenAI call taking from 32 seconds to 1.7 minutes, then check_eligibility, score_letters, ...), with durations and tokens; on the right, the inputs and outputs of the whole graph, i.e. the state: the transcripts as extracted (Mario Rossi's final grade misread as 1055 out of 110) and the problems found by check_eligibility (an implausible grade, to be checked)" >}}
 
 - One trace per `stream` call (here, up to the interrupt: 3.2 minutes, 5,619 tokens), and another one for the resumed run; spans nest as nodes $\rightarrow$ chains $\rightarrow$ LLM calls
 - In this run, the vision model read Mario Rossi's "105/110" as 1055/110 (a different misreading than [the one above](#/workflow-scratch): the error is not reproducible): the [gate](#/workflow-scratch) in `check_eligibility` flagged it, and the trace shows _where_ the wrong value came from
+
+{{% /small %}}
 
 {{% /section %}}
 
@@ -1079,6 +1095,8 @@ sequenceDiagram
 
 ## Exercise 1: a Bot for Candidates' E-mails (pt. 1)
 
+{{% small "80%" %}}
+
 > __Goal__: a _semi-automatic_ assistant for the PhD admission office, which answers the e-mails of the [candidates](#/running-example) (e.g. on requirements, deadlines, documents, the status of their application), drafting replies which a member of the office __approves__ before they are sent
 
 > __Code__: put your solution in [`snippets/lecture_workflows/exercise1/`](../lab-snippets/snippets/lecture_workflows/exercise1/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l workflows -x 1`
@@ -1096,6 +1114,8 @@ sequenceDiagram
 3. stream progress to the CLI, and trace runs (e.g. with MLflow)
 4. write __tests__ at the three levels (step, path, end-to-end)
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -1185,6 +1205,8 @@ flowchart LR
 
 ## Exercise 1 — Solution: routing untrusted e-mails
 
+{{% small "90%" %}}
+
 > The router's output is a __closed set__ of routes (a `Literal`), each one _defined_ in the prompt
 
 {{% code path="static/lab-snippets/snippets/lecture_workflows/exercise1/bot.py" from="40" to="55" %}}
@@ -1193,6 +1215,8 @@ flowchart LR
 - The e-mail is _delimited_ (`<email>...</email>`) and declared as __data__: this _mitigates_ prompt injection, with no guarantee (cf. [prompt injection](../agents/#/security))
 - Hence, the _graph_ limits the damage of a misrouted e-mail: no route has tools, no route sends anything without a human, and the `status` route discloses only the _verified_ sender's data
 - `admission_llm()` imports the chat model of the [agents lecture](../agents/#/agent-langchain) _lazily_: tests can import the bot with no API key
+
+{{% /small %}}
 
 ---
 
@@ -1285,6 +1309,8 @@ flowchart LR
 
 ## Exercise 2: the E-mail Bot as an A2A Agent (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: expose the bot of [Exercise 1](#/exercise-email-bot) as an __A2A agent__, so that _other_ agents (e.g. the university's general help-desk agent) can _delegate_ candidates' questions to it, and follow the _task_ until a human of the admission office has approved the reply
 
 > __Code__: put your solution in [`snippets/lecture_workflows/exercise2/`](../lab-snippets/snippets/lecture_workflows/exercise2/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l workflows -x 2`
@@ -1297,6 +1323,8 @@ flowchart LR
 4. write a small __A2A client__ (the help-desk agent, or just a script) which sends an e-mail and _streams_ the task's status updates
 5. test it: an approved e-mail ends `completed` with the reply; a rejected one does not; the injection e-mail never completes without a human
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
