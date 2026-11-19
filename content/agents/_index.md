@@ -233,6 +233,8 @@ The LLM picks tools, and fills their arguments, by reading their _documentation_
 
 ## Tools: the technological landscape
 
+{{% small "85%" %}}
+
 > Recall the _Tools_ row of the [API comparison](../llmaas/#/api-comparison) in the LLM-as-a-Service lecture: here, in more detail
 
 {{% small "70%" %}}
@@ -252,6 +254,8 @@ The LLM picks tools, and fills their arguments, by reading their _documentation_
 - __Different syntax__, and _different reliability_: smaller (or older) models may ignore tools, invent tool names, or produce invalid arguments
     + always check whether a model supports tools (e.g. in [OpenRouter's model list](https://openrouter.ai/models?supported_parameters=tools))
     + many models can emit _several_ tool calls in one response (_parallel_ tool calls)
+
+{{% /small %}}
 
 ---
 
@@ -351,6 +355,8 @@ The LLM picks tools, and fills their arguments, by reading their _documentation_
 
 ## Example 1: an Agent from Scratch, with OpenAI's Client (pt. 3)
 
+{{% small "90%" %}}
+
 5. The main program is a CLI chat (cf. [the LLM-as-a-Service lecture](../llmaas/#/sync-chat)), where each user message triggers a ReAct loop (full code [here](../lab-snippets/snippets/lecture_agents/example1/agent_openai.py)):
 
     {{% code path="static/lab-snippets/snippets/lecture_agents/example1/agent_openai.py" from="54" to="61" %}}
@@ -382,6 +388,8 @@ The LLM picks tools, and fills their arguments, by reading their _documentation_
     - ask something the tools _cannot_ answer (e.g. "_will it rain in Bologna next week?_"): does the agent admit it, or does it _hallucinate_?
     - ask something which needs _no_ tool (e.g. "_what is the capital of France?_"): does the agent call tools anyway?
     - try with a _smaller_ model: does it still call tools properly?
+
+{{% /small %}}
 
 ---
 
@@ -664,6 +672,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ## Agentic benchmarks: how good are agents, in general?
 
+{{% small "90%" %}}
+
 {{% small "80%" %}}
 
 | Benchmark | What the agent must do | At release |
@@ -682,6 +692,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + whereas a _general-purpose_ harness (keeping reasoning state, compacting the conversation) lifts GPT-6 Astra from 54.8% to 99.9% on the whole benchmark ([leaderboard](https://arcprize.org/leaderboard), Oct 2026): the surrounding software matters as much as the model
 - __Success__ without governance is not trustworthy _agency_: success rates say nothing about _how_ the goal was reached (policies, side effects, costs)
 - Benchmarks _saturate_ and leak into training data: they help _choosing_ models (cf. the [governance lecture](../governance/)), but __your own__ evaluations are what tells whether _your_ agent works
+
+{{% /small %}}
 
 {{% /section %}}
 
@@ -827,6 +839,8 @@ There is no complete defence against prompt injection: design agents _assuming_ 
 
 ## Exercise 1: Tools to Inspect the Applications (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: an assistant answering _any_ question of the [committee](#/running-example) about the candidates (e.g. "_who has the highest GPA?_", "_how old is Mohammed Ali?_", "_does Jean Dupont's letter mention weaknesses?_"), by _inspecting_ their applications via __read-only__ tools
 
 > __Code__: put your solution in [`snippets/lecture_agents/exercise1/`](../lab-snippets/snippets/lecture_agents/exercise1/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l agents -x 1`
@@ -842,6 +856,8 @@ There is no complete defence against prompt injection: design agents _assuming_ 
 3. try it with questions requiring _one_ document, _several_ documents of the same candidate (e.g. "_is the name in the passport the same as in the letter?_"), or _all_ candidates (e.g. "_rank candidates by GPA_")
 4. write [trajectory tests](#/evaluating-agents) for it
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -883,6 +899,8 @@ There is no complete defence against prompt injection: design agents _assuming_ 
 
 ## Exercise 1 — Solution: validating arguments, delimiting documents
 
+{{% small "85%" %}}
+
 > Never trust the LLM's arguments: an _allow-list_ of candidates; and mark documents as __untrusted data__
 
 {{% code path="static/lab-snippets/snippets/lecture_agents/exercise1/committee.py" from="14" to="35" %}}
@@ -892,6 +910,8 @@ There is no complete defence against prompt injection: design agents _assuming_ 
     + its error message lists the _valid_ IDs: the LLM can _recover_ by itself
 - _One tool per document type_: simple signatures, and the tools' names already tell the LLM _which_ document it reads
 - Tags (`<letter>...</letter>`) help the LLM tell data from instructions: they _mitigate_ prompt injection, but give no guarantee (cf. [Exercise 2](#/exercise-decide))
+
+{{% /small %}}
 
 ---
 
@@ -991,6 +1011,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 2: Tools to Take Decisions (pt. 1)
 
+{{% small "85%" %}}
+
 > __Goal__: let the assistant _act_ on behalf of the committee (recording decisions, scheduling interviews, notifying candidates) via tools with __side effects__, but only with the explicit __approval__ of a committee member, and make sure it cannot be _tricked_ into acting
 
 > __Code__: put your solution in [`snippets/lecture_agents/exercise2/`](../lab-snippets/snippets/lecture_agents/exercise2/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l agents -x 2`
@@ -1011,6 +1033,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
     + the malicious letter never leads to a recorded decision, nor to an e-mail
 {{% /small %}}
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -1052,6 +1076,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 2 — Solution: idempotent write-enabled tools
 
+{{% small "90%" %}}
+
 > Recording the same decision _twice_ (e.g. after a retry) must be the same as recording it _once_: __idempotent__ tools
 
 {{% code path="static/lab-snippets/snippets/lecture_agents/exercise2/decisions.py" from="21" to="42" %}}
@@ -1061,9 +1087,13 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 - `check` and `Candidate` (from [Exercise 1](#/exercise-inspect-solution)) validate and describe the candidate _before_ anything is written
 - `OUTPUT_DIR`: where files are written (env var `COMMITTEE_OUTPUT`, default `output/`); `csv.DictReader`/`DictWriter` read/write CSV rows as `dict`s
 
+{{% /small %}}
+
 ---
 
 ## Exercise 2 — Solution: validation in the tools
+
+{{% small "90%" %}}
 
 > Validate __in the tool__ what the LLM may get wrong, whatever the prompt says
 
@@ -1072,6 +1102,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 - `when: datetime`: Pydantic _parses_ the LLM's ISO 8601 string into a `datetime` (possibly with a time zone, hence `astimezone()`, converting it to local time)
 - Interviews in the _past_, or on _Sundays_, are refused with an _explanatory_ error: the LLM can fix the call
 - `send_email` is deliberately __not__ idempotent: as real e-mails, which cannot be _unsent_ (hence the warning in its docstring)
+
+{{% /small %}}
 
 ---
 
@@ -1107,6 +1139,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 2 — Solution: the run loop, with interrupts
 
+{{% small "85%" %}}
+
 > The human sees the __full__ call, and may _approve_, _edit_, or _reject_ it
 
 {{% code path="static/lab-snippets/snippets/lecture_agents/exercise2/agent_decisions.py" from="41" to="64" %}}
@@ -1115,6 +1149,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 - `run` loops while the agent is _interrupted_ (the result has an `"__interrupt__"` key, listing the `action_requests` to review), and resumes it via `Command(resume=...)` with the human's decisions (`approve`, `edit`, or `reject`)
 - `review` is a _parameter_: a terminal prompt here, a _simulated_ human in tests
 - On rejection, the LLM receives the human's _reason_ as the tool result (and the prompt tells it not to retry)
+
+{{% /small %}}
 
 ---
 
@@ -1158,6 +1194,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 3: an MCP Gateway for the Committee (pt. 1)
 
+{{% small "85%" %}}
+
 > __Goal__: the committee wants its tools to be usable by _several_ hosts (its own agent, an IDE, a chat app), along with third-party tools, all managed in _one_ place, with _logging_ of every call
 
 > __Code__: put your solution in [`snippets/lecture_agents/exercise3/`](../lab-snippets/snippets/lecture_agents/exercise3/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l agents -x 3`
@@ -1173,6 +1211,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
     + keep _secrets_ (e.g. `OPENAI_API_KEY`, needed to extract information from pictures) in the gateway, not in the hosts
 5. connect the agent to the gateway _only_ (one `streamable_http` connection), and ask a question requiring tools from _several_ servers (e.g. "_is Jean Dupont's letter tailored to the programme described at `<URL>`?_")
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -1260,6 +1300,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 3 — Solution: the gateway forwards (and polices) tool calls
 
+{{% small "85%" %}}
+
 {{% code path="static/lab-snippets/snippets/lecture_agents/exercise3/gateway.py" from="65" to="86" %}}
 
 - `get_context().session` is the MCP session of the _calling_ host (its `id` tells hosts apart); `session.call_tool(...)` sends `tools/call` to the server behind
@@ -1268,6 +1310,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 - The __lethal trifecta__ is broken _in the gateway_ for __Web__ content: once a session has read it, it cannot send e-mails anymore, whatever its host does
     + letters remain untrusted too: there, the only defence is _human approval_ of `send_email` (tainting `applications_read_letter` as well would refuse every invitation after reading a letter)
 - Errors (unknown tools, servers _down_) become _tool errors_ (a `CallToolResult` with a `TextContent` and `isError=True`): the agent is told, and may recover
+
+{{% /small %}}
 
 ---
 
@@ -1287,6 +1331,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
 
 ## Exercise 3 — Solution: testing the gateway
 
+{{% small "85%" %}}
+
 > Tests launch _their own_ gateways (one per profile), writing into a temporary directory
 
 {{% code path="static/lab-snippets/snippets/lecture_agents/exercise3/test_gateway.py" from="61" to="81" %}}
@@ -1296,6 +1342,8 @@ Files of this solution, on the `master` branch of [`lab-snippets`]({{< github-ur
     + `output_dir`: a `pytest` _fixture_ launching the gateways, and giving their (temporary) output directory
     + `@pytest.mark.skipif(...)` skips the test when `uvx` is not installed
 - An invalid candidate is refused by the _server_, and the refusal is logged by the _gateway_
+
+{{% /small %}}
 
 ---
 
