@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,11 +31,14 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
 <h2 id="outline">Outline</h2>
+
+<div style="font-size: 90%;">
+
 <h3 id="key-engineering-aspects-of-llm-as-a-service">Key engineering aspects of LLM-as-a-Service</h3>
 <ol start="0">
 <li>
@@ -92,6 +95,10 @@
 </ul>
 </li>
 </ol>
+
+
+</div>
+
 </section>
 
 
@@ -137,6 +144,7 @@
 </ul>
 </section><section>
 <h2 id="model-zoos-pt-2-the-technological-landscape">Model zoos (pt. 2): the technological landscape</h2>
+<div style="font-size: 80%;">
 <table>
 	<thead>
 			<tr>
@@ -193,6 +201,7 @@
 <li><em>quantization</em> / <em>format</em>: <code>Q4_K_M</code>, <code>GGUF</code>, <code>AWQ</code>, <code>fp8</code></li>
 <li><em>date</em> / <em>snapshot</em>: <code>gpt-4o-2024-08-06</code> (pin it for <em>reproducibility</em>!)</li>
 </ul>
+</div>
 </section><section>
 <h2 id="model-zoos-pt-3-what-next">Model zoos (pt. 3): what next?</h2>
 <ul>
@@ -556,6 +565,7 @@
 </ul>
 </section><section>
 <h2 id="running-models-locally-hardware--software-pt-2">Running models locally: hardware &amp; software (pt. 2)</h2>
+<div style="font-size: 90%;">
 <h3 id="what-fits-where-indicative-at-4-bit-quantization-moderate-context">What fits where? (indicative, at ~4-bit quantization, moderate context)</h3>
 <table>
 	<thead>
@@ -609,6 +619,7 @@
 </ul>
 </li>
 </ul>
+</div>
 
 </section>
 </section><section>
@@ -830,29 +841,10 @@
 </ul>
 </section><section>
 <h2 id="chat-completion-an-intuitive-example">Chat Completion: an intuitive example</h2>
-<figure id="plantuml-figure-1792691622635928546" class="plantuml" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
-<p>@startuml
-hide footbox
-actor “User” as U
-participant “Program (client)” as P
-participant “LLM provider (server)” as L
-note over P: history = [system: “be friendly”]
-U -&gt; P: “hi, what time is it?”
-note over P: history += [user: “hi, what time is it?”]
-P -&gt; L: POST /chat/completions {model, messages: [system, user]}
-L –&gt; P: {choices: [{message: {assistant: “I have no clock, where are you?”}}], usage: {…}}
-note over P: history += [assistant: “I have no clock, …”]
-P -&gt; U: “I have no clock, where are you?”
-U -&gt; P: “Cesena, Italy”
-note over P: history += [user: “Cesena, Italy”]
-P -&gt; L: POST /chat/completions {model, messages: [system, user, assistant, user]}
-note over L: keeps nothing between requests: the WHOLE history is re-sent
-L –&gt; P: {choices: [{message: {assistant: “It’s … in Cesena”}}], usage: {…}}
-P -&gt; U: “It’s … in Cesena”
-@enduml</p>
+<figure id="plantuml-figure-1795089134157890396" class="plantuml" data-source="CkBzdGFydHVtbApoaWRlIGZvb3Rib3gKYWN0b3IgIlVzZXIiIGFzIFUKcGFydGljaXBhbnQgIlByb2dyYW0gKGNsaWVudCkiIGFzIFAKcGFydGljaXBhbnQgIkxMTSBwcm92aWRlciAoc2VydmVyKSIgYXMgTApub3RlIG92ZXIgUDogaGlzdG9yeSA9IFtzeXN0ZW06ICJiZSBmcmllbmRseSJdClUgLT4gUDogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Igpub3RlIG92ZXIgUDogaGlzdG9yeSArPSBbdXNlcjogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXJdfQpMIC0tPiBQOiB7Y2hvaWNlczogW3ttZXNzYWdlOiB7YXNzaXN0YW50OiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyJ9fV0sIHVzYWdlOiB7Li4ufX0Kbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW2Fzc2lzdGFudDogIkkgaGF2ZSBubyBjbG9jaywgLi4uIl0KUCAtPiBVOiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyIKVSAtPiBQOiAiQ2VzZW5hLCBJdGFseSIKbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW3VzZXI6ICJDZXNlbmEsIEl0YWx5Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXIsIGFzc2lzdGFudCwgdXNlcl19Cm5vdGUgb3ZlciBMOiBrZWVwcyBub3RoaW5nIGJldHdlZW4gcmVxdWVzdHM6IHRoZSBXSE9MRSBoaXN0b3J5IGlzIHJlLXNlbnQKTCAtLT4gUDoge2Nob2ljZXM6IFt7bWVzc2FnZToge2Fzc2lzdGFudDogIkl0J3MgLi4uIGluIENlc2VuYSJ9fV0sIHVzYWdlOiB7Li4ufX0KUCAtPiBVOiAiSXQncyAuLi4gaW4gQ2VzZW5hIgpAZW5kdW1sCg==" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
 </figure>
 <script>
-    handlePlantumlFigureByID("plantuml-figure-1792691622635928546");
+    handlePlantumlFigureByID("plantuml-figure-1795089134157890396");
 </script>
 <ul>
 <li>Notice that the <strong>same</strong> interaction is implemented by <em>all</em> providers, only the <em>syntax</em> changes
@@ -1041,6 +1033,9 @@ P -&gt; U: “It’s … in Cesena”
 </ul>
 </section><section>
 <h2 id="openais-chat-completion-api-with-python">OpenAI’s Chat Completion API with Python</h2>
+
+<div style="font-size: 85%;">
+
 <ul>
 <li>
 <p>This is the simplest and most common way to interact with OpenAI-like API providers, via the <a href="https://github.com/openai/openai-python">openai-python</a> library</p>
@@ -1086,6 +1081,10 @@ P -&gt; U: “It’s … in Cesena”
 </ol>
 </li>
 </ul>
+
+
+</div>
+
 </section>
 
 
@@ -1124,6 +1123,7 @@ P -&gt; U: “It’s … in Cesena”
 </ol>
 </section><section>
 <h2 id="example-1-sync-cli-chat-pt-2">Example 1: Sync CLI Chat (pt. 2)</h2>
+<div style="font-size: 90%;">
 <ol start="3">
 <li>
 <p>Finally, we can enter a loop in which we read the user’s input from the command line, send it to the model as a new message in the conversation, and print the model’s response back to the command line</p>
@@ -1165,6 +1165,7 @@ P -&gt; U: “It’s … in Cesena”
 </ol>
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="example-1-sync-cli-chat-pt-3">Example 1: Sync CLI Chat (pt. 3)</h2>
 <ol start="4">
@@ -1451,6 +1452,7 @@ P -&gt; U: “It’s … in Cesena”
 </section>
 <section data-noprocess="" data-shortcode-slide="" class="print-compact">
 <h2 id="example-2-async-cli-chat-with-streaming-pt-3">Example 2: Async CLI Chat with Streaming (pt. 3)</h2>
+<div style="font-size: 85%;">
 <ol start="4">
 <li>
 <p>Full code <a href="../lab-snippets/snippets/lecture_llmaas/example2/repl_chat_openai_async.py">here</a></p>
@@ -1499,7 +1501,11 @@ P -&gt; U: “It’s … in Cesena”
 </span></span><span style="display:flex;"><span>assistant&gt; Let me know if you’d like more!
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>you&gt; Goodbye!
-</span></span></code></pre></div><ol start="6">
+</span></span></code></pre></div>
+</div>
+</section><section>
+<h2 id="example-2-async-cli-chat-with-streaming-pt-4">Example 2: Async CLI Chat with Streaming (pt. 4)</h2>
+<ol start="6">
 <li>When you run it, pay attention to:
 <ul>
 <li>perceived latency (first token arrives earlier than full-response mode)</li>
@@ -2408,7 +2414,7 @@ P -&gt; U: “It’s … in Cesena”
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -2424,7 +2430,7 @@ P -&gt; U: “It’s … in Cesena”
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -2533,7 +2539,7 @@ P -&gt; U: “It’s … in Cesena”
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');

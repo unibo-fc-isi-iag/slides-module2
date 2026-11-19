@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
@@ -43,7 +43,7 @@
 <li>Exercises on the running example: <a href="#/exercise-all-fields">complete the test suite of the letter-scoring system</a>, <a href="#/exercise-id-tests">testing infrastructure for ID documents extraction</a></li>
 </ol>
 <blockquote>
-<p>Recall: we assume the reader is familiar with <a href="../prompting/#/structured-output">structured outputs</a> and with the <a href="../prompting/#/running-example">running example</a>, from the previous lecture</p>
+<p>Recall: we assume the reader is familiar with <a href="../prompting/#/structured-output">structured outputs</a> and with the <a href="../#/running-example">running example</a>, from the previous lecture</p>
 </blockquote>
 </section>
 
@@ -221,6 +221,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" class="print-compact" id="test-deepeval">
 <h2 id="example-1-testing-the-letter-scoring-system-with-deepeval-pt-1">Example 1: Testing the Letter Scoring System with DeepEval (pt. 1)</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p><strong>Goal</strong>: set up a <em>test suite</em> for the <a href="../prompting/#/letter-scoring-langchain">LangChain letter-scoring system</a> of Example 1 (bis) of the Prompt Engineering lecture, checking <em>some</em> fields of the <code>LetterInfo</code> objects it produces</p>
 </blockquote>
@@ -289,6 +290,7 @@
 <li><code>yaml.safe_load</code> (from <a href="https://pyyaml.org/">PyYAML</a>) parses YAML text into Python <code>list</code>s and <code>dict</code>s</li>
 <li><code>read_letter(case)</code>, in the same file, reads the text of the case’s letter from the running example’s <code>data/</code> directory</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -561,6 +563,7 @@
 </ol>
 </section><section>
 <h2 id="example-1-bis-evaluating-the-letter-scoring-system-with-mlflow-pt-4">Example 1 (bis): Evaluating the Letter Scoring System with MLflow (pt. 4)</h2>
+<div style="font-size: 90%;">
 <ol start="5">
 <li>
 <p>Files of this example, in the <a href="https://github.com/unibo-fc-isi-iag/lab-snippets"><code>lab-snippets</code></a> repository (cf. <a href="../#/lab-snippets">how to set it up, and run snippets</a>):</p>
@@ -591,6 +594,7 @@
 </span></span></code></pre></div> <img src="./todo-mlflow-ui.png" alt="TODO picture: screenshot of the MLflow UI, 'letter-scoring' experiment, 'Evaluations' tab of a run: a table with one row per letter (Mario Rossi, Jean Dupont, Mohammed Ali), columns for the inputs (truncated letter text), the outputs (truncated JSON), and one column per scorer (names_and_email, score_in_range, relationship, groundedness) with pass/fail or yes/no badges; the groundedness cell of one row is expanded, showing the judge's rationale." style="max-width: calc(95 * 19.2px); max-height: calc(25 * 10.8px); object-fit: contain;">
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="deepeval-vs-mlflow-analogies-and-differences">DeepEval vs. MLflow: analogies and differences</h2>
 <table>
@@ -655,6 +659,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-all-fields">
 <h2 id="exercise-1-complete-the-test-suite-of-the-letter-scoring-system-pt-1">Exercise 1: Complete the Test Suite of the Letter Scoring System (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p><strong>Goal</strong>: the examples above only check <em>some</em> fields of <code>LetterInfo</code>; extend <em>one</em> of the two test suites (DeepEval <em>or</em> MLflow, your choice) so that <em>every</em> field is checked</p>
 </blockquote>
@@ -672,11 +677,12 @@
 </ul>
 </li>
 <li>for each field, decide <em>how</em> to check it, and <em>why</em>: <strong>exact</strong> match, <strong>tolerant</strong> match (normalisation, “contains”, ranges, set inclusion, …), or <strong>LLM-as-a-Judge</strong> (reference-based or reference-free)</li>
-<li>read the <a href="../prompting/#/running-example">letters</a> <em>yourself</em>, and extend <a href="../lab-snippets/snippets/lecture_validating/test_data.yml"><code>test_data.yml</code></a> with the expectations for each field of each letter</li>
+<li>read the <a href="../#/running-example">letters</a> <em>yourself</em>, and extend <a href="../lab-snippets/snippets/lecture_validating/test_data.yml"><code>test_data.yml</code></a> with the expectations for each field of each letter</li>
 <li>write the corresponding scorers (tests, or <code>@scorer</code> functions, or judges), and run the suite</li>
 <li>for each failure, decide whether the <em>system</em> or the <em>expectation</em> is wrong, and fix the right one</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-1-complete-the-test-suite-of-the-letter-scoring-system-pt-2">Exercise 1: Complete the Test Suite of the Letter Scoring System (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -899,6 +905,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-id-tests">
 <h2 id="exercise-2-testing-infrastructure-for-id-document-extraction-pt-1">Exercise 2: Testing Infrastructure for ID Document Extraction (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p><strong>Goal</strong>: the committee wants <em>evidence</em> that the extractor of <a href="../prompting/#/exercise-id-documents">Exercise 2 of the Prompt Engineering lecture</a> is reliable, and wants to be <em>warned</em> whenever a change in prompt or model makes it worse</p>
 </blockquote>
@@ -908,7 +915,7 @@
 <span class="fragment ">
   <h3 id="to-do-list">TO-DO List</h3>
 <ol>
-<li><strong>first</strong>, design a <strong>test dataset</strong> from the 3 passports of the <a href="../prompting/#/running-example">running example</a>: for each picture, write down the <em>expected</em> values of all fields (name, nationality, date of birth, ID number, expiration date)</li>
+<li><strong>first</strong>, design a <strong>test dataset</strong> from the 3 passports of the <a href="../#/running-example">running example</a>: for each picture, write down the <em>expected</em> values of all fields (name, nationality, date of birth, ID number, expiration date)</li>
 <li>pick a framework (DeepEval <em>or</em> MLflow), and write <strong>deterministic scorers</strong>:
 <ul>
 <li><em>exact match</em> for ID numbers and dates, <em>normalised</em> match for names and nationality (case, accents, order of words)</li>
@@ -924,6 +931,7 @@
 <li>run the suite with at least <strong>two models</strong>, and write down which one you’d pick, and why (cf. the <a href="../governance/#/compare-models">Governance lecture</a>)</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-2-testing-infrastructure-for-id-document-extraction-pt-2">Exercise 2: Testing Infrastructure for ID Document Extraction (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -1246,7 +1254,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -1262,7 +1270,7 @@
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -1373,7 +1381,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');

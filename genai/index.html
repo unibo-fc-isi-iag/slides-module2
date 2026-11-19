@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -788,7 +788,7 @@
 			</tr>
 			<tr>
 					<td>(2) + (3)</td>
-					<td>an agent whose <em>tools</em> are themselves LLM-based <em>workflows</em> (e.g. the <a href="#/genai-workflow">tender example</a>)</td>
+					<td>an agent whose <em>tools</em> are themselves LLM-based <em>workflows</em> (e.g. the <a href="#/genai-workflow">GenAI lifecycle example</a>)</td>
 			</tr>
 			<tr>
 					<td>(1) + (3)</td>
@@ -796,7 +796,7 @@
 			</tr>
 			<tr>
 					<td>(1) + (2) + (3)</td>
-					<td>an assistant for a PhD admission committee (our <a href="../prompting/#/running-example">running example</a>): <em>workflows</em> to extract data from candidates’ documents, an <em>agent</em> to answer the committee’s questions, all <em>coded</em> with a coding agent</td>
+					<td>an assistant for a PhD admission committee (our <a href="../#/running-example">running example</a>): <em>workflows</em> to extract data from candidates’ documents, an <em>agent</em> to answer the committee’s questions, all <em>coded</em> with a coding agent</td>
 			</tr>
 	</tbody>
 </table>
@@ -906,6 +906,9 @@
 </ul>
 </section><section>
 <h2 id="lets-explain-the-nomenclature">Let’s explain the nomenclature</h2>
+
+<div style="font-size: 85%;">
+
 <ul>
 <li>
 <p><strong>Foundation models</strong> (FM, always <em>pre-trained</em>): large neural-networks trained on massive datasets to learn general skills (e.g. ‘understanding’ and generating text, images, code), most commonly accessed <em>as-a-Service</em> via API, as provided by third-party companies</p>
@@ -944,6 +947,10 @@
 </ul>
 </li>
 </ul>
+
+
+</div>
+
 </section><section>
 
 
@@ -1065,42 +1072,43 @@
 	<tbody>
 			<tr>
 					<td>Role playing</td>
-					<td><code>You are an expert in {field} known for {key adjective}. Help me {task}.</code></td>
+					<td><code>You are an expert in <span class="ph">{field}</span> known for <span class="ph">{key adjective}</span>. Help me <span class="ph">{task}</span>.</code></td>
 					<td>telling the AI to act as a famous expert or celebrity</td>
 			</tr>
 			<tr>
 					<td>Style unbundling</td>
-					<td><code>Describe the key elements of {expert}'s style/skill in bullet points.</code> <br> <code>Do {task} in the following style: {style}.</code></td>
+					<td><code>Describe the key elements of <span class="ph">{expert}</span>’s style/skill in bullet points.</code> <br> <code>Do <span class="ph">{task}</span> in the following style: <span class="ph">{style}</span>.</code></td>
 					<td>describe what you like about a style, rather than copying it directly</td>
 			</tr>
 			<tr>
 					<td>Emotion prompting</td>
-					<td><code>Help me {task}. Please make sure {attribute}. This task is very important for my career.</code></td>
+					<td><code>Help me <span class="ph">{task}</span>. Please make sure <span class="ph">{attribute}</span>. This task is very important for my career.</code></td>
 					<td>use emotional pressure and persuasion with the AI</td>
 			</tr>
 			<tr>
 					<td>Few-shot learning</td>
-					<td><code>Here are some examples of {task}. Generate a {task} for {new context}.</code></td>
+					<td><code>Here are some examples of <span class="ph">{task}</span>. Generate a <span class="ph">{task}</span> for <span class="ph">{new context}</span>.</code></td>
 					<td>add examples of the completed task to the prompt</td>
 			</tr>
 			<tr>
 					<td>Synthetic bootstrap</td>
-					<td><code>Generate ten examples of {examples} for {context}. Here are the inputs: {inputs}.</code> <br> <code>Generate {task} using {examples}.</code></td>
+					<td><code>Generate ten examples of <span class="ph">{examples}</span> for <span class="ph">{context}</span>. Here are the inputs: <span class="ph">{inputs}</span>.</code> <br> <code>Generate <span class="ph">{task}</span> using <span class="ph">{examples}</span>.</code></td>
 					<td>use AI to generate good examples of the completed task</td>
 			</tr>
 	</tbody>
 </table>
 <p>(source: <a href="https://www.lennysnewsletter.com/">Lenny’s Newsletter</a>)</p>
 <ul>
-<li><code>{placeholders}</code> are filled with <em>actual data</em> at runtime $\rightarrow$ prompt <em>templates</em> (cf. <a href="../prompting/#/langchain">prompting</a>)</li>
+<li><code><span class="ph">{placeholders}</span></code> are filled with <em>actual data</em> at runtime $\rightarrow$ prompt <em>templates</em> (cf. <a href="../prompting/#/langchain">prompting</a>)</li>
 </ul>
 </section><section>
 <h2 id="concept-structured-outputs">Concept: Structured Outputs</h2>
+<img src="./structured-output.svg" alt="Structured output, how it works, on the running example: the input is a passport picture plus the prompt 'Extract the ID data from this document'; it is sent together with a schema, the Pydantic model IDDocumentInfo with fields name, nationality, date_of_birth, id_number (str) and expiration_date (date); the LLM fills in the schema and returns JSON (name Mario Rossi, nationality Bananense, date of birth 1985-03-15, ID number BN1234567, expiration date 2034-05-20); the output is validated against the schema, and if invalid the LLM is asked to retry; valid output becomes native objects used in code, databases and APIs" style="width: 100%; max-width: calc(95 * 19.2px); max-height: calc(45 * 10.8px); object-fit: contain;">
 <ul>
 <li>Constrain the FM to answer with <em>data</em> (e.g. JSON) matching a given <strong>schema</strong>, rather than free text
 <ul>
 <li>the output can be <em>parsed</em> and <em>validated</em> by code, then stored or passed to other components</li>
-<li>e.g. extracting name, nationality, and expiry date from a passport’s picture</li>
+<li>e.g. above, extracting ID data from a passport’s picture, in the <a href="../#/running-example">running example</a></li>
 </ul>
 </li>
 <li>(more on this in the <a href="../prompting/#/structured-output">prompting</a> lecture)</li>
@@ -1111,6 +1119,7 @@
 </section>
 <section data-noprocess="" data-shortcode-slide="" id="mcp-concept">
 <h2 id="concept-model-context-protocol-mcp">Concept: Model Context Protocol (MCP)</h2>
+<div style="font-size: 90%;">
 <img src="./mcp.svg" alt="Model Context Protocol (MCP) concept" style="width: 100%; max-width: calc(95 * 19.2px); max-height: calc(60 * 10.8px); object-fit: contain;">
 <ul>
 <li>MCP $\approx$ <em>standard</em> protocol for LLM-based applications to <em>discover</em> and <em>call</em> <strong>external tools</strong> (cf. <a href="https://modelcontextprotocol.io/specification">specification</a>)</li>
@@ -1122,6 +1131,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </section>
 <section data-noprocess="" data-shortcode-slide="" id="rag-concept">
 <h2 id="concept-retrieval-augmented-generation-rag">Concept: Retrieval-Augmented Generation (RAG)</h2>
@@ -1137,6 +1147,7 @@
 <p>(more on this in the <a href="../validating/#/llm-as-a-judge">validating</a> lecture)</p>
 </section><section>
 <h2 id="concept-agentic-skills">Concept: Agentic Skills</h2>
+<img src="../skills/progressive-disclosure.svg" alt="Progressive disclosure: a skill is a folder (e.g. phd-application-review/ with SKILL.md, scripts, references, assets); level 1, metadata (name and description, about 100 tokens per skill), in the context from startup for all installed skills; level 2, instructions (the SKILL.md body, below 5,000 tokens), loaded upon activation, when the LLM picks the skill; level 3, resources (scripts, references, assets), read only if the instructions require them" style="width: 100%; max-width: calc(95 * 19.2px); max-height: calc(45 * 10.8px); object-fit: contain;">
 <ul>
 <li><em>Folders</em> of <strong>instructions</strong> (Markdown) and <em>scripts</em>, which an agent loads <em>on demand</em>, when relevant to the task
 <ul>
@@ -1148,12 +1159,13 @@
 </ul>
 </section><section>
 <h2 id="concept-workflows">Concept: Workflows</h2>
+<img src="../workflows/admission-workflow.svg" alt="The admission workflow of the running example as a graph: read transcripts (LLM step, one per candidate, in parallel), check eligibility (data step), score letters (LLM step), rank (data step), committee approval (user-input step, the run stops and resumes upon the answer), notify candidates (action step); dashed conditional edges skip to approval if nobody is eligible, and end without sending if the committee says no; the state is saved after each step as a checkpoint" style="width: 100%; max-width: calc(95 * 19.2px); max-height: calc(45 * 10.8px); object-fit: contain;">
 <ul>
 <li>The <em>code</em> decides the <strong>flow</strong> (a state machine, a graph of steps), and FMs fill in the <em>steps</em>
 <ul>
 <li>as opposed to <em>agents</em>, where the FM decides what to do next</li>
 <li>predictable, testable, auditable; less flexible</li>
-<li>e.g. extract $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ report</li>
+<li>e.g. above, the admission workflow of the <a href="../#/running-example">running example</a></li>
 </ul>
 </li>
 <li>(more on this in the <a href="../workflows/#/workflows-concept">workflows</a> lecture)</li>
@@ -1207,61 +1219,63 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 </ol>
 </section><section>
 <h2 id="example-of-genai-lifecycle-pt-1">Example of GenAI lifecycle (pt. 1)</h2>
+<div style="font-size: 85%;">
 <blockquote>
-<p>Support public officers in managing tenders through a GenAI assistant that understands and compares procurement decisions transparently.</p>
+<p>Support a PhD admission committee in evaluating applications through a GenAI assistant (our <a href="../#/running-example">running example</a>), transparently and under the committee’s control.</p>
 </blockquote>
 <p><strong>Scope</strong></p>
 <ol>
 <li>
 <p><strong>Problem Framing</strong>:</p>
 <ul>
-<li><em>Content Generation</em>: draft and justify <em>comparisons</em> among suppliers’ offers vs. technical specs</li>
-<li><em>Interpretation</em>: understand regulatory documents and technical language</li>
-<li><em>Automation</em>: score offers against <em>check-lists</em> derived from the technical specs</li>
-<li><em>Interaction</em>: enable officers to query and validate results through natural language</li>
-<li>i.e. a <em>workflow</em> (dimension 2) for scoring, plus an <em>agent</em> (dimension 3) for the officers’ questions</li>
+<li><em>Interpretation</em>: read candidates’ documents (passports and transcripts as <em>pictures</em>, presentation letters as <em>text</em>)</li>
+<li><em>Automation</em>: extract structured data (name, age, grades, …) and score letters against the committee’s <em>rubric</em></li>
+<li><em>Content Generation</em>: draft review reports, outcome letters, and replies to candidates’ e-mails</li>
+<li><em>Interaction</em>: enable committee members to query and validate results through natural language</li>
+<li>i.e. <em>workflows</em> (dimension 2) for extraction and scoring, plus an <em>agent</em> (dimension 3) for the committee’s questions</li>
 </ul>
 </li>
 <li>
-<p><strong>Data Collection</strong>: past tenders’ technical specifications and acts; regulatory documents; previous evaluations (with the officers’ scores)</p>
+<p><strong>Data Collection</strong>: candidates’ applications (passport, transcript of records, presentation letter); regulations of the PhD programme; previous evaluations (with the committee’s scores)</p>
 </li>
 <li>
 <p><strong>Data Preparation</strong>:</p>
 <ul>
-<li>devise useful data schema &amp; extract relevant data from documents</li>
-<li>anonymize sensitive info (personal data; supplier identities, to reduce bias)</li>
-<li>segment documents and index by topic (law, SLA, price table, etc.)</li>
+<li>devise useful data schemas (e.g. one per document type) &amp; extract relevant data from documents</li>
+<li>anonymize sensitive info (personal data; candidates’ names and nationalities, to reduce bias)</li>
+<li>segment the regulations by article, and the letters by paragraph</li>
 </ul>
 </li>
 </ol>
 <p><strong>Select</strong></p>
 <ol start="4">
-<li><strong>Foundation Model Selection</strong>: multi-lingual? specialized in legal/technical text? cost constraints? support for tools? where does it run (data protection)?
+<li><strong>Foundation Model Selection</strong>: multi-modal (to read pictures)? multi-lingual? cost constraints? support for tools and structured outputs? where does it run (data protection)?
 <ul>
 <li>try out candidate prompts on candidate models</li>
 </ul>
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="example-of-genai-lifecycle-pt-2">Example of GenAI lifecycle (pt. 2)</h2>
 <p><strong>Adapt and align</strong></p>
 <ol start="5">
 <li>
-<p><strong>Vector stores</strong>: embeddings for tender documents &amp; specs, legal texts &amp; guidelines, previous evaluations, templates</p>
+<p><strong>Vector stores</strong>: embeddings for regulations, letters, previous evaluations, templates</p>
 <ul>
 <li>choose embedding model and chunking strategy, populate the store, engineer retrieval strategies</li>
 </ul>
 </li>
 <li>
-<p><strong>Prompt Engineering</strong>: templates for check-list extraction, justification, and Q&amp;A</p>
+<p><strong>Prompt Engineering</strong>: templates for data extraction, letter scoring, report writing, and Q&amp;A</p>
 <ul>
-<li>role-based system prompts (<code>You are a procurement evaluator…</code>), placeholders for retrieved chunks, iterate on manual tests</li>
+<li>role-based system prompts (<code>You are a member of a PhD admission committee…</code>), placeholders for retrieved chunks, iterate on manual tests</li>
 </ul>
 </li>
 <li>
-<p><strong>Evaluations</strong>: past tenders (with the officers’ scores) as validation set</p>
+<p><strong>Evaluations</strong>: the candidates’ documents (with the expected data and the committee’s scores) as test set</p>
 <ul>
-<li>exact checks on extracted check-lists and scores; <a href="../validating/#/llm-as-a-judge">LLM-as-a-judge</a> on justifications (e.g. is every claim backed by a cited document?)</li>
+<li>exact checks on extracted data; <a href="../validating/#/llm-as-a-judge">LLM-as-a-judge</a> on reports (e.g. is every claim backed by a document?)</li>
 <li>re-run at every change of prompts or models</li>
 </ul>
 </li>
@@ -1269,23 +1283,23 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 <p><strong>Application integration</strong></p>
 <ol start="8">
 <li>
-<p><strong>Tools</strong>: regulation lookup API, tender database query API, report generation out of document templates</p>
+<p><strong>Tools</strong>: read applications, look up regulations, query the candidates’ database, send e-mails (upon approval)</p>
 <ul>
-<li>scores are computed by <em>deterministic</em> code out of the (validated) check-lists: the LLM <em>proposes</em>, software <em>verifies</em></li>
+<li>rankings are computed by <em>deterministic</em> code out of the (validated) data and scores: the LLM <em>proposes</em>, software <em>verifies</em></li>
 </ul>
 </li>
 <li>
 <p><strong>Workflow</strong> + <strong>Agent</strong>:</p>
 <ul>
-<li><em>workflow</em>: extract check-lists $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ generate comparison report</li>
-<li><em>agent</em>: answers officers’ questions, orchestrating RAG and tool invocations</li>
+<li><em>workflow</em>: extract data $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ generate review report</li>
+<li><em>agent</em>: answers the committee’s questions, orchestrating RAG and tool invocations</li>
 </ul>
 </li>
 <li>
 <p><strong>Tracking</strong> &amp; <strong>Oversight</strong>:</p>
 <ul>
 <li>log prompts, retrieved chunks, tool calls, and scores, for traceability and auditing</li>
-<li>the system <em>proposes</em>, the officer <em>decides</em> (and signs off); comply with GDPR and the AI Act (cf. <a href="../governance/#/regulation">governance</a>)</li>
+<li>the system <em>proposes</em>, the committee <em>decides</em> (and signs off); comply with GDPR and the AI Act (admission is a <em>high-risk</em> use, cf. <a href="../governance/#/regulation">governance</a>)</li>
 </ul>
 </li>
 </ol>
@@ -1389,7 +1403,7 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -1405,7 +1419,7 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -1510,7 +1524,7 @@ Similar to the ML lifecycle in the sense that the goal is to process data, but d
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');

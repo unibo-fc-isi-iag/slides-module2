@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,13 +31,13 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
 <h2 id="outline">Outline</h2>
 <ol start="0">
-<li><a href="#/running-example">Running example</a>: the PhD admission committee’s assistant</li>
+<li><a href="../#/running-example">Running example</a>: the PhD admission committee’s assistant</li>
 <li><a href="#/prompt-anatomy">Anatomy of a prompt</a>: what a prompt is made of, and some general best practices</li>
 <li><a href="#/structured-output">Structured outputs</a>: how to get <em>machine-readable</em> responses out of LLMs
 <ul>
@@ -56,55 +56,6 @@
 <blockquote>
 <p>Recall: we assume the reader is familiar with the <a href="../llmaas/#/chat-completion-concept">Chat Completion API</a>, and with the notion of <a href="../genai/#/prompt-patterns">prompt templates</a> from previous lectures</p>
 </blockquote>
-</section>
-
-<section data-noprocess="" data-shortcode-slide="" id="running-example">
-  
-<h2 id="running-example">Running example</h2>
-<h3 id="admission-committee-assistant-for-phd-applications-evaluation">Admission committee assistant for PhD applications evaluation</h3>
-<ul>
-<li>
-<p>3 candidates, and as many applications, with their <em>passport</em>, <em>transcript of records</em>, and <em>presentation letter</em> (in natural language)</p>
-</li>
-<li>
-<p>we want to extract structured information from these documents (e.g. name, age, grades, research experience, etc.) to ease evaluation</p>
-</li>
-</ul>
-
-<div class="container w-100 m-0 p-0">
-    <div class="row "><div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mario-rossi.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mario-rossi.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mario-rossi.txt">Presentation letter</a>
-<ul>
-<li>letter is very positive</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-jean-dupont.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-jean-dupont.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-jean-dupont.txt">Presentation letter</a>
-<ul>
-<li>letter contains some criticisms</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mohammed-ali.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mohammed-ali.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mohammed-ali.txt">Presentation letter</a>
-<ul>
-<li>letter is positive but shallow</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
 </section>
 
 
@@ -149,6 +100,7 @@
 </ul>
 </section><section>
 <h2 id="prompt-engineering-best-practices-the-landscape">Prompt engineering best practices: the landscape</h2>
+<div style="font-size: 90%;">
 <ul>
 <li>Each provider publishes its own <strong>prompting guide</strong>, and <em>most advice is shared</em> across them:
 <ul>
@@ -215,6 +167,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </section><section>
 <h2 id="prompts-are-artifacts-too">Prompts are <em>artifacts</em> too</h2>
 <ul>
@@ -330,6 +283,7 @@
 
 <section data-shortcode-section="">
 <h2 id="how-is-structured-output-enforced-pt-1">How is structured output <em>enforced</em>? (pt. 1)</h2>
+<div style="font-size: 80%;">
 <p>From <em>weakest</em> to <em>strongest</em> guarantees:</p>
 <ol>
 <li>
@@ -356,6 +310,7 @@
 </ul>
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="how-is-structured-output-enforced-pt-2">How is structured output <em>enforced</em>? (pt. 2)</h2>
 <table>
@@ -509,6 +464,7 @@
 </ol>
 </section><section>
 <h2 id="example-1-structured-output-with-pydantic-classes-pt-3">Example 1: Structured Output with Pydantic Classes (pt. 3)</h2>
+<div style="font-size: 90%;">
 <ol start="4">
 <li>
 <p><em>Instructions</em> for <em>scoring</em> can be provided as well in <em>natural language</em>, yet better to be precise and give the LLM a <em>“recipe”</em> for scoring</p>
@@ -556,6 +512,7 @@
 </ul>
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="example-1-structured-output-with-pydantic-classes-pt-4">Example 1: Structured Output with Pydantic Classes (pt. 4)</h2>
 <ol start="6">
@@ -1070,6 +1027,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="prompting-techniques">
 <h2 id="prompting-techniques-the-general-concept">Prompting techniques: the general concept</h2>
+<div style="font-size: 90%;">
 <table>
 	<thead>
 			<tr>
@@ -1120,6 +1078,7 @@
 <li>Folk <a href="../genai/#/prompt-patterns">prompt patterns</a> (role playing, emotion prompting, …) have <em>weak</em> or <em>inconsistent</em> evidence (cf. <a href="https://arxiv.org/abs/2307.11760">EmotionPrompt, Li et al., 2023</a> vs. <a href="https://arxiv.org/abs/2406.06608">The Prompt Report</a>): <strong>measure</strong>, don’t trust</li>
 <li>Techniques <strong>combine</strong>: e.g. few-shot + CoT + self-consistency</li>
 </ul>
+</div>
 </section><section>
 <h2 id="prompting-techniques-an-intuitive-example">Prompting techniques: an intuitive example</h2>
 <img src="./prompting-techniques.svg" alt="Zero-shot, few-shot, chain-of-thought, self-consistency and prompt chaining applied to classifying the tone of Jean Dupont's letter, showing the messages sent in each case and the resulting labels, from a 4/5 majority vote for critical to a two-step chain that first quotes the key sentences and then classifies them" style="max-width: calc(95 * 19.2px); max-height: calc(80 * 10.8px); object-fit: contain;">
@@ -1562,6 +1521,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="context-management">
 <h2 id="context-management-the-general-concept">Context management: the general concept</h2>
+<div style="font-size: 90%;">
 <ul>
 <li>
 <p>The <strong>context window</strong> is the <em>maximum number of tokens</em> a model can process in a <em>single</em> request: <em>input</em> (all messages) + <em>output</em> (including reasoning tokens)</p>
@@ -1595,6 +1555,7 @@
 </ol>
 </li>
 </ul>
+</div>
 </section><section>
 <h2 id="context-management-an-intuitive-example">Context management: an intuitive example</h2>
 <img src="./context-growth.svg" alt="Tokens sent per request over 10 turns: without context management the history grows linearly and exceeds the budget from turn 7; with compaction a summary replaces older messages after turns 6 and 9, keeping every request under budget" style="max-width: calc(95 * 19.2px); max-height: calc(80 * 10.8px); object-fit: contain;">
@@ -1834,6 +1795,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-id-documents">
 <h2 id="exercise-2-extract-structured-information-from-pictures-pt-1">Exercise 2: Extract Structured Information from Pictures (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p><strong>Goal</strong>: let’s say the committee wants to extract structured information from the ID documents of the candidates, which are provided as pictures in the application form, and wants to be <em>confident</em> about the extracted values</p>
 </blockquote>
@@ -1855,6 +1817,7 @@
 <li>let’s test the program with <em>different ID documents</em>, and see how well the model can extract the information</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-2-extract-structured-information-from-pictures-pt-2">Exercise 2: Extract Structured Information from Pictures (pt. 2)</h2>
 <h3 id="how-to-pass-images-to-the-model">How to pass images to the model?</h3>
@@ -2241,7 +2204,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -2257,7 +2220,7 @@
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -2366,7 +2329,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');

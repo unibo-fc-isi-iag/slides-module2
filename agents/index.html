@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
@@ -44,7 +44,7 @@
 <li><a href="#/evaluating-agents">Evaluating agents</a>: trajectories, tool-call correctness, and <a href="#/agentic-benchmarks">agentic benchmarks</a></li>
 <li><a href="#/planning">Can LLM agents plan?</a>: plan-shaped text vs. plans, and the LLM-Modulo approach</li>
 <li><a href="#/security">Security of agentic systems</a>: risk profiles of tools, prompt injection, mitigations</li>
-<li>Exercises on the <a href="#/running-example">running example</a>: <a href="#/exercise-inspect">read-only tools to inspect applications</a>, <a href="#/exercise-decide">tools to take decisions</a>, <a href="#/exercise-gateway">MCP gateway</a></li>
+<li>Exercises on the <a href="../#/running-example">running example</a>: <a href="#/exercise-inspect">read-only tools to inspect applications</a>, <a href="#/exercise-decide">tools to take decisions</a>, <a href="#/exercise-gateway">MCP gateway</a></li>
 </ol>
 <blockquote>
 <p>Recall: we assume the reader is familiar with <a href="../llmaas/#/chat-completion-concept">tool-call messages and <code>tool_choice</code></a> in the Chat Completion API, with <a href="../prompting/#/structured-output">structured outputs</a>, and with <a href="../validating/">validating generative software</a></p>
@@ -55,9 +55,15 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="agents-concept">
 <h2 id="agents-the-classical-view">Agents: the classical view</h2>
+<blockquote>
+<p>An <strong>agent</strong> is a <em>situated</em> entity, which <em>perceives</em> its <strong>environment</strong> and <em>acts</em> upon it, in view of some <strong>goals</strong>, on behalf of a human (cf. <a href="https://aima.cs.berkeley.edu/">Russell &amp; Norvig</a>, <a href="https://doi.org/10.1017/S0269888900008122">Wooldridge &amp; Jennings (1995)</a>)</p>
+</blockquote>
+<img src="./agent-classic.svg" alt="The classical agent: a human delegates a goal to the agent, and remains responsible for it; inside the agent, sensors perceive, beliefs are the internal representation of the world, deliberation decides what to do now given the goal, actuators act; the environment (physical, digital, or organisational, which also changes independently of the agent) sends percepts to the sensors and receives actions from the actuators; the agent is situated: it only sees part of the environment, and only through its own sensors" style="max-width: calc(95 * 19.2px); max-height: calc(55 * 10.8px); object-fit: contain;">
+</section><section>
+<h2 id="agents-key-notions">Agents: key notions</h2>
 <ul>
 <li>
-<p>An <strong>agent</strong> is a <em>situated</em> entity, which <em>perceives</em> its <strong>environment</strong> and <em>acts</em> upon it, in view of some <strong>goals</strong> (cf. <a href="https://aima.cs.berkeley.edu/">Russell &amp; Norvig</a>, <a href="https://doi.org/10.1017/S0269888900008122">Wooldridge &amp; Jennings (1995)</a>)</p>
+<p>The four ingredients of an agent:</p>
 <ul>
 <li><em>environment</em>: what the agent can observe, affect, or reason about (physical, digital, organisational)</li>
 <li><em>perception</em>: how the agent gets information about the environment’s state (via <em>sensors</em>)</li>
@@ -76,15 +82,34 @@
 </ol>
 </li>
 <li>
-<p>E.g. the <a href="https://cdn.aaai.org/ICMAS/1995/ICMAS95-042.pdf">BDI</a> (<em>belief–desire–intention</em>) architecture makes beliefs, goals, and plans <strong>explicit</strong> data structures</p>
-<ul>
-<li>a thermostat is a <em>thin</em> agent; an assistant handling PhD applications on behalf of a committee is a <em>rich</em> one</li>
-</ul>
+<p>A thermostat is a <em>thin</em> agent; an assistant handling PhD applications on behalf of a committee is a <em>rich</em> one</p>
 </li>
 <li>
 <p>Tools are not new either: in multi-agent systems, <em>artifacts</em> are reactive entities that agents <em>use</em> to perceive and act (cf. the <a href="https://doi.org/10.1007/s10458-008-9053-x">A&amp;A meta-model</a>)</p>
 </li>
 </ul>
+</section>
+<section data-noprocess="" data-shortcode-slide="" id="agents-history">
+<h2 id="agents-an-idea-at-least-30-years-old">Agents: an idea at least 30 years old</h2>
+<img src="./agents-timeline.svg" alt="Timeline 1990-2026: in 1995, AI as the study of agents (Russell and Norvig), intelligent agents (Wooldridge and Jennings), and the BDI architecture (Rao and Georgeff); in the 2000s, multi-agent systems, platforms and languages (JADE, Jason), and FIPA standards; until about 2021, world representation and deliberation are hand-written (logic, rules, ontologies, plans), costly, brittle, and for narrow domains; from 2022-23, ReAct and Toolformer, LLMs that reason and use tools, from natural language; in 2024-25, the term Agentic AI" style="max-width: calc(95 * 19.2px); max-height: calc(26 * 10.8px); object-fit: contain;">
+<ul>
+<li>Agents have been a <strong>central</strong> notion of AI for decades: <a href="https://aima.cs.berkeley.edu/">Russell &amp; Norvig</a> define AI itself as the study of <em>rational agents</em></li>
+<li>The historically <em>hard</em> problem: giving the agent a <strong>representation of the world</strong> to <em>reason</em> and <em>deliberate</em> upon
+<ul>
+<li>beliefs, goals, and plans had to be <em>formalised</em> by hand (logic, rules, ontologies; e.g. the <a href="https://cdn.aaai.org/ICMAS/1995/ICMAS95-042.pdf">BDI</a> architecture, <em>belief–desire–intention</em>, makes them <strong>explicit</strong> data structures): costly, brittle, viable only in <em>narrow</em> domains</li>
+</ul>
+</li>
+<li>LLMs made this problem largely <strong>tractable</strong>: world knowledge and deliberation <em>from natural language</em>
+<ul>
+<li>hence the term <strong>Agentic AI</strong>: intuitively, “<em>building agents with LLMs</em>” (see next slide)</li>
+</ul>
+</li>
+</ul>
+<span class="fragment ">
+  <blockquote>
+<p><strong>Beware</strong>: <em>agent</em> $\neq$ <em>LLM</em>: many of today’s “agentic” ideas come from the wide literature (and active research) on agents <strong>not</strong> based on LLMs (e.g. BDI, multi-agent systems, reinforcement learning)</p>
+</blockquote>
+</span>
 </section><section>
 <h2 id="agents-built-around-llms-the-agentic-metaphor">Agents built around LLMs: the agentic metaphor</h2>
 <img src="./agent-architecture.svg" alt="Agent architecture: a user talks to the agent; inside the agent, a controller (your code) runs the loop, an LLM deliberates, memory stores history and state, policies constrain behaviour; the controller calls perception, reasoning, and actuation tools, which read from and write to the environment" style="max-width: calc(95 * 19.2px); max-height: calc(60 * 10.8px); object-fit: contain;">
@@ -322,6 +347,7 @@
 </ul>
 </section><section>
 <h2 id="tools-the-technological-landscape">Tools: the technological landscape</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p>Recall the <em>Tools</em> row of the <a href="../llmaas/#/api-comparison">API comparison</a> in the LLM-as-a-Service lecture: here, in more detail</p>
 </blockquote>
@@ -398,6 +424,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </section><section>
 <h2 id="tools-strict-arguments-and-server-side-tools">Tools: strict arguments, and server-side tools</h2>
 <ul>
@@ -413,6 +440,19 @@
 <li>no code to write, but no control on validation and logging, data leave to the provider, and lock-in</li>
 </ul>
 </li>
+</ul>
+</section>
+<section data-noprocess="" data-shortcode-slide="" id="tool-environments">
+<h2 id="where-a-tool-runs-and-what-it-sees">Where a tool runs, and what it sees</h2>
+<img src="./tool-environments.svg" alt="Three placements of a tool: (a) local tool, a function inside the organisation's application, which sees whatever the application sees (files, internal DBs and APIs, secrets); (b) remote tool, e.g. an MCP server in another environment (an internal sandbox, or a third party), which sees only its own environment (its own DBs, APIs, and secrets) and the arguments it receives from the application; (c) provider's tool, hosted in the provider's cloud next to the LLM, which sees only the provider's sandbox, the Web, and uploaded files, while the organisation's systems are not visible to it, and data leave the organisation" style="max-width: calc(95 * 19.2px); max-height: calc(47 * 10.8px); object-fit: contain;">
+<ul>
+<li>(a) <em>local</em> tools are functions in the application’s code; (b) tools can be <em>shared</em> via the <a href="#/mcp">Model Context Protocol</a> (MCP), for <em>any</em> LLM-based application to use</li>
+<li>A <strong>sandbox</strong> is case (b) <em>inside</em> the organisation: the tool runs in an isolated <em>container</em>, which only sees what is mounted into it
+<ul>
+<li>it forces you to decide <em>explicitly</em> which files, services, and secrets the tool gets (cf. <a href="#/security">mitigations</a>)</li>
+</ul>
+</li>
+<li>(c) <em>server-side</em> tools: no code to write, but data go to the provider, and lock-in grows</li>
 </ul>
 
 </section>
@@ -528,6 +568,7 @@
 </ol>
 </section><section>
 <h2 id="example-1-an-agent-from-scratch-with-openais-client-pt-3">Example 1: an Agent from Scratch, with OpenAI’s Client (pt. 3)</h2>
+<div style="font-size: 90%;">
 <ol start="5">
 <li>
 <p>The main program is a CLI chat (cf. <a href="../llmaas/#/sync-chat">the LLM-as-a-Service lecture</a>), where each user message triggers a ReAct loop (full code <a href="../lab-snippets/snippets/lecture_agents/example1/agent_openai.py">here</a>):</p>
@@ -566,6 +607,7 @@
 </ul>
 </li>
 </ol>
+</div>
 </section><section>
 <h2 id="example-1-project-structure">Example 1: Project Structure</h2>
 <p>Files of this example, in the <a href="https://github.com/unibo-fc-isi-iag/lab-snippets"><code>lab-snippets</code></a> repository (cf. <a href="../#/lab-snippets">how to set it up, and run snippets</a>):</p>
@@ -724,41 +766,40 @@
 <section data-noprocess="" data-shortcode-slide="" id="mcp">
 <h2 id="the-model-context-protocol-mcp-the-general-concept">The Model Context Protocol (MCP): the general concept</h2>
 <ul>
-<li>
-<p><strong>Problem</strong>: so far, tools live <em>inside</em> the agent’s code</p>
+<li><strong>Problem</strong>: so far, tools live <em>inside</em> the agent’s code
 <ul>
 <li>each agent re-implements (or copy-pastes) the tools it needs</li>
 <li>each tool provider must write an adapter for each agentic framework (or app)</li>
 </ul>
 </li>
-<li>
-<p><a href="https://modelcontextprotocol.io"><strong>MCP</strong></a> is an <em>open protocol</em> to expose tools (and more) to LLM-based applications, in a <em>standard</em> way (cf. <a href="https://modelcontextprotocol.io/specification">specification</a>)</p>
+<li><a href="https://modelcontextprotocol.io"><strong>MCP</strong></a> is an <em>open protocol</em> to expose tools (and more) to LLM-based applications, in a <em>standard</em> way (cf. <a href="https://modelcontextprotocol.io/specification">specification</a>)
 <ul>
 <li>“a USB-C port for AI applications”: $N$ apps + $M$ tool providers need $N + M$ adapters, not $N \times M$</li>
 <li>introduced by Anthropic (2024), now supported by most providers and frameworks, and governed by the Linux Foundation</li>
 </ul>
 </li>
-<li>
-<p>Roles:</p>
+</ul>
+<img src="./mcp-n-plus-m.svg" alt="Without MCP, 3 applications (agent, IDE, chat) and 3 systems (documents, database, e-mail) need 3 times 3 equals 9 custom adapters; with the MCP protocol in between, 3 clients plus 3 servers equals 6 adapters" style="max-width: calc(95 * 19.2px); max-height: calc(40 * 10.8px); object-fit: contain;">
+<ul>
+<li>Recall the <a href="../genai/#/mcp-concept">MCP picture</a> of the introductory lecture: MCP does not change the ReAct loop, only <em>where</em> tools come from</li>
+</ul>
+</section><section>
+<h2 id="mcp-roles-messages-and-transports">MCP: roles, messages, and transports</h2>
+<ul>
+<li>Roles:
 <ul>
 <li><strong>host</strong>: the LLM-based application (e.g. your agent, an IDE, a chat app)</li>
 <li><strong>client</strong>: a component of the host, connected to <em>one</em> server</li>
 <li><strong>server</strong>: a program exposing <em>tools</em> (functions), <em>resources</em> (data), and <em>prompts</em> (templates)</li>
 </ul>
 </li>
-<li>
-<p>Messages are <a href="https://www.jsonrpc.org/specification">JSON-RPC</a>, e.g. <code>tools/list</code> (discovery), <code>tools/call</code> (invocation), over two <strong>transports</strong>:</p>
+<li>Messages are <a href="https://www.jsonrpc.org/specification">JSON-RPC</a>, e.g. <code>tools/list</code> (discovery), <code>tools/call</code> (invocation), over two <strong>transports</strong>:
 <ul>
 <li><em>stdio</em>: the server is a <em>local sub-process</em> of the host, talking via stdin/stdout</li>
 <li><em>streamable HTTP</em>: the server is a (possibly remote) <em>Web service</em>, possibly requiring authentication (OAuth)</li>
 </ul>
 </li>
-<li>
-<p>Since the <a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">2026-07-28 spec</a>, the protocol is <em>stateless</em> (no sessions, no <code>initialize</code> handshake); servers may still ask the user for input mid-call (<em>elicitation</em>)</p>
-</li>
-<li>
-<p>Recall the <a href="../genai/#/mcp-concept">MCP picture</a> of the introductory lecture: MCP does not change the ReAct loop, only <em>where</em> tools come from</p>
-</li>
+<li>Since the <a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">2026-07-28 spec</a>, the protocol is <em>stateless</em> (no sessions, no <code>initialize</code> handshake); servers may still ask the user for input mid-call (<em>elicitation</em>)</li>
 </ul>
 </section><section>
 <h2 id="mcp-an-intuitive-example">MCP: an intuitive example</h2>
@@ -1036,6 +1077,7 @@
 </section>
 <section data-noprocess="" data-shortcode-slide="" id="agentic-benchmarks">
 <h2 id="agentic-benchmarks-how-good-are-agents-in-general">Agentic benchmarks: how good are agents, in general?</h2>
+<div style="font-size: 90%;">
 <div style="font-size: 80%;">
 <table>
 	<thead>
@@ -1089,57 +1131,9 @@
 <li><strong>Success</strong> without governance is not trustworthy <em>agency</em>: success rates say nothing about <em>how</em> the goal was reached (policies, side effects, costs)</li>
 <li>Benchmarks <em>saturate</em> and leak into training data: they help <em>choosing</em> models (cf. the <a href="../governance/">governance lecture</a>), but <strong>your own</strong> evaluations are what tells whether <em>your</em> agent works</li>
 </ul>
+</div>
 
 </section>
-</section>
-
-<section data-noprocess="" data-shortcode-slide="" id="running-example">
-  
-<h2 id="running-example">Running example</h2>
-<h3 id="admission-committee-assistant-for-phd-applications-evaluation">Admission committee assistant for PhD applications evaluation</h3>
-<ul>
-<li>
-<p>3 candidates, and as many applications, with their <em>passport</em>, <em>transcript of records</em>, and <em>presentation letter</em> (in natural language)</p>
-</li>
-<li>
-<p>we want to extract structured information from these documents (e.g. name, age, grades, research experience, etc.) to ease evaluation</p>
-</li>
-</ul>
-
-<div class="container w-100 m-0 p-0">
-    <div class="row "><div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mario-rossi.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mario-rossi.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mario-rossi.txt">Presentation letter</a>
-<ul>
-<li>letter is very positive</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-jean-dupont.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-jean-dupont.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-jean-dupont.txt">Presentation letter</a>
-<ul>
-<li>letter contains some criticisms</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mohammed-ali.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mohammed-ali.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mohammed-ali.txt">Presentation letter</a>
-<ul>
-<li>letter is positive but shallow</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
 </section>
 
 
@@ -1256,6 +1250,12 @@
 <li>a <code>read_letter</code> tool (cf. <a href="#/exercise-inspect">Exercise 1</a>) would put this text in the context of the agent…</li>
 </ul>
 </li>
+</ul>
+</section>
+<section data-noprocess="" data-shortcode-slide="" id="lethal-trifecta">
+<h2 id="the-lethal-trifecta">The lethal trifecta</h2>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col col-7" style="text-align: left;"><ul>
 <li>
 <p>The <strong>lethal trifecta</strong> (cf. <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">Willison (2025)</a>): an agent with</p>
 <ol>
@@ -1263,9 +1263,20 @@
 <li>exposure to <em>untrusted content</em> (e.g. letters written by candidates), and</li>
 <li>a way to <em>communicate externally</em> (e.g. send e-mails, fetch URLs)</li>
 </ol>
-<p>can be tricked into <em>exfiltrating</em> data: avoid combining all three</p>
+<p>can be tricked (via prompt injection) into <em>exfiltrating</em> data</p>
+</li>
+<li>
+<p>Avoid combining <strong>all three</strong> in the same agent: remove (at least) one circle</p>
+<ul>
+<li>e.g. an agent reading letters gets no e-mail tool; the one sending e-mails never reads untrusted content</li>
+</ul>
 </li>
 </ul>
+</div>
+<div class="col col-5" style="text-align: left;"><img src="./lethal-trifecta.svg" alt="Venn diagram of the lethal trifecta: private data (e.g. all applications), untrusted content (e.g. candidates' letters), and external communication (e.g. sending e-mails, opening URLs); where all three overlap, there is an exfiltration risk" style="max-width: calc(95 * 19.2px); max-height: calc(55 * 10.8px); object-fit: contain;">
+</div>
+</div>
+</div>
 </section><section>
 <h2 id="mitigations">Mitigations</h2>
 <p>There is no complete defence against prompt injection: design agents <em>assuming</em> it will happen</p>
@@ -1294,8 +1305,9 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-inspect">
 <h2 id="exercise-1-tools-to-inspect-the-applications-pt-1">Exercise 1: Tools to Inspect the Applications (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
-<p><strong>Goal</strong>: an assistant answering <em>any</em> question of the <a href="#/running-example">committee</a> about the candidates (e.g. “<em>who has the highest GPA?</em>”, “<em>how old is Mohammed Ali?</em>”, “<em>does Jean Dupont’s letter mention weaknesses?</em>”), by <em>inspecting</em> their applications via <strong>read-only</strong> tools</p>
+<p><strong>Goal</strong>: an assistant answering <em>any</em> question of the <a href="../#/running-example">committee</a> about the candidates (e.g. “<em>who has the highest GPA?</em>”, “<em>how old is Mohammed Ali?</em>”, “<em>does Jean Dupont’s letter mention weaknesses?</em>”), by <em>inspecting</em> their applications via <strong>read-only</strong> tools</p>
 </blockquote>
 <blockquote>
 <p><strong>Code</strong>: put your solution in <a href="../lab-snippets/snippets/lecture_agents/exercise1/__init__.py"><code>snippets/lecture_agents/exercise1/</code></a> of <a href="../#/lab-snippets-exercises"><code>lab-snippets</code></a>, and run it via <code>poetry run python -m snippets -l agents -x 1</code></p>
@@ -1316,6 +1328,7 @@
 <li>write <a href="#/evaluating-agents">trajectory tests</a> for it</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-1-tools-to-inspect-the-applications-pt-2">Exercise 1: Tools to Inspect the Applications (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -1356,6 +1369,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-1--solution-validating-arguments-delimiting-documents">Exercise 1 — Solution: validating arguments, delimiting documents</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p>Never trust the LLM’s arguments: an <em>allow-list</em> of candidates; and mark documents as <strong>untrusted data</strong></p>
 </blockquote>
@@ -1391,6 +1405,7 @@
 <li><em>One tool per document type</em>: simple signatures, and the tools’ names already tell the LLM <em>which</em> document it reads</li>
 <li>Tags (<code>&lt;letter&gt;...&lt;/letter&gt;</code>) help the LLM tell data from instructions: they <em>mitigate</em> prompt injection, but give no guarantee (cf. <a href="#/exercise-decide">Exercise 2</a>)</li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-1--solution-extraction-inside-the-tools-with-caching">Exercise 1 — Solution: extraction inside the tools, with caching</h2>
 <blockquote>
@@ -1569,6 +1584,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-decide">
 <h2 id="exercise-2-tools-to-take-decisions-pt-1">Exercise 2: Tools to Take Decisions (pt. 1)</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p><strong>Goal</strong>: let the assistant <em>act</em> on behalf of the committee (recording decisions, scheduling interviews, notifying candidates) via tools with <strong>side effects</strong>, but only with the explicit <strong>approval</strong> of a committee member, and make sure it cannot be <em>tricked</em> into acting</p>
 </blockquote>
@@ -1602,6 +1618,7 @@
 </ol>
 </div>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-2-tools-to-take-decisions-pt-2">Exercise 2: Tools to Take Decisions (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -1642,6 +1659,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-2--solution-idempotent-write-enabled-tools">Exercise 2 — Solution: idempotent write-enabled tools</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p>Recording the same decision <em>twice</em> (e.g. after a retry) must be the same as recording it <em>once</em>: <strong>idempotent</strong> tools</p>
 </blockquote>
@@ -1673,8 +1691,10 @@
 <li><code>check</code> and <code>Candidate</code> (from <a href="#/exercise-inspect-solution">Exercise 1</a>) validate and describe the candidate <em>before</em> anything is written</li>
 <li><code>OUTPUT_DIR</code>: where files are written (env var <code>COMMITTEE_OUTPUT</code>, default <code>output/</code>); <code>csv.DictReader</code>/<code>DictWriter</code> read/write CSV rows as <code>dict</code>s</li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-2--solution-validation-in-the-tools">Exercise 2 — Solution: validation in the tools</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p>Validate <strong>in the tool</strong> what the LLM may get wrong, whatever the prompt says</p>
 </blockquote>
@@ -1708,6 +1728,7 @@
 <li>Interviews in the <em>past</em>, or on <em>Sundays</em>, are refused with an <em>explanatory</em> error: the LLM can fix the call</li>
 <li><code>send_email</code> is deliberately <strong>not</strong> idempotent: as real e-mails, which cannot be <em>unsent</em> (hence the warning in its docstring)</li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-2--solution-the-malicious-letter">Exercise 2 — Solution: the malicious letter</h2>
 <div class="container w-100 m-0 p-0">
@@ -1768,6 +1789,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-2--solution-the-run-loop-with-interrupts">Exercise 2 — Solution: the run loop, with interrupts</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p>The human sees the <strong>full</strong> call, and may <em>approve</em>, <em>edit</em>, or <em>reject</em> it</p>
 </blockquote>
@@ -1801,6 +1823,7 @@
 <li><code>review</code> is a <em>parameter</em>: a terminal prompt here, a <em>simulated</em> human in tests</li>
 <li>On rejection, the LLM receives the human’s <em>reason</em> as the tool result (and the prompt tells it not to retry)</li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-2--solution-tests-with-a-simulated-human">Exercise 2 — Solution: tests with a simulated human</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span><span style="color:#000">ACTION</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">"Record a 'reject' decision for Mohammed Ali, motivated by the very generic recommendation letter."</span>
@@ -1853,6 +1876,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-gateway">
 <h2 id="exercise-3-an-mcp-gateway-for-the-committee-pt-1">Exercise 3: an MCP Gateway for the Committee (pt. 1)</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p><strong>Goal</strong>: the committee wants its tools to be usable by <em>several</em> hosts (its own agent, an IDE, a chat app), along with third-party tools, all managed in <em>one</em> place, with <em>logging</em> of every call</p>
 </blockquote>
@@ -1875,6 +1899,7 @@
 <li>connect the agent to the gateway <em>only</em> (one <code>streamable_http</code> connection), and ask a question requiring tools from <em>several</em> servers (e.g. “<em>is Jean Dupont’s letter tailored to the programme described at <code>&lt;URL&gt;</code>?</em>”)</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-3-an-mcp-gateway-for-the-committee-pt-2">Exercise 3: an MCP Gateway for the Committee (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -2004,6 +2029,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-3--solution-the-gateway-forwards-and-polices-tool-calls">Exercise 3 — Solution: the gateway forwards (and polices) tool calls</h2>
+<div style="font-size: 85%;">
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">async</span> <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">call_tool</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">name</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">arguments</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87">dict</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">CallToolResult</span><span style="color:#000;font-weight:bold">:</span>  <span style="color:#8f5902;font-style:italic"># overrides FastMCP's own tools/call handler</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#000">host_session</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87">id</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get_context</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">session</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># NB: stateless MCP (spec 2026-07-28) has no sessions: key on the caller's identity</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">name</span> <span style="color:#204a87;font-weight:bold">not</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">routes</span><span style="color:#000;font-weight:bold">:</span>
@@ -2040,6 +2066,7 @@
 </li>
 <li>Errors (unknown tools, servers <em>down</em>) become <em>tool errors</em> (a <code>CallToolResult</code> with a <code>TextContent</code> and <code>isError=True</code>): the agent is told, and may recover</li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-3--solution-the-agent-via-the-gateway">Exercise 3 — Solution: the agent, via the gateway</h2>
 <blockquote>
@@ -2078,6 +2105,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-3--solution-testing-the-gateway">Exercise 3 — Solution: testing the gateway</h2>
+<div style="font-size: 85%;">
 <blockquote>
 <p>Tests launch <em>their own</em> gateways (one per profile), writing into a temporary directory</p>
 </blockquote>
@@ -2112,6 +2140,7 @@
 </li>
 <li>An invalid candidate is refused by the <em>server</em>, and the refusal is logged by the <em>gateway</em></li>
 </ul>
+</div>
 </section><section>
 <h2 id="exercise-3--solution-trajectory-tests-via-the-gateway">Exercise 3 — Solution: trajectory tests, via the gateway</h2>
 <blockquote>
@@ -2312,7 +2341,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -2328,7 +2357,7 @@
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -2437,7 +2466,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');

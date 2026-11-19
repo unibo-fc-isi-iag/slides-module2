@@ -7,15 +7,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/slides-module2/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/slides-module2/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.33d041ec477d01d174fafc300b8cd4c28098210cf0ee315dc6697eacc28a5c92.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/slides-module2/css/custom-theme.min.1989de364d7493013f329075a3080c47db46aad88a9fc5017315be00a919fb2b.css" id="theme"><link rel="stylesheet" href="/slides-module2/highlight-js/solarized-dark.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu Mono" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/81ac037be0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795089126"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
@@ -51,55 +51,6 @@
 <blockquote>
 <p>Recall: we assume the reader is familiar with <a href="../agents/">tools, agents, and MCP</a>, with the <a href="../rag/#/memory">CoALA memory types</a>, and with <a href="../genai/#/coding-agents">coding agents</a> (e.g. Claude Code, Codex, OpenClaw)</p>
 </blockquote>
-</section>
-
-<section data-noprocess="" data-shortcode-slide="" id="running-example">
-  
-<h2 id="running-example">Running example</h2>
-<h3 id="admission-committee-assistant-for-phd-applications-evaluation">Admission committee assistant for PhD applications evaluation</h3>
-<ul>
-<li>
-<p>3 candidates, and as many applications, with their <em>passport</em>, <em>transcript of records</em>, and <em>presentation letter</em> (in natural language)</p>
-</li>
-<li>
-<p>we want to extract structured information from these documents (e.g. name, age, grades, research experience, etc.) to ease evaluation</p>
-</li>
-</ul>
-
-<div class="container w-100 m-0 p-0">
-    <div class="row "><div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mario-rossi.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mario-rossi.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mario-rossi.txt">Presentation letter</a>
-<ul>
-<li>letter is very positive</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-jean-dupont.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-jean-dupont.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-jean-dupont.txt">Presentation letter</a>
-<ul>
-<li>letter contains some criticisms</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="col " style="text-align: left;"><p><img src="../lab-snippets/data/passport-mohammed-ali.png" alt=""></p>
-<ul>
-<li><a href="../lab-snippets/data/transcript-mohammed-ali.png">Transcript of records</a></li>
-<li><a href="../lab-snippets/data/letter-mohammed-ali.txt">Presentation letter</a>
-<ul>
-<li>letter is positive but shallow</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
 </section>
 
 
@@ -139,7 +90,7 @@
 <section data-noprocess="" data-shortcode-slide="" id="skills-example">
 <h2 id="skills-an-intuitive-example">Skills: an intuitive example</h2>
 <blockquote>
-<p><strong>Goal</strong>: the <a href="#/running-example">committee</a>’s assistant should review applications <em>the way the committee does</em> (same checks, same rubric, same report format), without the committee re-explaining the procedure at each request</p>
+<p><strong>Goal</strong>: the <a href="../#/running-example">committee</a>’s assistant should review applications <em>the way the committee does</em> (same checks, same rubric, same report format), without the committee re-explaining the procedure at each request</p>
 </blockquote>
 <img src="./skill-activation.svg" alt="Sequence diagram of skill activation: at startup, the agent's controller puts the name and description of each available skill (phd-application-review, admission-letter) into the system prompt; the user asks to review Mario Rossi's application; the LLM recognises that the phd-application-review skill is relevant, and asks to read its SKILL.md; the controller returns the instructions; following them, the LLM asks to run the skill's check_application.py script, and to read its rubric; finally, the LLM writes the report, following the skill's template" style="max-width: calc(95 * 19.2px); max-height: calc(45 * 10.8px); object-fit: contain;">
 <ul>
@@ -232,6 +183,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="copilots">
 <h2 id="where-skills-come-from-coding-agents-harnesses">Where skills come from: coding agents (harnesses)</h2>
+<div style="font-size: 90%;">
 <ul>
 <li>
 <p>Recall the <a href="../genai/#/coding-agents"><em>coding agents</em></a> of the introductory lecture, such as <a href="https://code.claude.com/docs">Claude Code</a>, <a href="https://github.com/openai/codex">Codex</a>, <a href="https://cursor.com">Cursor</a>, <a href="https://github.com/features/copilot">GitHub Copilot</a>, and <a href="https://openclaw.ai">OpenClaw</a>; others exist, e.g. <a href="https://geminicli.com">Gemini CLI</a></p>
@@ -298,6 +250,7 @@
 <li>E.g. the repository of these slides has an <a href="https://github.com/unibo-fc-isi-iag/slides-module2/blob/master/AGENTS.md"><code>AGENTS.md</code></a> telling coding agents how lectures are written: an <em>instruction file</em>, not a skill (it is <em>always</em> relevant there)</li>
 </ul>
 <p style="font-size: 50%; opacity: 0.8; margin-top: 0.5em;"><b>Note</b>: since 18 June 2026, <i>Gemini CLI</i> is replaced by <a href="https://antigravity.google/">Antigravity CLI</a> for free, Google AI Pro, and Ultra users (enterprise and paid-API users keep Gemini CLI); skills, hooks, subagents, and extensions (as <i>plugins</i>) carry over, without 1:1 parity (cf. <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google's announcement</a>)</p>
+</div>
 </section><section>
 <h2 id="skills-a-brief-history">Skills: a brief history</h2>
 <ul>
@@ -578,8 +531,9 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="skills-committee">
 <h2 id="example-1-skills-for-the-committee-pt-1">Example 1: Skills for the Committee (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
-<p><strong>Goal</strong>: two skills for the <a href="#/running-example">committee</a>’s assistant: <code>phd-application-review</code> (review an application, by the committee’s rubric) and <code>admission-letter</code> (write the outcome letter, by the programme’s template)</p>
+<p><strong>Goal</strong>: two skills for the <a href="../#/running-example">committee</a>’s assistant: <code>phd-application-review</code> (review an application, by the committee’s rubric) and <code>admission-letter</code> (write the outcome letter, by the programme’s template)</p>
 </blockquote>
 <div class="container w-100 m-0 p-0">
     <div class="row "><div class="col col-8" style="text-align: left;"><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span><span style="color:#000">---</span><span style="color:#f8f8f8">
@@ -621,6 +575,7 @@
 </li>
 <li>Paths are <em>relative</em> to the skill’s folder</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1304,6 +1259,7 @@
 <p style="font-size: 50%; opacity: 0.8; margin-top: 0.5em;"><b>Note</b>: since 18 June 2026, <i>Gemini CLI</i> is replaced by <a href="https://antigravity.google/">Antigravity CLI</a> for free, Google AI Pro, and Ultra users (enterprise and paid-API users keep Gemini CLI); skills, hooks, subagents, and extensions (as <i>plugins</i>) carry over, without 1:1 parity (cf. <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google's announcement</a>)</p>
 </section><section>
 <h2 id="hook-events-similarities-and-differences">Hook events: similarities and differences</h2>
+<div style="font-size: 90%;">
 <ul>
 <li>
 <p>Full event lists per harness: cf. the <a href="#/hook-events-appendix">appendix</a></p>
@@ -1338,6 +1294,7 @@
 </li>
 </ul>
 <p style="font-size: 50%; opacity: 0.8; margin-top: 0.5em;"><b>Note</b>: since 18 June 2026, <i>Gemini CLI</i> is replaced by <a href="https://antigravity.google/">Antigravity CLI</a> for free, Google AI Pro, and Ultra users (enterprise and paid-API users keep Gemini CLI); skills, hooks, subagents, and extensions (as <i>plugins</i>) carry over, without 1:1 parity (cf. <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google's announcement</a>)</p>
+</div>
 </section>
 <section data-noprocess="" data-shortcode-slide="" id="hooks-agnostic">
 <h2 id="harness-agnostic-hooks">Harness-agnostic hooks</h2>
@@ -1410,6 +1367,7 @@
 </div>
 </section><section>
 <h2 id="example-4-a-privacy-guard-hook-pt-2">Example 4: a Privacy Guard Hook (pt. 2)</h2>
+<div style="font-size: 90%;">
 <div class="container w-100 m-0 p-0">
     <div class="row "><div class="col col-6" style="text-align: left;"><ul>
 <li>The <em>protocol</em>: event in (stdin), decision out (stdout)</li>
@@ -1456,6 +1414,7 @@
 <li>Hooks can also live in a <strong>skill</strong>’s front matter (Claude Code only): active only while the skill is in use</li>
 <li>A deny-list over shell commands is <em>best effort</em> (e.g. <code>python -c "..."</code> may still write files, or open connections): a guard is only as good as its <em>coverage</em>; for real confinement, deny <code>Bash</code> altogether, or use a <em>sandbox</em> (cf. <a href="../agents/#/security">agents security</a>)</li>
 </ul>
+</div>
 </section><section>
 <h2 id="example-4-project-structure">Example 4: Project Structure</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;"><code class="nohighlight" data-noescape="">lab-snippets/
@@ -1688,6 +1647,7 @@
 <section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="exercise-thesis-precheck">
 <h2 id="exercise-1-a-pre-check-skill-for-theses-pt-1">Exercise 1: a Pre-check Skill for Theses (pt. 1)</h2>
+<div style="font-size: 90%;">
 <blockquote>
 <p><strong>Goal</strong>: a skill which <em>pre-checks</em> a thesis (PDF) before submission, as a careful supervisor would (structure, formal aspects, citations, figures, consistency), and <em>reports</em> issues with page and severity, never rewriting the thesis</p>
 </blockquote>
@@ -1707,6 +1667,7 @@
 <li>use it from your agent (<a href="#/skills-from-scratch">Example 2</a> or <a href="#/skills-deepagents">2 bis</a>) <em>and</em> from a harness (e.g. <a href="#/skills-openclaw">OpenClaw</a>); write <em>triggering</em> and <em>outcome</em> tests (cf. <a href="#/skills-tests">Example 3</a>)</li>
 </ol>
 </span>
+</div>
 </section><section>
 <h2 id="exercise-1-a-pre-check-skill-for-theses-pt-2">Exercise 1: a Pre-check Skill for Theses (pt. 2)</h2>
 <h3 id="decision-points-and-hints">Decision points and hints</h3>
@@ -1745,6 +1706,7 @@
 </ul>
 </section><section>
 <h2 id="exercise-1--solution-the-skill">Exercise 1 — Solution: the skill</h2>
+<div style="font-size: 90%;">
 <div class="container w-100 m-0 p-0">
     <div class="row "><div class="col col-7" style="text-align: left;"><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span><span style="color:#000">---</span><span style="color:#f8f8f8">
 </span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">thesis-precheck</span><span style="color:#f8f8f8">
@@ -1783,6 +1745,7 @@
 <li><strong>Progressive disclosure, again</strong>: the script splits the thesis into sections, and the agent reads <em>only</em> those it needs</li>
 <li>The thesis is <em>data</em>: injected instructions are reported, not followed</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -2139,7 +2102,7 @@
 </div>
 <h2 id="check-your-understanding-15">Check your understanding (1/5)</h2>
 <h3 id="designing-and-using-skills">Designing and using skills</h3>
-<div style="font-size: 80%;">
+<div style="font-size: 70%;">
 <ol>
 <li>
 <p>[<em>notions, theoretical</em>] What is an agentic skill? Explain its relationship to procedural memory, and distinguish it from a system prompt, a tool, an MCP server, and a workflow.</p>
@@ -2230,7 +2193,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-10-22
+<p>Compiled on: 2026-11-19
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
@@ -2246,7 +2209,7 @@
 
 <a href="/slides-module2/reveal-js/dist/print/" id="print-location" style="display: none;"></a>
 
-<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
+<script type="application/json" id="reveal-hugo-site-params">{"custom_theme":"custom-theme.scss","custom_theme_compile":true,"custom_theme_options":{"enablesourcemap":true,"targetpath":"css/custom-theme.css"},"height":"1080","highlight_theme":"solarized-dark","history":true,"mermaid":[{"startOnLoad":false}],"slide_number":true,"theme":"league","transition":"slide","transition_speed":"fast","width":"1920"}</script>
 <script type="application/json" id="reveal-hugo-page-params">null</script>
 
 <script src="/slides-module2/reveal-js/dist/reveal.js"></script>
@@ -2357,7 +2320,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({});
+    mermaid.initialize({"startOnLoad":false});
 
     let render = (event) => {
       let mermaidElems = event.currentSlide.querySelectorAll('.mermaid');
