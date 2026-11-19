@@ -33,7 +33,15 @@ outputs = ["Reveal"]
 
 ## Agents: the classical view
 
-- An __agent__ is a _situated_ entity, which _perceives_ its __environment__ and _acts_ upon it, in view of some __goals__ (cf. [Russell & Norvig](https://aima.cs.berkeley.edu/), [Wooldridge & Jennings (1995)](https://doi.org/10.1017/S0269888900008122))
+> An __agent__ is a _situated_ entity, which _perceives_ its __environment__ and _acts_ upon it, in view of some __goals__, on behalf of a human (cf. [Russell & Norvig](https://aima.cs.berkeley.edu/), [Wooldridge & Jennings (1995)](https://doi.org/10.1017/S0269888900008122))
+
+{{< image src="./agent-classic.svg" max-h="55vh" alt="The classical agent: a human delegates a goal to the agent, and remains responsible for it; inside the agent, sensors perceive, beliefs are the internal representation of the world, deliberation decides what to do now given the goal, actuators act; the environment (physical, digital, or organisational, which also changes independently of the agent) sends percepts to the sensors and receives actions from the actuators; the agent is situated: it only sees part of the environment, and only through its own sensors" >}}
+
+---
+
+## Agents: key notions
+
+- The four ingredients of an agent:
     + _environment_: what the agent can observe, affect, or reason about (physical, digital, organisational)
     + _perception_: how the agent gets information about the environment's state (via _sensors_)
     + _actuation_: how the agent changes the environment's state (via _actuators_)
@@ -46,10 +54,27 @@ outputs = ["Reveal"]
     4. _act_
     5. _observe_ the effects, and repeat
 
-- E.g. the [BDI](https://cdn.aaai.org/ICMAS/1995/ICMAS95-042.pdf) (_belief–desire–intention_) architecture makes beliefs, goals, and plans __explicit__ data structures
-    + a thermostat is a _thin_ agent; an assistant handling PhD applications on behalf of a committee is a _rich_ one
+- A thermostat is a _thin_ agent; an assistant handling PhD applications on behalf of a committee is a _rich_ one
 
 - Tools are not new either: in multi-agent systems, _artifacts_ are reactive entities that agents _use_ to perceive and act (cf. the [A&A meta-model](https://doi.org/10.1007/s10458-008-9053-x))
+
+---
+
+{{< slide id="agents-history" >}}
+
+## Agents: an idea at least 30 years old
+
+{{< image src="./agents-timeline.svg" max-h="26vh" alt="Timeline 1990-2026: in 1995, AI as the study of agents (Russell and Norvig), intelligent agents (Wooldridge and Jennings), and the BDI architecture (Rao and Georgeff); in the 2000s, multi-agent systems, platforms and languages (JADE, Jason), and FIPA standards; until about 2021, world representation and deliberation are hand-written (logic, rules, ontologies, plans), costly, brittle, and for narrow domains; from 2022-23, ReAct and Toolformer, LLMs that reason and use tools, from natural language; in 2024-25, the term Agentic AI" >}}
+
+- Agents have been a __central__ notion of AI for decades: [Russell & Norvig](https://aima.cs.berkeley.edu/) define AI itself as the study of _rational agents_
+- The historically _hard_ problem: giving the agent a __representation of the world__ to _reason_ and _deliberate_ upon
+    + beliefs, goals, and plans had to be _formalised_ by hand (logic, rules, ontologies; e.g. the [BDI](https://cdn.aaai.org/ICMAS/1995/ICMAS95-042.pdf) architecture, _belief–desire–intention_, makes them __explicit__ data structures): costly, brittle, viable only in _narrow_ domains
+- LLMs made this problem largely __tractable__: world knowledge and deliberation _from natural language_
+    + hence the term __Agentic AI__: intuitively, "_building agents with LLMs_" (see next slide)
+
+{{% fragment %}}
+> __Beware__: _agent_ $\neq$ _LLM_: many of today's "agentic" ideas come from the wide literature (and active research) on agents __not__ based on LLMs (e.g. BDI, multi-agent systems, reinforcement learning)
+{{% /fragment %}}
 
 ---
 
@@ -238,6 +263,19 @@ The LLM picks tools, and fills their arguments, by reading their _documentation_
 - _Client_ tools (all tools in this lecture) are executed by __you__; _server_ (provider-hosted) tools are executed by the __provider__, and their results come back already in the response
     + e.g. OpenAI Responses' `web_search`, `file_search`, `code_interpreter`, remote `mcp`; Anthropic's `web_search`, `web_fetch`, code execution; Gemini's `google_search`, `code_execution`, `url_context`
     + no code to write, but no control on validation and logging, data leave to the provider, and lock-in
+
+---
+
+{{< slide id="tool-environments" >}}
+
+## Where a tool runs, and what it sees
+
+{{< image src="./tool-environments.svg" max-h="47vh" alt="Three placements of a tool: (a) local tool, a function inside the organisation's application, which sees whatever the application sees (files, internal DBs and APIs, secrets); (b) remote tool, e.g. an MCP server in another environment (an internal sandbox, or a third party), which sees only its own environment (its own DBs, APIs, and secrets) and the arguments it receives from the application; (c) provider's tool, hosted in the provider's cloud next to the LLM, which sees only the provider's sandbox, the Web, and uploaded files, while the organisation's systems are not visible to it, and data leave the organisation" >}}
+
+- (a) _local_ tools are functions in the application's code; (b) tools can be _shared_ via the [Model Context Protocol](#/mcp) (MCP), for _any_ LLM-based application to use
+- A __sandbox__ is case (b) _inside_ the organisation: the tool runs in an isolated _container_, which only sees what is mounted into it
+    + it forces you to decide _explicitly_ which files, services, and secrets the tool gets (cf. [mitigations](#/security))
+- (c) _server-side_ tools: no code to write, but data go to the provider, and lock-in grows
 
 {{% /section %}}
 
@@ -443,6 +481,14 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + "a USB-C port for AI applications": $N$ apps + $M$ tool providers need $N + M$ adapters, not $N \times M$
     + introduced by Anthropic (2024), now supported by most providers and frameworks, and governed by the Linux Foundation
 
+{{< image src="./mcp-n-plus-m.svg" max-h="40vh" alt="Without MCP, 3 applications (agent, IDE, chat) and 3 systems (documents, database, e-mail) need 3 times 3 equals 9 custom adapters; with the MCP protocol in between, 3 clients plus 3 servers equals 6 adapters" >}}
+
+- Recall the [MCP picture](../genai/#/mcp-concept) of the introductory lecture: MCP does not change the ReAct loop, only _where_ tools come from
+
+---
+
+## MCP: roles, messages, and transports
+
 - Roles:
     + __host__: the LLM-based application (e.g. your agent, an IDE, a chat app)
     + __client__: a component of the host, connected to _one_ server
@@ -451,8 +497,6 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + _stdio_: the server is a _local sub-process_ of the host, talking via stdin/stdout
     + _streamable HTTP_: the server is a (possibly remote) _Web service_, possibly requiring authentication (OAuth)
 - Since the [2026-07-28 spec](https://modelcontextprotocol.io/specification/2026-07-28/changelog), the protocol is _stateless_ (no sessions, no `initialize` handshake); servers may still ask the user for input mid-call (_elicitation_)
-
-- Recall the [MCP picture](../genai/#/mcp-concept) of the introductory lecture: MCP does not change the ReAct loop, only _where_ tools come from
 
 ---
 
@@ -730,12 +774,30 @@ Without tools, an LLM can only _say_ wrong things; with tools, it can _do_ wrong
 
     + a `read_letter` tool (cf. [Exercise 1](#/exercise-inspect)) would put this text in the context of the agent...
 
+---
+
+{{< slide id="lethal-trifecta" >}}
+
+## The lethal trifecta
+
+{{% multicol %}}
+{{% col class="col-7" %}}
+
 - The __lethal trifecta__ (cf. [Willison (2025)](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)): an agent with
     1. access to _private data_ (e.g. all applications), and
     2. exposure to _untrusted content_ (e.g. letters written by candidates), and
     3. a way to _communicate externally_ (e.g. send e-mails, fetch URLs)
 
-    can be tricked into _exfiltrating_ data: avoid combining all three
+    can be tricked (via prompt injection) into _exfiltrating_ data
+
+- Avoid combining __all three__ in the same agent: remove (at least) one circle
+    + e.g. an agent reading letters gets no e-mail tool; the one sending e-mails never reads untrusted content
+
+{{% /col %}}
+{{% col class="col-5" %}}
+{{< image src="./lethal-trifecta.svg" max-h="55vh" alt="Venn diagram of the lethal trifecta: private data (e.g. all applications), untrusted content (e.g. candidates' letters), and external communication (e.g. sending e-mails, opening URLs); where all three overlap, there is an exfiltration risk" >}}
+{{% /col %}}
+{{% /multicol %}}
 
 ---
 
