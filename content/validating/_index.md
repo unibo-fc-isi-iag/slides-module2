@@ -120,6 +120,8 @@ outputs = ["Reveal"]
 
 ## Example 1: Testing the Letter Scoring System with DeepEval (pt. 1)
 
+{{% small "85%" %}}
+
 > __Goal__: set up a _test suite_ for the [LangChain letter-scoring system](../prompting/#/letter-scoring-langchain) of Example 1 (bis) of the Prompt Engineering lecture, checking _some_ fields of the `LetterInfo` objects it produces
 
 1. __First__, design the __test dataset__: _known_ inputs (the letters), each with the results _expected_ from a correct scoring
@@ -146,6 +148,8 @@ outputs = ["Reveal"]
 {{% /small %}}
 {{% /col %}}
 {{% /multicol %}}
+
+{{% /small %}}
 
 ---
 
@@ -292,6 +296,8 @@ outputs = ["Reveal"]
 
 ## Example 1 (bis): Evaluating the Letter Scoring System with MLflow (pt. 4)
 
+{{% small "90%" %}}
+
 5. Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets" >}}) repository (cf. [how to set it up, and run snippets](../#/lab-snippets)):
 
     <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;"><code class="nohighlight" data-noescape>lab-snippets/
@@ -322,6 +328,8 @@ outputs = ["Reveal"]
 
     {{< image src="./todo-mlflow-ui.png" max-h="25vh" alt="TODO picture: screenshot of the MLflow UI, 'letter-scoring' experiment, 'Evaluations' tab of a run: a table with one row per letter (Mario Rossi, Jean Dupont, Mohammed Ali), columns for the inputs (truncated letter text), the outputs (truncated JSON), and one column per scorer (names_and_email, score_in_range, relationship, groundedness) with pass/fail or yes/no badges; the groundedness cell of one row is expanded, showing the judge's rationale." >}}
 
+{{% /small %}}
+
 ---
 
 ## DeepEval vs. MLflow: analogies and differences
@@ -349,6 +357,8 @@ outputs = ["Reveal"]
 
 ## Exercise 1: Complete the Test Suite of the Letter Scoring System (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: the examples above only check _some_ fields of `LetterInfo`; extend _one_ of the two test suites (DeepEval _or_ MLflow, your choice) so that _every_ field is checked
 
 > __Code__: put your solution in [`snippets/lecture_validating/exercise1/`](../lab-snippets/snippets/lecture_validating/exercise1/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l validating -x 1`
@@ -364,6 +374,8 @@ outputs = ["Reveal"]
 4. write the corresponding scorers (tests, or `@scorer` functions, or judges), and run the suite
 5. for each failure, decide whether the _system_ or the _expectation_ is wrong, and fix the right one
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
@@ -507,6 +519,8 @@ poetry run python -m snippets -l validating -x 1 -v   # runs pytest on the compl
 
 ## Exercise 2: Testing Infrastructure for ID Document Extraction (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: the committee wants _evidence_ that the extractor of [Exercise 2 of the Prompt Engineering lecture](../prompting/#/exercise-id-documents) is reliable, and wants to be _warned_ whenever a change in prompt or model makes it worse
 
 > __Code__: put your solution in [`snippets/lecture_validating/exercise2/`](../lab-snippets/snippets/lecture_validating/exercise2/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l validating -x 2`
@@ -522,6 +536,8 @@ poetry run python -m snippets -l validating -x 1 -v   # runs pytest on the compl
 4. add an __LLM-as-a-Judge__ _only_ where code can't help (e.g. "is the document _legible_ enough to trust the extraction?"), and _validate_ it against your own judgement
 5. run the suite with at least __two models__, and write down which one you'd pick, and why (cf. the [Governance lecture](../governance/#/compare-models))
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
