@@ -110,6 +110,8 @@ Three main __deployment options__, differing in _who_ runs the model, and _where
 
 ## Deployment options: comparison
 
+{{% small "85%" %}}
+
 | | Proprietary cloud API | Hosted open model | On-premise |
 |---|---|---|---|
 | __Quality__ | highest (frontier models) | good (best open models lag the frontier) | limited by the hardware (smaller models) |
@@ -123,6 +125,8 @@ Three main __deployment options__, differing in _who_ runs the model, and _where
 
 - Energy matters: e.g. generative tasks cost orders of magnitude more energy than task-specific models ([Luccioni et al., 2024](https://arxiv.org/abs/2311.16863)); GPAI providers must document energy consumption (AI Act Art. 53, Annex XI)
 - _Hybrid_ solutions are common: e.g. _on-premise_ for sensitive data, _cloud_ for the rest; or a _gateway_ routing requests according to data sensitivity
+
+{{% /small %}}
 
 ---
 
@@ -195,6 +199,8 @@ plus _contracts_ (e.g. providers' terms of service, data processing agreements) 
 
 ## GDPR for LLM-powered applications: key concepts
 
+{{% small "90%" %}}
+
 - __Personal data__ = any information about an identified or identifiable person (e.g. names, passports, grades, _letters about someone_)
 - __Controller__ (who decides _why_ and _how_ data is processed: e.g. the University) vs. __processor__ (who processes data _on behalf_ of the controller: e.g. the LLM provider)
     + a __Data Processing Agreement__ (DPA, [Art. 28](https://gdpr-info.eu/art-28-gdpr/)) with the provider is _mandatory_
@@ -206,6 +212,8 @@ plus _contracts_ (e.g. providers' terms of service, data processing agreements) 
 - __Automated decisions__ ([Art. 22](https://gdpr-info.eu/art-22-gdpr/)): people have the right __not__ to be subject to decisions based _solely_ on automated processing, with legal or similarly significant effects
     + e.g. an admission _rejection_ decided by an LLM alone
 - About the __models__ themselves: [EDPB Opinion 28/2024](https://www.edpb.europa.eu/documents/opinion-of-the-board-art-64/opinion-282024-on-certain-data-protection-aspects-related-to_en) states that a model trained on personal data is _anonymous_ only if extracting those data is very unlikely, and that an _unlawfully_ developed model may taint its later use
+
+{{% /small %}}
 
 ---
 
@@ -384,6 +392,8 @@ A model release is a __bundle__ of separately _openable_ artifacts: downloading 
 
 ## Openness is _graded_, not binary
 
+{{% small "90%" %}}
+
 {{< image src="./openness-bar.svg" max-h="30vh" alt="Openness of seven release components for a closed API model, an open-weights model (Llama 4) and a fully open model (OLMo 3): downloadable weights do not make a model open" >}}
 
 | Framework | Question it answers |
@@ -396,6 +406,8 @@ A model release is a __bundle__ of separately _openable_ artifacts: downloading 
 - __Open-washing__: presenting a model as "open" or "open source" based on _one_ disclosed component (typically the weights), while the artifacts or legal freedoms needed to study, reproduce, modify, or freely use it are missing
     + e.g. _Llama 4_ (downloadable weights, restrictive license), _Gemma 3_ (custom terms with use restrictions), _Mistral 3_ (called ["open-source"](https://mistral.ai/news/mistral-3/) by its vendor: Apache 2.0 weights, undisclosed training data)
     + by contrast, OpenAI calls [gpt-oss](https://openai.com/index/introducing-gpt-oss/) "_open-weight_": the more accurate term
+
+{{% /small %}}
 
 ---
 
@@ -1276,6 +1288,8 @@ Recall the [running example](../prompting/#/running-example) (PhD admission comm
 
 ## Exercise 2: A Governance Decision Record for the Running Example (pt. 1)
 
+{{% small "85%" %}}
+
 > __Goal__: the University asks the committee to _justify_ the adoption of the admission assistant, before using it on real applications
 
 > __Deliverable__: a document (e.g. `decision-record.md`), in [`snippets/lecture_governance/exercise2/`](../lab-snippets/snippets/lecture_governance/exercise2/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises)
@@ -1291,6 +1305,8 @@ Write a short (2–4 pages) __decision record__, answering:
 4. __Technique__: which parts rely on prompting / structured output / tools / RAG? Why not fine-tuning?
 5. __Human oversight__: what do humans _review_, with which [countermeasures](#/countermeasures) to _automation bias_? Who is _accountable_?
 6. __Monitoring__: what is _logged_, and when is the decision _re-assessed_ (e.g. model deprecation, new regulations)?
+
+{{% /small %}}
 
 ---
 
@@ -1361,6 +1377,8 @@ Write a short (2–4 pages) __decision record__, answering:
 
 ## Exercise 2 — Solution: Deployment Options and Decision
 
+{{% small "90%" %}}
+
 > _Decision 2_: the __five dimensions__ as criteria; 500 applications/year ≈ 17.5M input + 2.5M output tokens/year
 
 | Option | Quality | Cost per year | Control | Compliance | Time-to-market |
@@ -1372,6 +1390,8 @@ Write a short (2–4 pages) __decision record__, answering:
 - _break-even_ of C vs. B: __centuries__ (even vs. A: ≈ 80 years) → at this scale, __cost is not the deciding factor__: compliance and control are
 - __Decision__: __B__ for the pilot, with _the same model_ runnable on-premise (C) should the DPO object; A discarded: pinned snapshots (cf. `gpt-4o-2024-08-06` in [LLM-as-a-Service](../llmaas/#/model-zoos)) are _retired_ on the vendor's schedule, forcing re-validation; and data would leave the University
 - _Decision 3_ (model): a __decision rule__ applied to Exercise 1's table (no failures, lowest error, sd ≤ 0.5, then latency and cost), whose cells are left as _[Ex. 1]_ __placeholders__, to be filled from __your__ run
+
+{{% /small %}}
 
 ---
 
