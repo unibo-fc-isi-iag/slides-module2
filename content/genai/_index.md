@@ -566,7 +566,7 @@ These are themselves __LLM-based agentic software__: the kind of system this mod
 | (1) + (2) | the letter-extraction script, written with a _coding assistant_ |
 | (2) + (3) | an agent whose _tools_ are themselves LLM-based _workflows_ (e.g. the [tender example](#/genai-workflow)) |
 | (1) + (3) | an agentic _product_ built with a _coding agent_ |
-| (1) + (2) + (3) | an assistant for a PhD admission committee (our [running example](../prompting/#/running-example)): _workflows_ to extract data from candidates' documents, an _agent_ to answer the committee's questions, all _coded_ with a coding agent |
+| (1) + (2) + (3) | an assistant for a PhD admission committee (our [running example](../#/running-example)): _workflows_ to extract data from candidates' documents, an _agent_ to answer the committee's questions, all _coded_ with a coding agent |
 
 {{% fragment %}}
 

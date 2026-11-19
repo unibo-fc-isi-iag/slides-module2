@@ -14,7 +14,7 @@ outputs = ["Reveal"]
 
 ## Outline
 
-0. [Running example](#/running-example): the PhD admission committee's assistant
+0. [Running example](../#/running-example): the PhD admission committee's assistant
 1. [Anatomy of a prompt](#/prompt-anatomy): what a prompt is made of, and some general best practices
 2. [Structured outputs](#/structured-output): how to get _machine-readable_ responses out of LLMs
     + first [with OpenAI's client library](#/letter-scoring), then [with LangChain](#/letter-scoring-langchain), which we'll keep using from then on
@@ -27,12 +27,6 @@ outputs = ["Reveal"]
 > Validating generative software is the topic of the [next lecture](../validating/)
 
 > Recall: we assume the reader is familiar with the [Chat Completion API](../llmaas/#/chat-completion-concept), and with the notion of [prompt templates](../genai/#/prompt-patterns) from previous lectures
-
----
-
-{{< slide id="running-example" >}}
-
-{{< import path="reusable/running-example.md" >}}
 
 ---
 

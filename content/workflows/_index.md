@@ -23,15 +23,9 @@ outputs = ["Reveal"]
 7. [Multi-agent systems](#/multi-agent): architectures, communication, and the [A2A protocol](#/a2a)
 8. [Streaming and observability](#/observability): what is the workflow doing, _right now_, and what _did_ it do?
 9. [Evaluating workflows](#/evaluating-workflows) end-to-end
-10. Exercises on the [running example](#/running-example): [a bot for candidates' e-mails](#/exercise-email-bot), [the bot as an A2A agent](#/exercise-a2a)
+10. Exercises on the [running example](../#/running-example): [a bot for candidates' e-mails](#/exercise-email-bot), [the bot as an A2A agent](#/exercise-a2a)
 
 > Recall: we assume the reader is familiar with [the spectrum of autonomy](../agents/#/autonomy-spectrum), [tools and agents](../agents/) (incl. [plan before acting](../agents/#/plan-before-acting)), [RAG](../rag/), [agentic skills](../skills/) (incl. [hooks](../skills/#/hooks)), and [validating generative software](../validating/)
-
----
-
-{{< slide id="running-example" >}}
-
-{{< import path="reusable/running-example.md" >}}
 
 ---
 
@@ -1097,7 +1091,7 @@ sequenceDiagram
 
 {{% small "80%" %}}
 
-> __Goal__: a _semi-automatic_ assistant for the PhD admission office, which answers the e-mails of the [candidates](#/running-example) (e.g. on requirements, deadlines, documents, the status of their application), drafting replies which a member of the office __approves__ before they are sent
+> __Goal__: a _semi-automatic_ assistant for the PhD admission office, which answers the e-mails of the [candidates](../#/running-example) (e.g. on requirements, deadlines, documents, the status of their application), drafting replies which a member of the office __approves__ before they are sent
 
 > __Code__: put your solution in [`snippets/lecture_workflows/exercise1/`](../lab-snippets/snippets/lecture_workflows/exercise1/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l workflows -x 1`
 

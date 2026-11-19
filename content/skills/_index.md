@@ -29,12 +29,6 @@ outputs = ["Reveal"]
 
 ---
 
-{{< slide id="running-example" >}}
-
-{{< import path="reusable/running-example.md" >}}
-
----
-
 {{% section %}}
 
 {{< slide id="skills-concept" >}}
@@ -62,7 +56,7 @@ outputs = ["Reveal"]
 
 ## Skills: an intuitive example
 
-> __Goal__: the [committee](#/running-example)'s assistant should review applications _the way the committee does_ (same checks, same rubric, same report format), without the committee re-explaining the procedure at each request
+> __Goal__: the [committee](../#/running-example)'s assistant should review applications _the way the committee does_ (same checks, same rubric, same report format), without the committee re-explaining the procedure at each request
 
 {{< image src="./skill-activation.svg" max-h="45vh" alt="Sequence diagram of skill activation: at startup, the agent's controller puts the name and description of each available skill (phd-application-review, admission-letter) into the system prompt; the user asks to review Mario Rossi's application; the LLM recognises that the phd-application-review skill is relevant, and asks to read its SKILL.md; the controller returns the instructions; following them, the LLM asks to run the skill's check_application.py script, and to read its rubric; finally, the LLM writes the report, following the skill's template" >}}
 
@@ -299,7 +293,7 @@ metadata:
 
 {{% small "90%" %}}
 
-> __Goal__: two skills for the [committee](#/running-example)'s assistant: `phd-application-review` (review an application, by the committee's rubric) and `admission-letter` (write the outcome letter, by the programme's template)
+> __Goal__: two skills for the [committee](../#/running-example)'s assistant: `phd-application-review` (review an application, by the committee's rubric) and `admission-letter` (write the outcome letter, by the programme's template)
 
 {{% multicol %}}
 {{% col class="col-8" %}}

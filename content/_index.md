@@ -199,8 +199,44 @@ Changes will be published on the {{< forum_news >}}
 ## Goals
 
 - Teach you how to __design__, __develop__, and __validate__ _LLM-based_ agentic software, in practice...
-- ... via a _running example_ (namely, an assistant for a [PhD admission committee](./prompting/#/running-example))
+- ... via a _running example_ (namely, an assistant for a [PhD admission committee](#/running-example))
 - Give you a _reference_ for developing your final __project work__
+
+---
+
+{{< slide id="running-example" >}}
+
+## Running example
+
+### Admission committee assistant for PhD applications evaluation
+
+- 3 candidates, and as many applications, with their _passport_, _transcript of records_, and _presentation letter_ (in natural language)
+
+- we want to extract structured information from these documents (e.g. name, age, grades, research experience, etc.) to ease evaluation
+
+{{% multicol %}}
+{{% col %}}
+<img src="./lab-snippets/data/passport-mario-rossi.png" alt="Passport of Mario Rossi" style="max-height: 300px; object-fit: contain;">
+
+- [Transcript of records](./lab-snippets/data/transcript-mario-rossi.png)
+- [Presentation letter](./lab-snippets/data/letter-mario-rossi.txt)
+    + letter is very positive
+{{% /col %}}
+{{% col %}}
+<img src="./lab-snippets/data/passport-jean-dupont.png" alt="Passport of Jean Dupont" style="max-height: 300px; object-fit: contain;">
+
+- [Transcript of records](./lab-snippets/data/transcript-jean-dupont.png)
+- [Presentation letter](./lab-snippets/data/letter-jean-dupont.txt)
+    - letter contains some criticisms
+{{% /col %}}
+{{% col %}}
+<img src="./lab-snippets/data/passport-mohammed-ali.png" alt="Passport of Mohammed Ali" style="max-height: 300px; object-fit: contain;">
+
+- [Transcript of records](./lab-snippets/data/transcript-mohammed-ali.png)
+- [Presentation letter](./lab-snippets/data/letter-mohammed-ali.txt)
+    - letter is positive but shallow
+{{% /col %}}
+{{% /multicol %}}
 
 ---
 
@@ -256,7 +292,7 @@ Changes will be published on the {{< forum_news >}}
     + slides only show _excerpts_: the repository contains the _full_, _commented_, _runnable_ code
 
 - Why _one_ repository, rather than copy-pasting code from the slides?
-    + examples __build upon each other__: the [running example](./prompting/#/running-example) grows across lectures
+    + examples __build upon each other__: the [running example](#/running-example) grows across lectures
         * e.g. the letter-scoring system of the [prompting](./prompting/) lecture is the system under test of the [validating](./validating/) lecture
         * e.g. the tools of the [agents](./agents/) lecture are shared by several agents, local or via MCP
     + __one environment__ for all lectures: dependencies are declared once (`pyproject.toml`), and _locked_ (`poetry.lock`), so that everybody runs the _same_ versions of the _same_ libraries

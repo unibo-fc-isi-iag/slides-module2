@@ -55,9 +55,10 @@ Imported with `{{% import path="reusable/<file>.md" %}}` (path is relative to th
 - `footer.md` — course/A.Y./teacher block placed under a lecture's `# Title` on its first slide
 - `back.md` — closing "Lecture is Over" slide with print link and back-to-ToC link
 - `check-your-understanding.md` — intro slide of the per-lecture question deck (how to answer, meaning of labels)
-- `running-example.md` — the **running example** (PhD admission committee assistant: 3 candidates
-  with passport, transcript, letter, stored in `static/lab-snippets/data/`); import it with `{{< import ... >}}`
-  (`<`, not `%`) since it contains HTML
+
+The **running example** (PhD admission committee assistant: 3 candidates with passport, transcript, letter,
+stored in `static/lab-snippets/data/`) is presented once, in the landing deck (`content/_index.md`, slide `#/running-example`):
+lectures link to it as `../#/running-example`.
 
 ## Writing a lecture
 

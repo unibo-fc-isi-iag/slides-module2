@@ -19,7 +19,7 @@ outputs = ["Reveal"]
 3. Examples: testing the letter-scoring system with [DeepEval](#/test-deepeval) and [MLflow](#/evaluate-mlflow)
 4. Exercises on the running example: [complete the test suite of the letter-scoring system](#/exercise-all-fields), [testing infrastructure for ID documents extraction](#/exercise-id-tests)
 
-> Recall: we assume the reader is familiar with [structured outputs](../prompting/#/structured-output) and with the [running example](../prompting/#/running-example), from the previous lecture
+> Recall: we assume the reader is familiar with [structured outputs](../prompting/#/structured-output) and with the [running example](../#/running-example), from the previous lecture
 
 ---
 
@@ -370,7 +370,7 @@ outputs = ["Reveal"]
     + `AuthorInfo`: `affiliation`, `position`, `seniority`, `nationality`
     + `LetterInfo`: `application_for`
 2. for each field, decide _how_ to check it, and _why_: __exact__ match, __tolerant__ match (normalisation, "contains", ranges, set inclusion, ...), or __LLM-as-a-Judge__ (reference-based or reference-free)
-3. read the [letters](../prompting/#/running-example) _yourself_, and extend [`test_data.yml`](../lab-snippets/snippets/lecture_validating/test_data.yml) with the expectations for each field of each letter
+3. read the [letters](../#/running-example) _yourself_, and extend [`test_data.yml`](../lab-snippets/snippets/lecture_validating/test_data.yml) with the expectations for each field of each letter
 4. write the corresponding scorers (tests, or `@scorer` functions, or judges), and run the suite
 5. for each failure, decide whether the _system_ or the _expectation_ is wrong, and fix the right one
 {{% /fragment %}}
@@ -527,7 +527,7 @@ poetry run python -m snippets -l validating -x 1 -v   # runs pytest on the compl
 
 {{% fragment %}}
 ### TO-DO List
-1. __first__, design a __test dataset__ from the 3 passports of the [running example](../prompting/#/running-example): for each picture, write down the _expected_ values of all fields (name, nationality, date of birth, ID number, expiration date)
+1. __first__, design a __test dataset__ from the 3 passports of the [running example](../#/running-example): for each picture, write down the _expected_ values of all fields (name, nationality, date of birth, ID number, expiration date)
 2. pick a framework (DeepEval _or_ MLflow), and write __deterministic scorers__:
     + _exact match_ for ID numbers and dates, _normalised_ match for names and nationality (case, accents, order of words)
     + _invariants_: date of birth < expiration date, candidate is of age, etc.

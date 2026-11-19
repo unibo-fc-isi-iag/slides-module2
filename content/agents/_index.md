@@ -21,7 +21,7 @@ outputs = ["Reveal"]
 5. [Evaluating agents](#/evaluating-agents): trajectories, tool-call correctness, and [agentic benchmarks](#/agentic-benchmarks)
 6. [Can LLM agents plan?](#/planning): plan-shaped text vs. plans, and the LLM-Modulo approach
 7. [Security of agentic systems](#/security): risk profiles of tools, prompt injection, mitigations
-8. Exercises on the [running example](#/running-example): [read-only tools to inspect applications](#/exercise-inspect), [tools to take decisions](#/exercise-decide), [MCP gateway](#/exercise-gateway)
+8. Exercises on the [running example](../#/running-example): [read-only tools to inspect applications](#/exercise-inspect), [tools to take decisions](#/exercise-decide), [MCP gateway](#/exercise-gateway)
 
 > Recall: we assume the reader is familiar with [tool-call messages and `tool_choice`](../llmaas/#/chat-completion-concept) in the Chat Completion API, with [structured outputs](../prompting/#/structured-output), and with [validating generative software](../validating/)
 
@@ -699,12 +699,6 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ---
 
-{{< slide id="running-example" >}}
-
-{{< import path="reusable/running-example.md" >}}
-
----
-
 {{% section %}}
 
 {{< slide id="planning" >}}
@@ -841,7 +835,7 @@ There is no complete defence against prompt injection: design agents _assuming_ 
 
 {{% small "90%" %}}
 
-> __Goal__: an assistant answering _any_ question of the [committee](#/running-example) about the candidates (e.g. "_who has the highest GPA?_", "_how old is Mohammed Ali?_", "_does Jean Dupont's letter mention weaknesses?_"), by _inspecting_ their applications via __read-only__ tools
+> __Goal__: an assistant answering _any_ question of the [committee](../#/running-example) about the candidates (e.g. "_who has the highest GPA?_", "_how old is Mohammed Ali?_", "_does Jean Dupont's letter mention weaknesses?_"), by _inspecting_ their applications via __read-only__ tools
 
 > __Code__: put your solution in [`snippets/lecture_agents/exercise1/`](../lab-snippets/snippets/lecture_agents/exercise1/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l agents -x 1`
 

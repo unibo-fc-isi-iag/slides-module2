@@ -107,17 +107,11 @@ outputs = ["Reveal"]
 
 ---
 
-{{< slide id="running-example" >}}
-
-{{< import path="reusable/running-example.md" >}}
-
----
-
 ## RAG: an intuitive example
 
 {{< image src="./rag-example.svg" max-h="50vh" alt="RAG on the running example, in two lanes. Indexing, offline: the 3 recommendation letters and the regulations of the PhD programme are split into 44 chunks (paragraphs and articles), embedded one vector each, and stored in a SQLite vector store. Retrieval and generation, online: the committee asks which English certificate a candidate needs; the question is embedded with the same model; KNN search returns the top-3 chunks (Article 5 on language requirements first, then Articles 3 and 4); an augmented prompt with instructions, the chunks as data, and the question goes to the LLM, which answers IELTS Academic at least 6.0, TOEFL iBT at least 80, or Cambridge B2 First, citing regulations-phd#art5" >}}
 
-- _Corpus_: the 3 candidates' [letters](#/running-example), plus the (fictional) __regulations__ of the PhD programme
+- _Corpus_: the 3 candidates' [letters](../#/running-example), plus the (fictional) __regulations__ of the PhD programme
 - _Question_: "_Which English certificate does a candidate need?_"
     + the answer is in _one_ chunk out of 44: Article 5, "_Language requirements_"
     + semantic search ranks it first (cosine 0.78, vs. 0.66 for the runner-up, with `nomic-embed-text`); then the LLM answers, _citing_ it
@@ -355,7 +349,7 @@ flowchart LR
 
 ## Example 2: a Vector Store from Scratch, with SQLite (pt. 1)
 
-> __Goal__: semantic search over the corpus of the [running example](#/running-example), with _nothing but_ Python's built-in `sqlite3`, to see what a vector store _is_
+> __Goal__: semantic search over the corpus of the [running example](../#/running-example), with _nothing but_ Python's built-in `sqlite3`, to see what a vector store _is_
 
 1. The __corpus__ ([`corpus.py`](../lab-snippets/snippets/lecture_rag/corpus.py)), shared by all the examples: the 3 letters (one chunk per _paragraph_) + the (fictional) [regulations of the PhD programme](../lab-snippets/data/regulations-phd.md) (one chunk per _article_)
 

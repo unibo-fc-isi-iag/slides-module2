@@ -62,7 +62,7 @@ Every choice about an AI-powered system implies a trade-off among:
 
 ## Running example: a governance perspective
 
-Recall the [running example](../prompting/#/running-example) (PhD admission committee assistant):
+Recall the [running example](../#/running-example) (PhD admission committee assistant):
 
 - __Data__: passports, transcripts, and presentation letters of the candidates
     + these are _personal data_ (even _identity documents_!)
@@ -1164,7 +1164,7 @@ poetry run python -m snippets -l governance -x 1 MODEL1 MODEL2@URL ...  # custom
 
 ## Enveloping in the running example
 
-Recall the [running example](../prompting/#/running-example) (PhD admission committee assistant):
+Recall the [running example](../#/running-example) (PhD admission committee assistant):
 
 {{% multicol %}}
 {{% col %}}
