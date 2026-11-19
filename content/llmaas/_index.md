@@ -14,6 +14,8 @@ outputs = ["Reveal"]
 
 ## Outline
 
+{{% small "90%" %}}
+
 ### Key engineering aspects of LLM-as-a-Service
 
 0. **On-premise** vs. **On-cloud** deployment
@@ -41,6 +43,8 @@ outputs = ["Reveal"]
     - here you may care about which programming languages (e.g. Python, JS, Java, etc.) are supported by some given client library...
         * most commonly, the same provider implements the same meta-model onto different target programming languages (e.g. OpenAI' client is available in Python, JS, Java, etc.)
     - there exist also _third-party_ client libraries, which may support multiple Web APIs, and therefore multiple providers (e.g. [LangChain](https://docs.langchain.com/oss/python/langchain/overview))
+
+{{% /small %}}
 
 ---
 
@@ -76,6 +80,8 @@ outputs = ["Reveal"]
 
 ## Model zoos (pt. 2): the technological landscape
 
+{{% small "80%" %}}
+
 | | [Hugging Face Hub](https://huggingface.co/models) | [Ollama library](https://ollama.com/models) | [Open Router](https://openrouter.ai/models) |
 |---|---|---|---|
 | __Kind__ | download (+ some hosted inference) | download, run locally | on-cloud, pay per token |
@@ -92,6 +98,8 @@ outputs = ["Reveal"]
 - _flavour_: `base` (pure next-token predictor) vs. `instruct` / `it` / `chat` (tuned to follow instructions: __this is what you want__ for Chat Completion), or `coder`, `vl` / `vision`, `thinking`
 - _quantization_ / _format_: `Q4_K_M`, `GGUF`, `AWQ`, `fp8`
 - _date_ / _snapshot_: `gpt-4o-2024-08-06` (pin it for _reproducibility_!)
+
+{{% /small %}}
 
 ---
 
@@ -370,6 +378,8 @@ e.g. `ollama pull gemma4:e2b` downloads the default quantization, whereas tags l
 
 ## Running models locally: hardware & software (pt. 2)
 
+{{% small "90%" %}}
+
 ### What fits where? (indicative, at ~4-bit quantization, moderate context)
 
 | Machine | Comfortable model size |
@@ -395,6 +405,8 @@ e.g. `ollama pull gemma4:e2b` downloads the default quantization, whereas tags l
     + `SIZE` is the memory _actually allocated_ (weights in use + KV cache), whereas `ollama list` shows the size _on disk_ (7.2 GB for `gemma4:e2b`: all weights, incl. per-layer embeddings and vision/audio encoders)
     + `PROCESSOR` tells whether the model is fully on the GPU, or split between CPU and GPU (e.g. `48%/52% CPU/GPU`)
     + `CONTEXT` is the context window in use: Ollama's [default](https://docs.ollama.com/context-length) depends on the VRAM (4k tokens below 24 GiB, 32k up to 48 GiB, 256k above)
+
+{{% /small %}}
 
 {{% /section %}}
 
@@ -748,6 +760,8 @@ Reference technology: [OpenAI Client Libraries](https://developers.openai.com/ap
 
 ## OpenAI's Chat Completion API with Python
 
+{{% small "85%" %}}
+
 - This is the simplest and most common way to interact with OpenAI-like API providers, via the [openai-python](https://github.com/openai/openai-python) library
     * just run `pip install openai` to install it, into your (virtual) Python environment
     * in your Python scripts, just import the `openai` module
@@ -769,6 +783,8 @@ Reference technology: [OpenAI Client Libraries](https://developers.openai.com/ap
         + documented here <https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/retrieve>
     6. The __agent__, i.e. the program exploiting the aforementioned functionalities to accomplish some task
         + it must append the responses' messages to the history, as the API is _stateless_ (cf. [Chat Completion concept](#/chat-completion-concept))
+
+{{% /small %}}
 
 ---
 
@@ -801,6 +817,8 @@ Reference technology: [OpenAI Client Libraries](https://developers.openai.com/ap
 
 ## Example 1: Sync CLI Chat (pt. 2)
 
+{{% small "90%" %}}
+
 3. Finally, we can enter a loop in which we read the user's input from the command line, send it to the model as a new message in the conversation, and print the model's response back to the command line
 
     {{% code path="static/lab-snippets/snippets/lecture_llmaas/example1/repl_chat_openai.py" from="21" to="40" %}}
@@ -814,6 +832,8 @@ Reference technology: [OpenAI Client Libraries](https://developers.openai.com/ap
     1. then, a chat completion _request_ is sent to the `model` via `client.chat.completions.create(...)`, with the conversation history as input
     1. the model's _response_ is supposed to contain a _single choice_ (`response.choices[0]`), whose `.message.content` is what we show to the user
         + `content` may be `None` (e.g. on tool calls), hence the `or ""`
+
+{{% /small %}}
 
 ---
 
@@ -1046,6 +1066,8 @@ messages.append(dict(role="assistant", content="".join(answer_parts))) # reconst
 
 ## Example 2: Async CLI Chat with Streaming (pt. 3)
 
+{{% small "85%" %}}
+
 4. Full code [here](../lab-snippets/snippets/lecture_llmaas/example2/repl_chat_openai_async.py)
 
 5. Example of interaction (start with `poetry run python -m snippets -l llmaas -e 2`):
@@ -1092,6 +1114,12 @@ assistant> Let me know if you’d like more!
 
 you> Goodbye!
 ```
+
+{{% /small %}}
+
+---
+
+## Example 2: Async CLI Chat with Streaming (pt. 4)
 
 6. When you run it, pay attention to:
     - perceived latency (first token arrives earlier than full-response mode)
