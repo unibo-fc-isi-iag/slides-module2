@@ -2,27 +2,27 @@
 <defs><marker id="m-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="m-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2690e7"/></marker><marker id="m-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3a9a5b"/></marker><marker id="m-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e7a626"/></marker><marker id="m-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7e57c2"/></marker></defs>
 <line x1="100" y1="150" x2="100" y2="1225" stroke="#999" stroke-width="2" stroke-dasharray="4,6"/>
 <rect x="20.0" y="20" width="160" height="130" rx="12" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="3"/>
-<text x="100" y="92" font-size="25" font-weight="600">User</text>
+<text x="100" y="115" font-size="25" font-weight="600">User</text>
 <line x1="400" y1="150" x2="400" y2="1225" stroke="#999" stroke-width="2" stroke-dasharray="4,6"/>
 <rect x="250.0" y="20" width="300" height="130" rx="12" fill="#3a9a5b" fill-opacity="0.15" stroke="#3a9a5b" stroke-width="3"/>
-<text x="400" y="52" font-size="25" font-weight="600">Agent</text>
+<text x="419" y="52" font-size="25" font-weight="600">Agent</text>
 <text x="400" y="85" font-size="18">code / orchestrator,</text>
 <text x="400" y="110" font-size="18">external to the LLM:</text>
 <text x="400" y="135" font-size="18">logic, context, memory, policies</text>
 <line x1="730" y1="150" x2="730" y2="1225" stroke="#999" stroke-width="2" stroke-dasharray="4,6"/>
 <rect x="580.0" y="20" width="300" height="130" rx="12" fill="#2690e7" fill-opacity="0.15" stroke="#2690e7" stroke-width="3"/>
-<text x="730" y="52" font-size="25" font-weight="600">LLM</text>
+<text x="749" y="52" font-size="25" font-weight="600">LLM</text>
 <text x="730" y="85" font-size="18">the &quot;mind&quot; of the agent:</text>
 <text x="730" y="110" font-size="18">reasoning, planning,</text>
 <text x="730" y="135" font-size="18">tool selection, language</text>
 <line x1="1080" y1="150" x2="1080" y2="1225" stroke="#999" stroke-width="2" stroke-dasharray="4,6"/>
 <rect x="930.0" y="20" width="300" height="130" rx="12" fill="#e7a626" fill-opacity="0.15" stroke="#e7a626" stroke-width="3"/>
-<text x="1080" y="52" font-size="25" font-weight="600">MCP / Tool service</text>
+<text x="1099" y="52" font-size="25" font-weight="600">MCP / Tool service</text>
 <text x="1080" y="85" font-size="18">MCP server, exposing</text>
 <text x="1080" y="110" font-size="18">tools to the agent</text>
 <line x1="1430" y1="150" x2="1430" y2="1225" stroke="#999" stroke-width="2" stroke-dasharray="4,6"/>
 <rect x="1280.0" y="20" width="300" height="130" rx="12" fill="#7e57c2" fill-opacity="0.15" stroke="#7e57c2" stroke-width="3"/>
-<text x="1430" y="52" font-size="25" font-weight="600">External tool</text>
+<text x="1449" y="52" font-size="25" font-weight="600">External tool</text>
 <text x="1430" y="85" font-size="18">actual capability, e.g.</text>
 <text x="1430" y="110" font-size="18">a Web API (time service)</text>
 <line x1="100" y1="215" x2="394" y2="215" stroke="#555" stroke-width="3" marker-end="url(#m-grey)"/>
@@ -92,19 +92,28 @@
 <text x="20" y="1262" font-size="20" font-weight="600" text-anchor="start">Legend:</text>
 <text x="1590" y="1262" font-size="18" font-style="italic" fill="#555" text-anchor="end">dashed = response</text>
 <rect x="20" y="1285" width="375" height="95" rx="12" fill="#2690e7" fill-opacity="0.15" stroke="#2690e7" stroke-width="3"/>
-<text x="207" y="1314" font-size="22" font-weight="600">LLM is the mind</text>
+<text x="223" y="1314" font-size="22" font-weight="600">LLM is the mind</text>
 <text x="207" y="1341" font-size="19">reasons and decides</text>
 <text x="207" y="1365" font-size="19">which tools to use</text>
 <rect x="415" y="1285" width="375" height="95" rx="12" fill="#3a9a5b" fill-opacity="0.15" stroke="#3a9a5b" stroke-width="3"/>
-<text x="602" y="1314" font-size="22" font-weight="600">Agent is the body</text>
+<text x="618" y="1314" font-size="22" font-weight="600">Agent is the body</text>
 <text x="602" y="1341" font-size="19">orchestrates, enforces</text>
 <text x="602" y="1365" font-size="19">policies, and executes</text>
 <rect x="810" y="1285" width="375" height="95" rx="12" fill="#7e57c2" fill-opacity="0.15" stroke="#7e57c2" stroke-width="3"/>
-<text x="997" y="1314" font-size="22" font-weight="600">Tools extend capabilities</text>
+<text x="1013" y="1314" font-size="22" font-weight="600">Tools extend capabilities</text>
 <text x="997" y="1341" font-size="19">real-world actions performed</text>
 <text x="997" y="1365" font-size="19">by external systems</text>
 <rect x="1205" y="1285" width="375" height="95" rx="12" fill="#e7a626" fill-opacity="0.15" stroke="#e7a626" stroke-width="3"/>
-<text x="1392" y="1314" font-size="22" font-weight="600">MCP is the bridge</text>
+<text x="1408" y="1314" font-size="22" font-weight="600">MCP is the bridge</text>
 <text x="1392" y="1341" font-size="19">a standard way to</text>
 <text x="1392" y="1365" font-size="19">connect agents to tools</text>
+<svg x="80" y="40" width="40" height="40" viewBox="0 0 448 512"><path fill="#555" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+<svg x="348" y="29" width="30" height="30" viewBox="0 0 640 512"><path fill="#3a9a5b" d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z"/></svg>
+<svg x="688" y="29" width="30" height="30" viewBox="0 0 512 512"><path fill="#2690e7" d="M184 0c30.9 0 56 25.1 56 56l0 400c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56l0-400c0-30.9 25.1-56 56-56z"/></svg>
+<svg x="958" y="29" width="30" height="30" viewBox="0 0 384 512"><path fill="#e7a626" d="M96 0C78.3 0 64 14.3 64 32l0 96 64 0 0-96c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32l0 96 64 0 0-96c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l0 32c0 77.4 55 142 128 156.8l0 67.2c0 17.7 14.3 32 32 32s32-14.3 32-32l0-67.2C297 398 352 333.4 352 256l0-32c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z"/></svg>
+<svg x="1337" y="29" width="30" height="30" viewBox="0 0 512 512"><path fill="#7e57c2" d="M352 256c0 22.2-1.2 43.6-3.3 64l-185.3 0c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64l185.3 0c2.2 20.4 3.3 41.8 3.3 64zm28.8-64l123.1 0c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64l-123.1 0c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32l-116.7 0c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0l-176.6 0c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0L18.6 160C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192l123.1 0c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64L8.1 320C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6l176.6 0c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352l116.7 0zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6l116.7 0z"/></svg>
+<svg x="106" y="1294" width="26" height="26" viewBox="0 0 512 512"><path fill="#2690e7" d="M184 0c30.9 0 56 25.1 56 56l0 400c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56l0-400c0-30.9 25.1-56 56-56z"/></svg>
+<svg x="491" y="1294" width="26" height="26" viewBox="0 0 640 512"><path fill="#3a9a5b" d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z"/></svg>
+<svg x="848" y="1294" width="26" height="26" viewBox="0 0 512 512"><path fill="#7e57c2" d="M176 88l0 40 160 0 0-40c0-4.4-3.6-8-8-8L184 80c-4.4 0-8 3.6-8 8zm-48 40l0-40c0-30.9 25.1-56 56-56l144 0c30.9 0 56 25.1 56 56l0 40 28.1 0c12.7 0 24.9 5.1 33.9 14.1l51.9 51.9c9 9 14.1 21.2 14.1 33.9l0 92.1-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32-128 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32L0 320l0-92.1c0-12.7 5.1-24.9 14.1-33.9l51.9-51.9c9-9 21.2-14.1 33.9-14.1l28.1 0zM0 416l0-64 128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0c0 17.7 14.3 32 32 32s32-14.3 32-32l128 0 0 64c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64z"/></svg>
+<svg x="1280" y="1294" width="26" height="26" viewBox="0 0 384 512"><path fill="#e7a626" d="M96 0C78.3 0 64 14.3 64 32l0 96 64 0 0-96c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32l0 96 64 0 0-96c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l0 32c0 77.4 55 142 128 156.8l0 67.2c0 17.7 14.3 32 32 32s32-14.3 32-32l0-67.2C297 398 352 333.4 352 256l0-32c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z"/></svg>
 </svg>
