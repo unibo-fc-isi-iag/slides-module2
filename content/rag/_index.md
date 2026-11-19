@@ -92,6 +92,8 @@ outputs = ["Reveal"]
 
 ## RAG: the general concept ([recall](../genai/#/rag-concept))
 
+{{% small "90%" %}}
+
 {{< image src="../genai/rag.svg" max-h="45vh" alt="RAG: indexing pipeline (chunking, embedding, vector store) and retrieval-and-generation pipeline (embedding the question, retrieving chunks, enriched prompt, LLM answer)" >}}
 
 - __Retrieval-Augmented Generation__ (RAG, cf. [Lewis et al., 2020](https://arxiv.org/abs/2005.11401); [Gao et al., 2023](https://arxiv.org/abs/2312.10997) for a survey): _retrieve_ relevant documents, and put them in the _prompt_
@@ -100,6 +102,8 @@ outputs = ["Reveal"]
     3. __generation__: _augment_ the prompt with the retrieved chunks $\rightarrow$ the LLM _answers_, possibly _citing_ them
 
 - Retrieval is a _search_ problem, solved by _code_: the LLM only sees its _results_; RAG _reduces_ hallucinations (and makes answers _verifiable_), but does not _eliminate_ them
+
+{{% /small %}}
 
 ---
 
@@ -231,6 +235,8 @@ flowchart LR
 
 ## Embeddings: the technological landscape
 
+{{% small "90%" %}}
+
 {{% small "75%" %}}
 | Provider | Endpoint (Python) | Example models | Dimensions | Notes | Docs |
 |---|---|---|---|---|---|
@@ -247,6 +253,8 @@ flowchart LR
 - Differences: some models want _prefixes_ or _task types_ telling queries from documents (e.g. Cohere's `input_type`, Nomic's `search_query:`); some allow _shortening_ vectors ([Matryoshka embeddings](https://arxiv.org/abs/2205.13147))
 - Embeddings are __not__ anonymised: text can be largely _reconstructed_ from them ([Vec2Text, Morris et al., 2023](https://arxiv.org/abs/2310.06816): 92% of 32-token inputs recovered exactly); a _remote_ embedding API (or a SaaS store) means the _corpus_ leaves your premises: treat vectors as the documents they encode
 - How to choose a model: the [MTEB](https://arxiv.org/abs/2210.07316) _retrieval_ leaderboard, the _languages_ of your corpus, its _domain_, and a small evaluation on _your_ data (cf. [evaluating RAG](#/evaluating-rag))
+
+{{% /small %}}
 
 ---
 
@@ -991,6 +999,8 @@ Files of these examples, in the [`lab-snippets`]({{< github-url repo="lab-snippe
 
 ## Exercise 1 — Solution: cleaning pages
 
+{{% small "90%" %}}
+
 {{% code path="static/lab-snippets/snippets/lecture_rag/exercise1/slides.py" from="70" to="88" %}}
 
 - The header repeated on _every_ page ("_G. Ciatto — Intelligent Agents ..._") is __dropped__: it would make all slides look alike to the embedding model
@@ -998,6 +1008,8 @@ Files of these examples, in the [`lab-snippets`]({{< github-url repo="lab-snippe
 - Near-empty pages are skipped; the _title_ is the first line, the rest is whitespace-collapsed text
 - Extraction is _lossy_: bold words and links may get lost (e.g. "_About Ollama (cf. )_"), some titles are wrong: __always look at your chunks__ (run `slides.py`)
 - Better: _layout-aware_ parsers ([Docling](https://github.com/docling-project/docling), [Unstructured](https://github.com/Unstructured-IO/unstructured)) keep titles, tables, and links; or skip text extraction, and embed page _images_ ([ColPali, Faysse et al., 2024](https://arxiv.org/abs/2407.01449))
+
+{{% /small %}}
 
 ---
 
