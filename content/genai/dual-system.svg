@@ -4,51 +4,52 @@
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
+  <!-- Icons: Font Awesome Free (https://fontawesome.com, CC BY 4.0) -->
   <text x="960" y="48" font-size="32" text-anchor="middle" font-weight="700" xml:space="preserve">Our thinking operates in two systems</text>
   <rect x="40" y="75" width="740" height="680" rx="12" fill="#e7a626" fill-opacity="0.1" stroke="#e7a626" stroke-width="3"/>
   <text x="410.0" y="122" font-size="30" text-anchor="middle" font-weight="700" fill="#e7a626" xml:space="preserve">SYSTEM 1 — “FAST THINKING”</text>
   <text x="410.0" y="160" font-size="22" text-anchor="middle" font-style="italic" xml:space="preserve">Automatic, effortless, and intuitive</text>
-  <text x="65" y="230" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">FAST</text>
-  <text x="345" y="230" font-size="21" text-anchor="start" xml:space="preserve">Very quick, happens in a split second</text>
+  <text x="103" y="230" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">FAST</text>
+  <text x="375" y="230" font-size="21" text-anchor="start" xml:space="preserve">Very quick, happens in a split second</text>
   <line x1="60" y1="284" x2="760" y2="284" stroke="#e7a626" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="65" y="322" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">AUTOMATIC</text>
-  <text x="345" y="322" font-size="21" text-anchor="start" xml:space="preserve">Works without conscious control</text>
+  <text x="103" y="322" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">AUTOMATIC</text>
+  <text x="375" y="322" font-size="21" text-anchor="start" xml:space="preserve">Works without conscious control</text>
   <line x1="60" y1="376" x2="760" y2="376" stroke="#e7a626" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="65" y="414" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">EFFORTLESS</text>
-  <text x="345" y="414" font-size="21" text-anchor="start" xml:space="preserve">Requires little to no mental effort</text>
+  <text x="103" y="414" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">EFFORTLESS</text>
+  <text x="375" y="414" font-size="21" text-anchor="start" xml:space="preserve">Requires little to no mental effort</text>
   <line x1="60" y1="468" x2="760" y2="468" stroke="#e7a626" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="65" y="506" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">HEURISTIC-BASED</text>
-  <text x="345" y="506" font-size="21" text-anchor="start" xml:space="preserve">Relies on mental shortcuts, rules of</text>
-  <text x="345" y="533" font-size="21" text-anchor="start" xml:space="preserve">thumb, and pattern recognition</text>
+  <text x="103" y="506" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">HEURISTIC-BASED</text>
+  <text x="375" y="506" font-size="21" text-anchor="start" xml:space="preserve">Relies on mental shortcuts, rules of</text>
+  <text x="375" y="533" font-size="21" text-anchor="start" xml:space="preserve">thumb, and pattern recognition</text>
   <line x1="60" y1="560" x2="760" y2="560" stroke="#e7a626" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="65" y="598" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">PRONE TO BIASES</text>
-  <text x="345" y="598" font-size="21" text-anchor="start" xml:space="preserve">Can be systematic and lead to</text>
-  <text x="345" y="625" font-size="21" text-anchor="start" xml:space="preserve">predictable errors</text>
+  <text x="103" y="598" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">PRONE TO BIASES</text>
+  <text x="375" y="598" font-size="21" text-anchor="start" xml:space="preserve">Can be systematic and lead to</text>
+  <text x="375" y="625" font-size="21" text-anchor="start" xml:space="preserve">predictable errors</text>
   <line x1="60" y1="652" x2="760" y2="652" stroke="#e7a626" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="65" y="690" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">EVER-PRESENT</text>
-  <text x="345" y="690" font-size="21" text-anchor="start" xml:space="preserve">Always on, monitors the environment</text>
+  <text x="103" y="690" font-size="21" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">EVER-PRESENT</text>
+  <text x="375" y="690" font-size="21" text-anchor="start" xml:space="preserve">Always on, monitors the environment</text>
   <rect x="1140" y="75" width="740" height="680" rx="12" fill="#2690e7" fill-opacity="0.1" stroke="#2690e7" stroke-width="3"/>
   <text x="1510.0" y="122" font-size="30" text-anchor="middle" font-weight="700" fill="#2690e7" xml:space="preserve">SYSTEM 2 — “SLOW THINKING”</text>
   <text x="1510.0" y="160" font-size="22" text-anchor="middle" font-style="italic" xml:space="preserve">Effortful, deliberate, and logical</text>
-  <text x="1165" y="230" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">SLOW</text>
-  <text x="1445" y="230" font-size="21" text-anchor="start" xml:space="preserve">Takes time, step-by-step processing</text>
+  <text x="1203" y="230" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">SLOW</text>
+  <text x="1475" y="230" font-size="21" text-anchor="start" xml:space="preserve">Takes time, step-by-step processing</text>
   <line x1="1160" y1="284" x2="1860" y2="284" stroke="#2690e7" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="1165" y="322" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">CONTROLLED</text>
-  <text x="1445" y="322" font-size="21" text-anchor="start" xml:space="preserve">Requires conscious attention and focus</text>
+  <text x="1203" y="322" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">CONTROLLED</text>
+  <text x="1475" y="322" font-size="21" text-anchor="start" xml:space="preserve">Requires conscious attention and focus</text>
   <line x1="1160" y1="376" x2="1860" y2="376" stroke="#2690e7" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="1165" y="414" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">EFFORTFUL</text>
-  <text x="1445" y="414" font-size="21" text-anchor="start" xml:space="preserve">Uses mental resources; can be tiring</text>
+  <text x="1203" y="414" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">EFFORTFUL</text>
+  <text x="1475" y="414" font-size="21" text-anchor="start" xml:space="preserve">Uses mental resources; can be tiring</text>
   <line x1="1160" y1="468" x2="1860" y2="468" stroke="#2690e7" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="1165" y="506" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">RULE-BASED</text>
-  <text x="1445" y="506" font-size="21" text-anchor="start" xml:space="preserve">Relies on logic, analysis, and complex</text>
-  <text x="1445" y="533" font-size="21" text-anchor="start" xml:space="preserve">computation</text>
+  <text x="1203" y="506" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">RULE-BASED</text>
+  <text x="1475" y="506" font-size="21" text-anchor="start" xml:space="preserve">Relies on logic, analysis, and complex</text>
+  <text x="1475" y="533" font-size="21" text-anchor="start" xml:space="preserve">computation</text>
   <line x1="1160" y1="560" x2="1860" y2="560" stroke="#2690e7" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="1165" y="598" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">LESS PRONE TO BIASES</text>
-  <text x="1445" y="598" font-size="21" text-anchor="start" xml:space="preserve">More reliable, but not foolproof</text>
+  <text x="1203" y="598" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">LESS PRONE TO BIASES</text>
+  <text x="1475" y="598" font-size="21" text-anchor="start" xml:space="preserve">More reliable, but not foolproof</text>
   <line x1="1160" y1="652" x2="1860" y2="652" stroke="#2690e7" stroke-opacity="0.5" stroke-width="2"/>
-  <text x="1165" y="690" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">LIMITED CAPACITY</text>
-  <text x="1445" y="690" font-size="21" text-anchor="start" xml:space="preserve">Easily depleted; can handle one thing</text>
-  <text x="1445" y="717" font-size="21" text-anchor="start" xml:space="preserve">at a time</text>
+  <text x="1203" y="690" font-size="21" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">LIMITED CAPACITY</text>
+  <text x="1475" y="690" font-size="21" text-anchor="start" xml:space="preserve">Easily depleted; can handle one thing</text>
+  <text x="1475" y="717" font-size="21" text-anchor="start" xml:space="preserve">at a time</text>
   <rect x="800" y="75" width="320" height="680" rx="12" fill="#3a9a5b" fill-opacity="0.1" stroke="#3a9a5b" stroke-width="3"/>
   <text x="960.0" y="120" font-size="24" text-anchor="middle" font-weight="700" fill="#3a9a5b" xml:space="preserve">HOW THEY WORK</text>
   <text x="960.0" y="150" font-size="24" text-anchor="middle" font-weight="700" fill="#3a9a5b" xml:space="preserve">TOGETHER</text>
@@ -69,26 +70,26 @@
   <line x1="1138" y1="415" x2="1124" y2="415" stroke="#2690e7" stroke-width="3" marker-end="url(#arrow)"/>
   <rect x="40" y="780" width="1840" height="215" rx="12" fill="#555" fill-opacity="0.05" stroke="#555" stroke-width="3"/>
   <text x="960" y="812" font-size="22" text-anchor="middle" font-weight="700" fill="#555" xml:space="preserve">EXAMPLES</text>
-  <text x="65.0" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You see a “SALE” sign</text>
+  <text x="101" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You see a “SALE” sign</text>
   <text x="65.0" y="900" font-size="20" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">System 1:</text>
   <text x="165.0" y="900" font-size="20" text-anchor="start" xml:space="preserve">feels excited and wants to buy</text>
   <text x="65.0" y="938" font-size="20" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">System 2:</text>
   <text x="165.0" y="938" font-size="20" text-anchor="start" xml:space="preserve">checks if you really need it</text>
   <line x1="500.0" y1="835" x2="500.0" y2="980" stroke="#555" stroke-opacity="0.4" stroke-width="2"/>
-  <text x="525.0" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You are driving on an empty road</text>
+  <text x="561" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You are driving on an empty road</text>
   <text x="525.0" y="900" font-size="20" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">System 1:</text>
   <text x="625.0" y="900" font-size="20" text-anchor="start" xml:space="preserve">keeps you on autopilot</text>
   <text x="525.0" y="938" font-size="20" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">System 2:</text>
   <text x="625.0" y="938" font-size="20" text-anchor="start" xml:space="preserve">takes over in heavy traffic</text>
   <line x1="960.0" y1="835" x2="960.0" y2="980" stroke="#555" stroke-opacity="0.4" stroke-width="2"/>
-  <text x="985.0" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You meet someone new</text>
+  <text x="1021" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You meet someone new</text>
   <text x="985.0" y="900" font-size="20" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">System 1:</text>
   <text x="1085.0" y="900" font-size="20" text-anchor="start" xml:space="preserve">forms an instant impression</text>
   <text x="985.0" y="938" font-size="20" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">System 2:</text>
   <text x="1085.0" y="938" font-size="20" text-anchor="start" xml:space="preserve">considers more information</text>
   <text x="1085.0" y="964" font-size="20" text-anchor="start" xml:space="preserve">before judging</text>
   <line x1="1420.0" y1="835" x2="1420.0" y2="980" stroke="#555" stroke-opacity="0.4" stroke-width="2"/>
-  <text x="1445.0" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You solve 23 × 17</text>
+  <text x="1481" y="860" font-size="21" text-anchor="start" font-weight="700" xml:space="preserve">You solve 23 × 17</text>
   <text x="1445.0" y="900" font-size="20" text-anchor="start" font-weight="700" fill="#e7a626" xml:space="preserve">System 1:</text>
   <text x="1545.0" y="900" font-size="20" text-anchor="start" xml:space="preserve">guesses quickly (e.g. 400)</text>
   <text x="1445.0" y="938" font-size="20" text-anchor="start" font-weight="700" fill="#2690e7" xml:space="preserve">System 2:</text>
@@ -96,4 +97,22 @@
   <text x="1545.0" y="964" font-size="20" text-anchor="start" xml:space="preserve">(391)</text>
   <text x="960" y="1045" font-size="21" text-anchor="middle" font-style="italic" xml:space="preserve">System 1 is fast and automatic; System 2 is slow and deliberate: knowing when to rely on each is key to better decisions.</text>
 
+  <svg x="138" y="94" width="38" height="38" viewBox="0 0 448 512"><path fill="#e7a626" d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224H416c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288H32c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3"/></svg>
+  <svg x="1230" y="94" width="38" height="38" viewBox="0 0 512 512"><path fill="#2690e7" d="M120 56c0-30.9 25.1-56 56-56h24c17.7 0 32 14.3 32 32v448c0 17.7-14.3 32-32 32h-32c-29.8 0-54.9-20.4-62-48h-2c-44.2 0-80-35.8-80-80 0-18 6-34.6 16-48-19.4-14.6-32-37.8-32-64 0-30.9 17.6-57.8 43.2-71.1-7.1-12-11.2-26-11.2-40.9 0-44.2 35.8-80 80-80zm272 0v24c44.2 0 80 35.8 80 80 0 15-4.1 29-11.2 40.9C486.5 214.2 504 241 504 272c0 26.2-12.6 49.4-32 64 10 13.4 16 30 16 48 0 44.2-35.8 80-80 80h-2c-7.1 27.6-32.2 48-62 48h-32c-17.7 0-32-14.3-32-32V32c0-17.7 14.3-32 32-32h24c30.9 0 56 25.1 56 56"/></svg>
+  <svg x="65" y="208" width="26" height="26" viewBox="0 0 512 512"><path fill="#e7a626" d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0M288 96a32 32 0 1 0-64 0 32 32 0 1 0 64 0m-32 320c35.3 0 64-28.7 64-64 0-16.2-6-31.1-16-42.3l69.5-138.9c5.9-11.9 1.1-26.3-10.7-32.2s-26.3-1.1-32.2 10.7l-69.5 138.9c-1.7-.1-3.4-.2-5.1-.2-35.3 0-64 28.7-64 64s28.7 64 64 64m-80-272a32 32 0 1 0-64 0 32 32 0 1 0 64 0M96 288a32 32 0 1 0 0-64 32 32 0 1 0 0 64m352-32a32 32 0 1 0-64 0 32 32 0 1 0 64 0"/></svg>
+  <svg x="1165" y="208" width="26" height="26" viewBox="0 0 384 512"><path fill="#2690e7" d="M32 0C14.3 0 0 14.3 0 32s14.3 32 32 32v11c0 42.4 16.9 83.1 46.9 113.1l67.9 67.9-67.9 67.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-11c0-42.4-16.9-83.1-46.9-113.1L237.2 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32S369.7 0 352 0zm64 75V64h192v11c0 19-5.6 37.4-16 53H112c-10.3-15.6-16-34-16-53m16 309c3.5-5.3 7.6-10.3 12.1-14.9l67.9-67.9 67.9 67.9c4.6 4.6 8.6 9.6 12.2 14.9z"/></svg>
+  <svg x="65" y="300" width="26" height="26" viewBox="0 0 640 512"><path fill="#e7a626" d="M352 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64h-96c-53 0-96 43-96 96v224c0 53 43 96 96 96h256c53 0 96-43 96-96V160c0-53-43-96-96-96h-96zM160 368c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24m120 0c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24M224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96m144 48a48 48 0 1 1 96 0 48 48 0 1 1-96 0m-304 0c0-17.7-14.3-32-32-32S0 206.3 0 224v96c0 17.7 14.3 32 32 32s32-14.3 32-32zm544-32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32v-96c0-17.7-14.3-32-32-32"/></svg>
+  <svg x="1165" y="300" width="26" height="26" viewBox="0 0 512 512"><path fill="#2690e7" d="M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32h86.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H265.3C253 35.7 224.8 16 192 16s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h246.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-54.7c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H233.3c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48z"/></svg>
+  <svg x="65" y="392" width="26" height="26" viewBox="0 0 512 512"><path fill="#e7a626" d="M352 0c41 0 80.3 16.3 109.2 45.2l5.5 5.5c29 29 45.3 68.3 45.3 109.2 0 24.1-5.7 47.6-16.2 68.8-1.9 3.7-5.3 6.5-9.3 7.7l-112 33.6c-3.9 1.2-6.5 4.7-6.5 8.8 0 5.1 4.1 9.2 9.2 9.2h32.2c14.3 0 21.4 17.2 11.3 27.3l-22.4 22.4c-1.9 1.9-4.2 3.2-6.7 4l-81 24.3c-3.9 1.2-6.5 4.7-6.5 8.8 0 5.1 4.1 9.2 9.2 9.2 13.2 0 18.9 15.7 7.8 22.9-41.1 26.6-89.3 41.1-139 41.1h-86l-48 48c-8.8 8.8-23.2 8.8-32 0s-8.8-23.2 0-32L256 224c8.8-8.8 8.8-23.2 0-32s-23.2-8.8-32 0L79.5 336.5c-5.7 5.7-15.5 1.7-15.5-6.4 0-67.9 27-133 75-181L242.8 45.2C271.7 16.3 311 0 352 0"/></svg>
+  <svg x="1165" y="392" width="26" height="26" viewBox="0 0 512 512"><path fill="#2690e7" d="M224 96a32 32 0 1 1 64 0 32 32 0 1 1-64 0m122.5 32c3.5-10 5.5-20.8 5.5-32 0-53-43-96-96-96s-96 43-96 96c0 11.2 1.9 22 5.5 32h-21.8c-28.3 0-53.2 18.5-61.3 45.6l-80 266.6c-1.6 5.2-2.4 10.6-2.4 16C0 487 25 512 55.8 512h400.4c30.8 0 55.8-25 55.8-55.8 0-5.4-.8-10.8-2.4-16l-80-266.5c-8.1-27.1-33-45.6-61.3-45.6h-21.8z"/></svg>
+  <svg x="65" y="484" width="26" height="26" viewBox="0 0 384 512"><path fill="#e7a626" d="M292.9 384c7.3-22.3 21.9-42.5 38.4-59.9C364 289.7 384 243.2 384 192 384 86 298 0 192 0S0 86 0 192c0 51.2 20 97.7 52.7 132.1 16.5 17.4 31.2 37.6 38.4 59.9h201.7zm-4.9 48H96v16c0 44.2 35.8 80 80 80h32c44.2 0 80-35.8 80-80zM184 112c-39.8 0-72 32.2-72 72 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-66.3 53.7-120 120-120 13.3 0 24 10.7 24 24s-10.7 24-24 24"/></svg>
+  <svg x="1165" y="484" width="26" height="26" viewBox="0 0 512 512"><path fill="#2690e7" d="M0 72c0-13.2 10.7-24 24-24h48c13.3 0 24 10.7 24 24v104h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24s10.7-24 24-24h24V96H24C10.7 96 0 85.3 0 72m30.4 229.2C41.8 292.6 55.7 288 70 288h4.9c33.7 0 61.1 27.4 61.1 61.1 0 19.6-9.4 37.9-25.2 49.4l-24 17.5H120c13.3 0 24 10.7 24 24s-10.7 24-24 24H29.3C13.1 464 0 450.9 0 434.7c0-9.4 4.5-18.2 12.1-23.7l70.5-51.3c3.4-2.5 5.4-6.4 5.4-10.6 0-7.2-5.9-13.1-13.1-13.1H70c-3.9 0-7.7 1.3-10.8 3.6l-20.8 15.6c-10.6 8-25.6 5.8-33.6-4.8s-5.8-25.6 4.8-33.6zM224 64h256c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32m0 160h256c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32m0 160h256c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+  <svg x="65" y="576" width="26" height="26" viewBox="0 0 512 512"><path fill="#e7a626" d="M256 0c14.7 0 28.2 8.1 35.2 21l216 400c6.7 12.4 6.4 27.4-.8 39.5S486.1 480 472 480H40c-14.1 0-27.2-7.4-34.4-19.5s-7.5-27.1-.8-39.5l216-400c7-12.9 20.5-21 35.2-21m0 352a32 32 0 1 0 0 64 32 32 0 1 0 0-64m0-192c-18.2 0-32.7 15.5-31.4 33.7l7.4 104c.9 12.5 11.4 22.3 23.9 22.3 12.6 0 23-9.7 23.9-22.3l7.4-104c1.3-18.2-13.1-33.7-31.4-33.7z"/></svg>
+  <svg x="1165" y="576" width="26" height="26" viewBox="0 0 512 512"><path fill="#2690e7" d="M256 0c4.6 0 9.2 1 13.4 2.9l188.4 79.9c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0C57.3 420.7 16.6 239.2 16.1 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.9 1 251.4 0 256 0m0 66.8v378.1c138-66.8 175.1-214.8 176-303.4L256 66.9z"/></svg>
+  <svg x="65" y="668" width="26" height="26" viewBox="0 0 576 512"><path fill="#e7a626" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6-46.8 43.5-78.1 95.4-93 131.1-3.3 7.9-3.3 16.7 0 24.6 14.9 35.7 46.2 87.7 93 131.1C142.5 443.1 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1 3.3-7.9 3.3-16.7 0-24.6-14.9-35.7-46.2-87.7-93-131.1C433.5 68.9 368.8 32 288 32M144 256a144 144 0 1 1 288 0 144 144 0 1 1-288 0m144-64c0 35.3-28.7 64-64 64-11.5 0-22.3-3-31.7-8.4-1 10.9-.1 22.1 2.9 33.2 13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-12.2-45.7-55.5-74.8-101.1-70.8 5.3 9.3 8.4 20.1 8.4 31.7"/></svg>
+  <svg x="1165" y="668" width="26" height="26" viewBox="0 0 640 512"><path fill="#2690e7" d="M528 128c8.8 0 16 7.2 16 16v224c0 8.8-7.2 16-16 16H112c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM112 64c-44.2 0-80 35.8-80 80v224c0 44.2 35.8 80 80 80h416c44.2 0 80-35.8 80-80v-48c17.7 0 32-14.3 32-32v-64c0-17.7-14.3-32-32-32v-48c0-44.2-35.8-80-80-80zm56 112c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24h64c13.3 0 24-10.7 24-24V200c0-13.3-10.7-24-24-24z"/></svg>
+  <svg x="65" y="838" width="26" height="26" viewBox="0 0 512 512"><path fill="#555" d="M32.5 96v149.5c0 17 6.7 33.3 18.7 45.3l192 192c25 25 65.5 25 90.5 0l149.5-149.5c25-25 25-65.5 0-90.5l-192-192C279.2 38.7 263 32 246 32H96.5c-35.3 0-64 28.7-64 64m112 16a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+  <svg x="525" y="838" width="26" height="26" viewBox="0 0 512 512"><path fill="#555" d="M135.2 117.4 109.1 192h293.8l-26.1-74.6c-4.5-12.8-16.6-21.4-30.2-21.4H165.4c-13.6 0-25.7 8.6-30.2 21.4m-95.6 79.4L74.8 96.3C88.3 57.8 124.6 32 165.4 32h181.2c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2v192c0 17.7-14.3 32-32 32h-32c-17.7 0-32-14.3-32-32v-32H96v32c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V256c0-26.7 16.4-49.6 39.6-59.2M128 304a32 32 0 1 0-64 0 32 32 0 1 0 64 0m288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64"/></svg>
+  <svg x="985" y="838" width="26" height="26" viewBox="0 0 576 512"><path fill="#555" d="M268.9 85.2 152.3 214.8c-4.6 5.1-4.4 13 .5 17.9 30.5 30.5 80 30.5 110.5 0l31.8-31.8c4.2-4.2 9.5-6.5 14.9-6.9 6.8-.6 13.8 1.7 19 6.9L505.6 376l70.4-56V32L464 96l-23.8-15.9A96.2 96.2 0 0 0 386.9 64h-70.4c-1.1 0-2.3 0-3.4.1-16.9.9-32.8 8.5-44.2 21.1m-152.3 97.5L223.4 64h-39.6c-25.5 0-49.9 10.1-67.9 28.1L112 96 0 32v288l156.4 130.3c23 19.2 52 29.7 81.9 29.7H254l-7-7c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l41 41h9c19.1 0 37.8-4.3 54.8-12.3L359 441c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l32 32 17.5-17.5c8.9-8.9 11.5-21.8 7.6-33.1L312.1 251.7l-14.9 14.9c-49.3 49.3-129.1 49.3-178.4 0-23-23-23.9-59.9-2.2-84z"/></svg>
+  <svg x="1445" y="838" width="26" height="26" viewBox="0 0 384 512"><path fill="#555" d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 64h192c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32m16 168a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0M88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48m128-24a24 24 0 1 1-48 0 24 24 0 1 1 48 0m80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48M64 424c0-13.3 10.7-24 24-24h112c13.3 0 24 10.7 24 24s-10.7 24-24 24H88c-13.3 0-24-10.7-24-24m232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24"/></svg>
 </svg>
