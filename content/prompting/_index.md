@@ -70,6 +70,8 @@ outputs = ["Reveal"]
 
 ## Prompt engineering best practices: the landscape
 
+{{% small "90%" %}}
+
 - Each provider publishes its own __prompting guide__, and _most advice is shared_ across them:
     + [OpenAI](https://developers.openai.com/api/docs/guides/prompt-engineering), [Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview), [Google](https://ai.google.dev/gemini-api/docs/prompting-strategies), [Mistral](https://docs.mistral.ai/guides/prompting_capabilities/)
     + surveys: [Schulhoff et al., _The Prompt Report_ (2024)](https://arxiv.org/abs/2406.06608), [Sahoo et al. (2024)](https://arxiv.org/abs/2402.07927)
@@ -87,6 +89,8 @@ outputs = ["Reveal"]
 
 - Guides also contain _model-specific_ advice (e.g. Claude likes XML tags, reasoning models need _less_ step-by-step guidance)
     + prompts are __not portable__ across models: re-test them whenever you switch model
+
+{{% /small %}}
 
 ---
 
@@ -188,6 +192,8 @@ required: [name, age]
 
 ## How is structured output _enforced_? (pt. 1)
 
+{{% small "80%" %}}
+
 From _weakest_ to _strongest_ guarantees:
 
 1. __Prompt-only__: describe the format in the prompt, then _parse_ (and _validate_) the response
@@ -201,6 +207,8 @@ From _weakest_ to _strongest_ guarantees:
 
 4. __Tool-calling trick__: declare a (fake) _tool_ whose parameters are the target schema, and _force_ the model to call it
     + the tool-call _arguments_ are the structured output (common before providers supported (3))
+
+{{% /small %}}
 
 
 
@@ -280,6 +288,8 @@ From _weakest_ to _strongest_ guarantees:
 
 ## Example 1: Structured Output with Pydantic Classes (pt. 3)
 
+{{% small "90%" %}}
+
 4. _Instructions_ for _scoring_ can be provided as well in _natural language_, yet better to be precise and give the LLM a _"recipe"_ for scoring
 
     {{% code path="static/lab-snippets/snippets/lecture_prompting/example1/letter_scoring_openai.py" from="28" to="38" %}}
@@ -295,6 +305,8 @@ From _weakest_ to _strongest_ guarantees:
     - the `response_format` parameter is set to a _reference_ to the `LetterInfo` class
         + `openai` will automatically generate the corresponding JSON Schema from the class definition, and include it in the request
     - `message.parsed` is the `LetterInfo` instance, unless the model _refuses_ to answer (e.g. for safety reasons): then `message.refusal` holds its explanation
+
+{{% /small %}}
 
 ---
 
@@ -584,6 +596,8 @@ poetry run python -m snippets -l prompting -x 1 mario-rossi    # or a path, e.g.
 
 ## Prompting techniques: the general concept
 
+{{% small "90%" %}}
+
 | Technique | Idea | Reference |
 |---|---|---|
 | __Zero-shot__ | only _instructions_, no examples | [Radford et al. (2019)](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) |
@@ -597,6 +611,8 @@ poetry run python -m snippets -l prompting -x 1 mario-rossi    # or a path, e.g.
     + _ReAct_ (reasoning + acting) will be the basis of [agents](../agents/), two lectures ahead
 - Folk [prompt patterns](../genai/#/prompt-patterns) (role playing, emotion prompting, ...) have _weak_ or _inconsistent_ evidence (cf. [EmotionPrompt, Li et al., 2023](https://arxiv.org/abs/2307.11760) vs. [The Prompt Report](https://arxiv.org/abs/2406.06608)): __measure__, don't trust
 - Techniques __combine__: e.g. few-shot + CoT + self-consistency
+
+{{% /small %}}
 
 ---
 
@@ -852,6 +868,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ## Context management: the general concept
 
+{{% small "90%" %}}
+
 - The __context window__ is the _maximum number of tokens_ a model can process in a _single_ request: _input_ (all messages) + _output_ (including reasoning tokens)
     + from a few thousands (small local models) to millions (some frontier models) of tokens, cf. [model zoos](../llmaas/#/model-zoos)
     + exceeding it leads to _errors_, or to _silent truncation_, depending on the provider
@@ -870,6 +888,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     3. __summarisation__ (a.k.a. _compaction_): replace older messages with a _summary_ of them
     4. __retrieval__: load only the _relevant_ pieces of information, when needed (cf. RAG, in a later lecture)
     5. __prompt caching__: make the _repeated_ part of the context _cheaper_ and _faster_ to process
+
+{{% /small %}}
 
 ---
 
@@ -1004,6 +1024,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 ## Exercise 2: Extract Structured Information from Pictures (pt. 1)
 
+{{% small "90%" %}}
+
 > __Goal__: let's say the committee wants to extract structured information from the ID documents of the candidates, which are provided as pictures in the application form, and wants to be _confident_ about the extracted values
 
 > __Code__: put your solution in [`snippets/lecture_prompting/exercise2/`](../lab-snippets/snippets/lecture_prompting/exercise2/__init__.py) of [`lab-snippets`](../#/lab-snippets-exercises), and run it via `poetry run python -m snippets -l prompting -x 2`
@@ -1018,6 +1040,8 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + fields with _no clear majority_ should be flagged for _human_ review
 6. let's test the program with _different ID documents_, and see how well the model can extract the information
 {{% /fragment %}}
+
+{{% /small %}}
 
 ---
 
