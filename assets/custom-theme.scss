@@ -386,3 +386,9 @@ html.reveal-print .reveal section.print-compact pre {
 html.reveal-print .reveal .print-2cols pre code {
 	column-count: 2;
 }
+
+// placeholders of prompt templates, e.g. <code>Help me <span class="ph">{task}</span></code>
+.reveal code .ph {
+	color: #1a8f5a;
+	font-style: italic;
+}

@@ -736,23 +736,25 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 
 | Technique | Pattern template | Description |
 |---|---|---|
-| Role playing | `You are an expert in {field} known for {key adjective}. Help me {task}.` | telling the AI to act as a famous expert or celebrity |
-| Style unbundling | `Describe the key elements of {expert}'s style/skill in bullet points.` <br> `Do {task} in the following style: {style}.` | describe what you like about a style, rather than copying it directly |
-| Emotion prompting | `Help me {task}. Please make sure {attribute}. This task is very important for my career.` | use emotional pressure and persuasion with the AI |
-| Few-shot learning | `Here are some examples of {task}. Generate a {task} for {new context}.` | add examples of the completed task to the prompt |
-| Synthetic bootstrap | `Generate ten examples of {examples} for {context}. Here are the inputs: {inputs}.` <br> `Generate {task} using {examples}.` | use AI to generate good examples of the completed task |
+| Role playing | <code>You are an expert in <span class="ph">{field}</span> known for <span class="ph">{key adjective}</span>. Help me <span class="ph">{task}</span>.</code> | telling the AI to act as a famous expert or celebrity |
+| Style unbundling | <code>Describe the key elements of <span class="ph">{expert}</span>'s style/skill in bullet points.</code> <br> <code>Do <span class="ph">{task}</span> in the following style: <span class="ph">{style}</span>.</code> | describe what you like about a style, rather than copying it directly |
+| Emotion prompting | <code>Help me <span class="ph">{task}</span>. Please make sure <span class="ph">{attribute}</span>. This task is very important for my career.</code> | use emotional pressure and persuasion with the AI |
+| Few-shot learning | <code>Here are some examples of <span class="ph">{task}</span>. Generate a <span class="ph">{task}</span> for <span class="ph">{new context}</span>.</code> | add examples of the completed task to the prompt |
+| Synthetic bootstrap | <code>Generate ten examples of <span class="ph">{examples}</span> for <span class="ph">{context}</span>. Here are the inputs: <span class="ph">{inputs}</span>.</code> <br> <code>Generate <span class="ph">{task}</span> using <span class="ph">{examples}</span>.</code> | use AI to generate good examples of the completed task |
 
 (source: [Lenny's Newsletter](https://www.lennysnewsletter.com/))
 
-- `{placeholders}` are filled with _actual data_ at runtime $\rightarrow$ prompt _templates_ (cf. [prompting](../prompting/#/langchain))
+- <code><span class="ph">{placeholders}</span></code> are filled with _actual data_ at runtime $\rightarrow$ prompt _templates_ (cf. [prompting](../prompting/#/langchain))
 
 ---
 
 ## Concept: Structured Outputs
 
+{{< image src="./structured-output.svg" width="100%" max-h="45vh" alt="Structured output, how it works, on the running example: the input is a passport picture plus the prompt 'Extract the ID data from this document'; it is sent together with a schema, the Pydantic model IDDocumentInfo with fields name, nationality, date_of_birth, id_number (str) and expiration_date (date); the LLM fills in the schema and returns JSON (name Mario Rossi, nationality Bananense, date of birth 1985-03-15, ID number BN1234567, expiration date 2034-05-20); the output is validated against the schema, and if invalid the LLM is asked to retry; valid output becomes native objects used in code, databases and APIs" >}}
+
 - Constrain the FM to answer with _data_ (e.g. JSON) matching a given __schema__, rather than free text
     + the output can be _parsed_ and _validated_ by code, then stored or passed to other components
-    + e.g. extracting name, nationality, and expiry date from a passport's picture
+    + e.g. above, extracting ID data from a passport's picture, in the [running example](../#/running-example)
 - (more on this in the [prompting](../prompting/#/structured-output) lecture)
 
 ---
@@ -803,6 +805,8 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 
 ## Concept: Agentic Skills
 
+{{< image src="../skills/progressive-disclosure.svg" width="100%" max-h="45vh" alt="Progressive disclosure: a skill is a folder (e.g. phd-application-review/ with SKILL.md, scripts, references, assets); level 1, metadata (name and description, about 100 tokens per skill), in the context from startup for all installed skills; level 2, instructions (the SKILL.md body, below 5,000 tokens), loaded upon activation, when the LLM picks the skill; level 3, resources (scripts, references, assets), read only if the instructions require them" >}}
+
 - _Folders_ of __instructions__ (Markdown) and _scripts_, which an agent loads _on demand_, when relevant to the task
     + reusable _procedures_, written by domain experts in natural language
     + only names and descriptions stay in the context, until needed
@@ -812,10 +816,12 @@ Combine _prompts_, _tools_, _vector stores_, and _agents_ to constrain and gover
 
 ## Concept: Workflows
 
+{{< image src="../workflows/admission-workflow.svg" width="100%" max-h="45vh" alt="The admission workflow of the running example as a graph: read transcripts (LLM step, one per candidate, in parallel), check eligibility (data step), score letters (LLM step), rank (data step), committee approval (user-input step, the run stops and resumes upon the answer), notify candidates (action step); dashed conditional edges skip to approval if nobody is eligible, and end without sending if the committee says no; the state is saved after each step as a checkpoint" >}}
+
 - The _code_ decides the __flow__ (a state machine, a graph of steps), and FMs fill in the _steps_
     + as opposed to _agents_, where the FM decides what to do next
     + predictable, testable, auditable; less flexible
-    + e.g. extract $\rightarrow$ validate $\rightarrow$ score $\rightarrow$ report
+    + e.g. above, the admission workflow of the [running example](../#/running-example)
 - (more on this in the [workflows](../workflows/#/workflows-concept) lecture)
 
 {{% /section %}}
