@@ -81,6 +81,19 @@ outputs = ["Reveal"]
     + __less flexible__: unforeseen requests need a _new version_ of the workflow
 - vs. [skills](../skills/#/skills-vs-others): procedures owned by domain experts (skills) vs. reliable, auditable ones (workflows)
 
+---
+
+{{< slide id="workflows-states" >}}
+
+## Workflows as (extended) state machines
+
+{{< image src="./admission-states.svg" max-h="45vh" alt="The admission workflow as a state diagram: from the start, the transition 'read transcripts' (LLM step, one per candidate in parallel) leads to the state 'transcripts read'; 'check eligibility' (data step) leads to 'eligibility known'; with the guard 'some eligible', 'score letters' (LLM step) leads to 'letters scored', then 'rank' (data step) to 'ranking ready', and 'ask for approval' (user input) to 'awaiting committee'; with the guard 'none eligible', it goes straight to awaiting; from the awaiting state (run suspended), on 'answer: yes' candidates are notified (action) and the run ends, on 'answer: no' it ends with nothing sent. Each state lists the fields it adds to the extended state; underneath, the extended state (run, candidates, transcripts, problems, scores, ranking, approved, notified), saved after each transition as a checkpoint" >}}
+
+- The [same workflow](#/workflows-example), seen from the _states_' side: one _initial_ state, one or more _final_ states, possibly (bounded!) _cycles_
+- Not every step is _one_ transition: _human input_ becomes a __waiting state__, left upon an _event_ (the answer, possibly hours later); _parallel_ steps become _one_ transition, which completes when all branches are done
+- State machine does __not__ mean _finite_ state machine: the states are finite, the data they carry are not (_extended state machine_)
+    + what libraries (e.g. LangGraph) call the [__state__](#/state) is the _extended_ part: the run's memory
+
 {{% /section %}}
 
 ---
