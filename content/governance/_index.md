@@ -130,6 +130,8 @@ Three main __deployment options__, differing in _who_ runs the model, and _where
 
 ## Deployment options: a worked cost example
 
+{{% small "75%" %}}
+
 Let's estimate the yearly cost of the running example, under explicit (and rough) __assumptions__:
 - 500 applications per year; each one = passport picture + transcript + letter ≈ 6k input tokens, plus ~1k tokens of prompts
 - 5 requests per application (extraction, validation, scoring, ...) $\implies$ ~35k _input_ + ~5k _output_ tokens per application
@@ -145,9 +147,22 @@ Let's estimate the yearly cost of the running example, under explicit (and rough
 
 (prices as of September 2026: they change every few months, always re-check them)
 
+{{% /small %}}
+
 {{% fragment %}}
-> At _this_ scale, __cost is not the deciding factor__: compliance and control are. Things change at scale: e.g. one 80 GB GPU rented 24/7 costs ~\\$2k/month, which buys ~100M _output_ tokens of a frontier model per month. The __break-even__ depends on _volume_, _utilization_, and _model size_
+> At _this_ scale, __cost is not the deciding factor__: compliance and control are. Things change at scale: the __break-even__ depends on _volume_, _utilization_, and _model size_ (next slide)
 {{% /fragment %}}
+
+---
+
+{{< slide id="cost-breakeven" >}}
+
+## The break-even, at a glance
+
+{{< image src="./cost-breakeven.svg" max-h="58vh" alt="Yearly cost as a function of tokens processed per year, on log scales: pay-per-use options (frontier proprietary, small proprietary, open model hosted in the EU) are rising lines, fixed-cost options (80 GB GPU rented 24/7, about 24 thousand dollars per year; on-premise workstation, about 1,200 dollars per year) are flat. The running example, about 20 million tokens per year, lies far to the left of every break-even point: the workstation beats the frontier model from about 200 million tokens per year, the EU-hosted open model only from about 6 billion" >}}
+
+- Fixed costs do not grow with volume, but have a maximum _capacity_, and hidden costs (_staff_, maintenance)
+- W.r.t. an open model hosted in the EU, on-premise pays off only at volumes __hundreds of times__ larger than the running example's
 
 {{% /section %}}
 
@@ -196,6 +211,8 @@ plus _contracts_ (e.g. providers' terms of service, data processing agreements) 
 
 ## GDPR in practice: providers and enforcement
 
+{{% small "85%" %}}
+
 ### What providers offer (as of September 2026)
 
 | Provider | EU data residency | Zero data retention (ZDR) |
@@ -213,6 +230,30 @@ plus _contracts_ (e.g. providers' terms of service, data processing agreements) 
 - [March 2023](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9870847): ChatGPT temporarily _blocked_ in Italy (lawful basis, transparency, age verification), then reopened under [conditions](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9874751)
 - [December 2024](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10085432): €15M fine to OpenAI, later _annulled_ by the Court of Rome (March 2026) since the competent authority was the Irish one (_one-stop-shop_ mechanism)
 - [January 2025](https://www.garanteprivacy.it/web/guest/home/docweb/-/docweb-display/docweb/10098477): urgent _limitation_ of processing for DeepSeek
+
+{{% /small %}}
+
+---
+
+{{< slide id="provider-chain" >}}
+
+## Who sees the data? The provider chain
+
+{{< image src="./provider-chain.svg" max-h="25vh" alt="The provider chain: the organisation (data controller) sends data to an aggregator (e.g. Open Router, USA; ToS and DPA signed by the organisation), which forwards them to an inference provider (e.g. Together AI, USA, or Scaleway, EU; contract with the aggregator), which runs the weights of a model developer (e.g. Qwen3, Alibaba, China; only the weights' license). Data flow through the first three; the developer does not see them" >}}
+
+{{% small "85%" %}}
+
+| Kind | What they offer | Examples | Contract with |
+|---|---|---|---|
+| __Primary providers__ (model developers) | their _own_ models, via their own API (and apps) | OpenAI, Anthropic, Google, Mistral, DeepSeek | the developer |
+| __Inference providers__ | (others') _open-weights_ models, run on their own hardware | Together AI, Groq, Fireworks, DeepInfra, EU clouds (e.g. Scaleway, OVHcloud) | whoever hosts the model |
+| __Cloud platforms__ (hyperscalers) | many models (proprietary _and_ open) in a cloud ecosystem | Azure AI Foundry, AWS Bedrock, Google Vertex AI | the cloud provider |
+| __Aggregators__ (routers) | _one_ API and _one_ bill for models of _many_ providers | [Open Router](../llmaas/#/open-router) | the aggregator (and, indirectly, each upstream provider) |
+
+- The _same_ open-weights model is reachable in _many_ ways: compare __price__, __latency__, __data location__, and __terms__ (e.g. retention, training on your data)
+- Each hop adds a __contract__ and, potentially, a __jurisdiction__: ask _where_ data are processed, not only _who_ trained the model
+
+{{% /small %}}
 
 ---
 
@@ -471,6 +512,16 @@ A model release is a __bundle__ of separately _openable_ artifacts: downloading 
 {{% fragment %}}
 > Skeptical reading: for an engineer, _where the model runs_ and _what its license allows_ matter much more than _who trained it_. The evidence (next slides) suggests that EU and Italian models are mostly __small__, __late__, and __not competitive__ with the frontier, nor with the best global open-weights models
 {{% /fragment %}}
+
+---
+
+{{< slide id="gap-at-a-glance" >}}
+
+## The gap, at a glance
+
+{{< image src="./gap-in-numbers.svg" max-h="48vh" alt="Stanford AI Index 2026, 2025 figures. Private AI investment: United States 285.9 billion dollars, Europe 20.9, China 12.4, Italy less than 1. Notable AI models: United States 59, China 35, Europe 1 in France (plus 1 in the United Kingdom), Italy none listed" >}}
+
+> The United States invest in AI __more than ten times__ as much as Europe; Italy is not among the top 15 countries (details in the next slide)
 
 ---
 
