@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167622"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167897"></script>
 
   	<meta name="generator" content="Hugo 0.169.0">
 </head>
@@ -517,7 +517,7 @@
 <p>Configure the LLM provider via <strong>environment variables</strong> (cf. <a href="./free-access/">Free Access to LLMs</a>):</p>
 <ul>
 <li><code>OPENAI_API_KEY</code>: your API key (if missing, snippets ask for it interactively)</li>
-<li><code>OPENAI_BASE_URL</code> (default: <code>https://openrouter.ai/api/v1/</code>), <code>OPENAI_MODEL</code> (default: <code>nvidia/nemotron-3-super-120b-a12b:free</code>, free)</li>
+<li><code>OPENAI_BASE_URL</code> (default: <code>https://openrouter.ai/api/v1/</code>), <code>OPENAI_MODEL</code> (default: <code>openrouter/free</code>, i.e. a <em>random</em> free model at each request, so that defaults never go stale; set a specific model ID for reproducible runs)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">OPENAI_API_KEY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">"sk-or-v1-..."</span>     <span style="color:#8f5902;font-style:italic"># on Windows (PowerShell): $env:OPENAI_API_KEY="sk-or-v1-..."</span>
 </span></span></code></pre></div></li>

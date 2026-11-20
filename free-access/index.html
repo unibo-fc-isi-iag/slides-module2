@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167622"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167897"></script>
 
   </head>
   <body>
@@ -172,7 +172,7 @@
 </li>
 <li>Arguments: <code>PROVIDER</code> (required), then optionally <code>MODEL</code> and <code>PROMPT</code> (without them, the script just lists the models)</li>
 <li>Full script <a href="../lab-snippets/snippets/lecture_free_access/example1/free_providers.py">here</a> (cf. <a href="../#/lab-snippets-run">how to run snippets</a>); model IDs are <em>listed live</em>, not hard-coded, since they <strong>go stale quickly</strong></li>
-<li>The same trick works with the <a href="../llmaas">LLM-as-a-Service</a> scripts: just set <code>OPENAI_BASE_URL</code>, <code>OPENAI_API_KEY</code>, <strong>and</strong> <code>OPENAI_MODEL</code> (the default, <code>nvidia/nemotron-3-super-120b-a12b:free</code>, exists only on OpenRouter: pick an ID from the listing above), e.g.
+<li>The same trick works with the <a href="../llmaas">LLM-as-a-Service</a> scripts: just set <code>OPENAI_BASE_URL</code>, <code>OPENAI_API_KEY</code>, <strong>and</strong> <code>OPENAI_MODEL</code> (the default, <code>openrouter/free</code>, exists only on OpenRouter: pick an ID from the listing above), e.g.
 <ul>
 <li>Ollama: <code>OPENAI_BASE_URL=http://localhost:11434/v1 OPENAI_API_KEY=unused OPENAI_MODEL=gpt-oss:20b</code></li>
 <li>Groq: <code>OPENAI_BASE_URL=https://api.groq.com/openai/v1 OPENAI_API_KEY=... OPENAI_MODEL=openai/gpt-oss-20b</code></li>

@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167622"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795167897"></script>
 
   </head>
   <body>
@@ -385,7 +385,8 @@
 </span></span></code></pre></div><ul>
 <li>the judge is a <em>different</em> model than the one under test (set <code>JUDGE_MODEL</code> to change it), wrapped in <code>OpenRouterModel</code>: DeepEval’s adapter for OpenRouter (or any OpenAI-compatible API, via <code>base_url</code>)
 <ul>
-<li>default: <code>google/gemma-4-31b-it:free</code>, of a <em>different family</em> than the system under test (avoiding <em>self-preference</em>), with comparable <em>active</em> parameters (31B dense vs. 12B active out of 120B), free, and able to see <em>images</em></li>
+<li>default: <code>google/gemma-4-31b-it:free</code>, free, and able to see <em>images</em></li>
+<li><strong>pin</strong> the system under test too (<code>OPENAI_MODEL</code>, whose default <code>openrouter/free</code> picks a <em>random</em> free model, possibly a Gemma itself): choose one of a <em>different family</em> than the judge (avoiding <em>self-preference</em>), e.g. <code>nvidia/nemotron-3-ultra-550b-a55b:free</code>, so that runs are <em>comparable</em></li>
 </ul>
 </li>
 <li><code>evaluation_params</code> selects, among the fields of a test case (<code>SingleTurnParams.INPUT</code>, <code>.ACTUAL_OUTPUT</code>, <code>.EXPECTED_OUTPUT</code>, …), which parts of the test case the judge can <em>see</em>:

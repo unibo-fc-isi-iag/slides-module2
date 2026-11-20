@@ -15,7 +15,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).parent.parent
-MODEL = "nvidia/nemotron-3-super-120b-a12b:free"  # the snippets' default
+MODEL = "openrouter/free"  # the snippets' default
 # questions are answerable from data/, as in the snippets' docstrings (agents may otherwise search on and on)
 QUESTION = "What time is it in Tokyo now?\n"  # for the REPLs: one question, then EOF (i.e. Ctrl+D) ends them
 REGULATIONS_QUESTION = "Is Mohammed Ali's degree enough to be admitted, according to the regulations?\n"
