@@ -524,6 +524,8 @@ e.g. `ollama pull gemma4:e2b` downloads the default quantization, whereas tags l
 
 - __Dynamic routing__ of requests happens at two levels:
     + among __models__: `openrouter/auto` ([Auto Router](https://openrouter.ai/docs/guides/routing/routers/auto-router)) lets OR pick the model for each request, based on its content (__paid__: it may route to paid models, so it fails on accounts without credits)
+        * `openrouter/free` ([Free Models Router](https://openrouter.ai/openrouter/free)) picks a _random_ free model, among those supporting the request's features (e.g. images, tools, structured outputs): this is the __default__ of our snippets, as single free models come and go
+        * in both cases, the `model` field of the _response_ tells which model actually answered
         * the candidates can be restricted with _glob_ patterns, e.g. `anthropic/*` or `openai/gpt-5*`, in the router's `allowed_models` (these are __not__ valid `model` names by themselves)
     + among __providers__ of a _given_ model: OR picks one of the providers serving it ([provider selection](https://openrouter.ai/docs/guides/routing/provider-selection)); by default, load-balanced and price-weighted
         * override per request with `provider.sort` = `price` | `latency` | `throughput` (tokens per second), or in the [routing settings](https://openrouter.ai/workspaces/default/routing) of your OR account
@@ -578,7 +580,7 @@ e.g. `ollama pull gemma4:e2b` downloads the default quantization, whereas tags l
     curl -X POST "https://openrouter.ai/api/v1/chat/completions" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer YOUR_API_KEY" \
-        -d '{"model": "nvidia/nemotron-3-super-120b-a12b:free", "messages": [{"role": "user", "content": "What is the capital of France?"}]}'
+        -d '{"model": "openrouter/free", "messages": [{"role": "user", "content": "What is the capital of France?"}]}'
     ```
 
 ---
@@ -914,7 +916,7 @@ Reference technology: [OpenAI Client Libraries](https://developers.openai.com/ap
 
 4. Full code [here](../lab-snippets/snippets/lecture_llmaas/example1/repl_chat_openai.py)
 
-5. Example of interaction with the model (start with `poetry run python -m snippets -l llmaas -e 1`, cf. [how to run snippets](../#/lab-snippets-run)):
+5. Example of interaction with the model (start with `poetry run python -m snippets -l llmaas -e 1`, cf. [how to run snippets](../#/lab-snippets-run)), recorded with an earlier default model (`nvidia/nemotron-3-super-120b-a12b:free`, now unavailable):
 
 ```text
 Enter your API key for https://openrouter.ai/api/v1/: sk-or-v1-XXXXXXXXXXXXXXXXXXXXXXXXX
@@ -1143,7 +1145,7 @@ messages.append(dict(role="assistant", content="".join(answer_parts))) # reconst
 
 4. Full code [here](../lab-snippets/snippets/lecture_llmaas/example2/repl_chat_openai_async.py)
 
-5. Example of interaction (start with `poetry run python -m snippets -l llmaas -e 2`):
+5. Example of interaction (start with `poetry run python -m snippets -l llmaas -e 2`), recorded with an earlier default model:
 
 ```text
 Enter your API key for https://openrouter.ai/api/v1/: sk-or-v1-XXXXXXXXXXXXXXXXXXXXXXXXX

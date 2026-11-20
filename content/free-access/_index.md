@@ -83,7 +83,7 @@ poetry run python -m snippets -l free-access -e 1 groq openai/gpt-oss-20b "Hello
     + `ollama`, `vllm`: open models served _locally_ (on your machine, see [below](#/local)), hence no key
 - Arguments: `PROVIDER` (required), then optionally `MODEL` and `PROMPT` (without them, the script just lists the models)
 - Full script [here](../lab-snippets/snippets/lecture_free_access/example1/free_providers.py) (cf. [how to run snippets](../#/lab-snippets-run)); model IDs are _listed live_, not hard-coded, since they __go stale quickly__
-- The same trick works with the [LLM-as-a-Service](../llmaas) scripts: just set `OPENAI_BASE_URL`, `OPENAI_API_KEY`, __and__ `OPENAI_MODEL` (the default, `nvidia/nemotron-3-super-120b-a12b:free`, exists only on OpenRouter: pick an ID from the listing above), e.g.
+- The same trick works with the [LLM-as-a-Service](../llmaas) scripts: just set `OPENAI_BASE_URL`, `OPENAI_API_KEY`, __and__ `OPENAI_MODEL` (the default, `openrouter/free`, exists only on OpenRouter: pick an ID from the listing above), e.g.
     + Ollama: `OPENAI_BASE_URL=http://localhost:11434/v1 OPENAI_API_KEY=unused OPENAI_MODEL=gpt-oss:20b`
     + Groq: `OPENAI_BASE_URL=https://api.groq.com/openai/v1 OPENAI_API_KEY=... OPENAI_MODEL=openai/gpt-oss-20b`
 

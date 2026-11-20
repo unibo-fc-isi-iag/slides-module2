@@ -191,7 +191,8 @@ outputs = ["Reveal"]
     {{% code path="static/lab-snippets/snippets/lecture_validating/example1/test_letter_scoring.py" from="43" to="62" %}}
 
     - the judge is a _different_ model than the one under test (set `JUDGE_MODEL` to change it), wrapped in `OpenRouterModel`: DeepEval's adapter for OpenRouter (or any OpenAI-compatible API, via `base_url`)
-        * default: `google/gemma-4-31b-it:free`, of a _different family_ than the system under test (avoiding _self-preference_), with comparable _active_ parameters (31B dense vs. 12B active out of 120B), free, and able to see _images_
+        * default: `google/gemma-4-31b-it:free`, free, and able to see _images_
+        * __pin__ the system under test too (`OPENAI_MODEL`, whose default `openrouter/free` picks a _random_ free model, possibly a Gemma itself): choose one of a _different family_ than the judge (avoiding _self-preference_), e.g. `nvidia/nemotron-3-ultra-550b-a55b:free`, so that runs are _comparable_
     - `evaluation_params` selects, among the fields of a test case (`SingleTurnParams.INPUT`, `.ACTUAL_OUTPUT`, `.EXPECTED_OUTPUT`, ...), which parts of the test case the judge can _see_:
         * _reference-based_ judge (`relationship`): compares the actual output with the _expected_ one, written by humans
         * _reference-free_ judge (`groundedness`): compares the actual output with the _input_, no expectation needed
