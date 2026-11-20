@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" width="1600" height="640" font-family="'Signika Negative', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#222222"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#8a8f98"/></marker></defs>
+<text x="800.0" y="50.0" font-size="28" fill="#222222" text-anchor="middle" font-weight="bold">Q4_K: one super-block = 256 weights = 8 sub-blocks of 32</text>
+<rect x="40.0" y="120.0" width="220.0" height="110.0" rx="12" fill="#fbe7cf" stroke="#e8871e" stroke-width="2"/>
+<text x="150.0" y="154.0" font-size="20" fill="#222222" text-anchor="middle" font-weight="bold">per super-block</text>
+<text x="150.0" y="184.0" font-size="20" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">d, dmin</text>
+<text x="150.0" y="212.0" font-size="18" fill="#555555" text-anchor="middle">2 × 16 bits (fp16)</text>
+<rect x="300.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#d6e8fb"/>
+<text x="375.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="375.0" y1="174.0" x2="375.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="308.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="375.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale0, min0</text>
+<text x="375.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="450.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#b9d7f6"/>
+<text x="525.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="525.0" y1="174.0" x2="525.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="458.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="525.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale1, min1</text>
+<text x="525.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="600.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#d6e8fb"/>
+<text x="675.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="675.0" y1="174.0" x2="675.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="608.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="675.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale2, min2</text>
+<text x="675.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="750.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#b9d7f6"/>
+<text x="825.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="825.0" y1="174.0" x2="825.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="758.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="825.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale3, min3</text>
+<text x="825.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="900.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#d6e8fb"/>
+<text x="975.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="975.0" y1="174.0" x2="975.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="908.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="975.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale4, min4</text>
+<text x="975.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="1050.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#b9d7f6"/>
+<text x="1125.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="1125.0" y1="174.0" x2="1125.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="1058.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="1125.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale5, min5</text>
+<text x="1125.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="1200.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#d6e8fb"/>
+<text x="1275.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="1275.0" y1="174.0" x2="1275.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="1208.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="1275.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale6, min6</text>
+<text x="1275.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="1350.0" y="120.0" width="150.0" height="50.0" rx="0" fill="#b9d7f6"/>
+<text x="1425.0" y="152.0" font-size="16" fill="#222222" text-anchor="middle">32 × 4-bit codes</text>
+<line x1="1425.0" y1="174.0" x2="1425.0" y2="206.0" stroke="#8a8f98" stroke-width="2" marker-end="url(#ahs)"/>
+<rect x="1358.0" y="210.0" width="134.0" height="64.0" rx="6" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="1425.0" y="235.0" font-size="15" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">scale7, min7</text>
+<text x="1425.0" y="260.0" font-size="15" fill="#555555" text-anchor="middle">6 + 6 bits</text>
+<rect x="300.0" y="120.0" width="1200.0" height="50.0" rx="0" fill="none" stroke="#2690e7" stroke-width="2"/>
+<text x="900.0" y="310.0" font-size="24" fill="#222222" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace">sub-block i:   ŵ = d · scale_i · code  −  dmin · min_i</text>
+<text x="900.0" y="342.0" font-size="19" fill="#555555" text-anchor="middle">the sub-block scales/mins are themselves quantized (6 bits), using d and dmin as their own scale</text>
+<text x="800.0" y="414.0" font-size="22" fill="#222222" text-anchor="middle" font-weight="bold">bits per weight</text>
+<text x="504.0" y="470.0" font-size="19" fill="#222222" text-anchor="end">fp16 min + scale per 32 weights</text>
+<rect x="520.0" y="440.0" width="680.0" height="44.0" rx="0" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="860.0" y="469.0" font-size="18" fill="#222222" text-anchor="middle">codes: 4</text>
+<rect x="1200.0" y="440.0" width="170.0" height="44.0" rx="0" fill="#fbe7cf" stroke="#e8871e" stroke-width="1.5"/>
+<text x="1384.0" y="469.0" font-size="20" fill="#222222" text-anchor="start" font-weight="bold">= 5.0</text>
+<text x="504.0" y="540.0" font-size="19" fill="#222222" text-anchor="end">Q4_K (6-bit min + scale per 32, fp16 per 256)</text>
+<rect x="520.0" y="510.0" width="680.0" height="44.0" rx="0" fill="#dcf0e0" stroke="#3a9e4f" stroke-width="1.5"/>
+<text x="860.0" y="539.0" font-size="18" fill="#222222" text-anchor="middle">codes: 4</text>
+<rect x="1200.0" y="510.0" width="85.0" height="44.0" rx="0" fill="#fbe7cf" stroke="#e8871e" stroke-width="1.5"/>
+<text x="1299.0" y="539.0" font-size="20" fill="#222222" text-anchor="start" font-weight="bold">= 4.5</text>
+<text x="1202.0" y="590.0" font-size="18" fill="#555555" text-anchor="start">← overhead (scales, mins)</text>
+</svg>

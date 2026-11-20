@@ -324,11 +324,24 @@ Reference technology: [Ollama](https://ollama.com/)
     + _loss of precision_ $\implies$ some _quality degradation_, which is often negligible at 8 bits, noticeable at 4 bits, and severe below 3 bits
     + degradation is task-dependent (e.g. worse for maths, code, and non-English languages)
 
-{{< image src="./quantization.svg" max-h="40vh" alt="A bell-shaped histogram of fp16 weights mapped onto 16 four-bit codes plus a per-block scale, yielding an approximate, stepped histogram" >}}
+{{< image src="./weight-blocks.svg" max-h="34vh" alt="Left: a corner of a weight matrix drawn as a heatmap (blue negative, orange positive values), with one row split into consecutive blocks of 32 weights, the first highlighted. Right: the highlighted block zoomed in as 32 bars (the weight values), each mapped to a 4-bit code from 0 to 15, plus the min and scale stored once for the whole block" >}}
 
 ---
 
-## Quantization (pt. 2): the technological landscape
+{{< slide id="quantization-how" >}}
+
+## Quantization (pt. 2): how it works
+
+{{< image src="./quantization.svg" max-h="50vh" alt="A bell-shaped histogram (how many weights have each value) of fp16 weights, mapped onto 16 four-bit codes plus a per-block scale s = (max − min)/15; each weight is recovered as ŵ = min + code × s, yielding an approximate, stepped histogram" >}}
+
+- each histogram shows _how many_ weights (of one block) take _each value_: trained weights are roughly bell-shaped around 0
+- the _range_ $[\min, \max]$ of the block is split into 16 levels, and each weight is stored as the 4-bit integer $\mathit{code}$ (from 0 to 15) of its level
+- one _scale_ $s = (\max - \min) / 15$ is stored per block (16 levels $\implies$ 15 steps between $\min$ and $\max$)
+- at inference time, each weight is _reconstructed_ as $\hat{w} = \min + \mathit{code} \times s$, i.e. an _approximation_ of the original $w$
+
+---
+
+## Quantization (pt. 3): the technological landscape
 
 Several _quantization methods_ and _file formats_ exist, bound to specific __runtimes__:
 
@@ -347,12 +360,72 @@ Several _quantization methods_ and _file formats_ exist, bound to specific __run
 - `F16` / `BF16`: no quantization (16-bit)
 - `Q8_0`: 8-bit (~8.5 bits per weight, including block scales), nearly lossless
 - `Q4_K_M`: ~4.9 bits per weight on average
-    - `K` = _k-quants_ (super-blocks of weights whose sub-block scales are quantized too)
-    - `M`edium mix (a few sensitive tensors kept at higher precision): the usual __default__ trade-off
+    - `K` = [_k-quants_](#/k-quants) (super-blocks of weights whose sub-block scales are quantized too)
+    - `M`edium [_mix_](#/quant-mixes) (a few sensitive tensors kept at higher precision): the usual __default__ trade-off
 - `Q2_K`, `Q3_K_S`, ... : smaller and increasingly lossy (`S`mall, `M`edium, `L`arge mixes)
-- `IQ*`: _importance-matrix_ quants, calibrated on sample text to lose less at very low bit-widths
+- `IQ*`: _i-quants_, with non-uniform levels, aimed at very low bit-widths; built with an [_importance matrix_](#/imatrix), calibrated on sample text
 
 e.g. `ollama pull gemma4:e2b` downloads the default quantization, whereas tags like `...-q8_0` or `...-fp16` select a specific one (see the _"Tags"_ tab of each model on [Ollama's zoo](https://ollama.com/models))
+
+---
+
+{{< slide id="k-quants" >}}
+
+## GGUF quantization (pt. 1): k-quants
+
+{{< image src="./k-quants.svg" max-h="40vh" alt="A Q4_K super-block of 256 weights split into 8 sub-blocks of 32 weights, each with its own 6-bit scale and 6-bit min, plus two fp16 values d and dmin for the whole super-block; each weight is recovered as d times scale_i times code minus dmin times min_i. Bars compare bits per weight: 4 bits of codes plus 1.0 of overhead (fp16 min and scale per 32 weights) = 5.0, versus 4 plus 0.5 for Q4_K = 4.5" >}}
+
+- Weights are grouped in _super-blocks_ of 256, each split into _sub-blocks_ (8 × 32 weights for `Q4_K`)
+- Each sub-block has its own _scale_ and _min_ (as in [pt. 2 of quantization](#/quantization-how)), but stored with only __6 bits__ each...
+    + ... as they are __quantized in turn__, w.r.t. two 16-bit values per super-block (`d`, `dmin`)
+- Net effect: a min _and_ a scale every 32 weights, for the same 4.5 bits/weight that `Q4_0` spends on a scale alone
+- `Q2_K` ... `Q6_K` apply the same idea with codes of 2 ... 6 bits (cf. [llama.cpp PR #1684](https://github.com/ggml-org/llama.cpp/pull/1684))
+
+---
+
+{{< slide id="quant-mixes" >}}
+
+## GGUF quantization (pt. 2): mixes (`_S`, `_M`, `_L`)
+
+{{< image src="./quant-mixes.svg" max-h="40vh" alt="Two grids, one row per tensor type of a layer (attn_q, attn_k, attn_v, attn_output, ffn_gate, ffn_up, ffn_down) and one column per layer of a 32-layer model, plus the output layer. In Q4_K_S almost everything is Q4_K, with attn_v and ffn_down of the first 4 layers in Q5_K. In Q4_K_M attn_v and ffn_down are Q6_K in 16 of the 32 layers (first 4, last 4, and every third one in between). The output layer is Q6_K in both" >}}
+
+- A `Q4_K_*` file does __not__ use `Q4_K` everywhere: some tensors are more _sensitive_ to rounding errors, and get more bits
+    + e.g. `attn_v` (attention values) and `ffn_down` (output of the feed-forward block), the first/last layers, the `output` layer
+- `S`mall mix: almost all `Q4_K` (4.67 bits/weight overall), `M`edium mix: `attn_v`, `ffn_down` at `Q6_K` in _half_ of the layers (4.89 bits/weight)
+    + on Llama-3-8B: perplexity +0.27 (`Q4_K_S`) vs. +0.18 (`Q4_K_M`) w.r.t. 16 bits, for +5% size (cf. [`llama-quantize`'s README](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md))
+- The mixes are hand-tuned _heuristics_, hard-coded in [`llama-quant.cpp`](https://github.com/ggml-org/llama.cpp/blob/master/src/llama-quant.cpp), and can be overridden per tensor (`--tensor-type`)
+
+---
+
+{{< slide id="imatrix" >}}
+
+## GGUF quantization (pt. 3): the importance matrix
+
+{{< image src="./imatrix.svg" max-h="40vh" alt="Left: sample text is fed to the full-precision model; for each weight w_j the average squared input imp_j = mean(x_j^2) is recorded, yielding a bar chart where 3 of the 12 weights of a block are much more important. Right: two 2-bit quantizations of the same 12 weights. The plain fit minimises the plain squared error, and leaves the important weights with a squared error of 0.101. The imatrix-weighted fit places the 4 levels so that the important weights almost coincide with a level (error 0.003), at the price of larger errors on unimportant weights" >}}
+
+- Not all weights matter equally: a weight whose _input_ $x\_j$ is usually large has more effect on the output
+- `llama-imatrix` runs the model on _calibration text_, recording $\mathit{imp}\_j = \mathrm{mean}(x\_j^2)$ for every column of every tensor
+- Quantization then picks each block's scale and min minimising the _weighted_ error $\sum\_j \mathit{imp}\_j \cdot (w\_j - \hat{w}\_j)^2$
+    + important weights are reproduced more faithfully, at the expense of the others (2 bits in the figure, to make errors visible)
+- __Optional__ for most types (on Hugging Face, look for `imatrix` or `i1` in repo/file names), __mandatory__ for `IQ1_*`, `IQ2_*`, `IQ3_XXS`
+- Caveat: the result depends on the _calibration text_ (cf. [llama.cpp PR #4861](https://github.com/ggml-org/llama.cpp/pull/4861))
+
+---
+
+{{< slide id="quant-outliers" >}}
+
+## What if the weights of a block are not bell-shaped?
+
+{{< image src="./non-bell-blocks.svg" max-h="40vh" alt="Three blocks of 32 weights, each drawn as dots stacked on the 4-bit code (0 to 15) they get. Bell-shaped block: 15 of 16 codes used, mean rounding error 0.07. Block with one outlier: the outlier alone gets code 15, the other 31 weights crowd into codes 0 to 6, so only 8 codes are used and the error triples (0.22). Bimodal block: codes in the gap between the two clusters stay empty, 11 codes used, error 0.12 (x1.6)" >}}
+
+- Uniform levels between min and max work best when weights _spread evenly_ over the range
+    + one __outlier__ stretches the range: the other weights crowd into few codes, and the error grows for the _whole block_
+    + __clusters__ waste codes on empty regions
+- Outliers are _systematic_ in LLMs, not rare accidents (cf. [Dettmers et al., 2022](https://arxiv.org/abs/2208.07339)); hence:
+    + _small blocks_ (16–32 weights): an outlier spoils only its own block
+    + _searching_ the scale and min that minimise the error, rather than taking the raw min and max (possibly _clipping_ the outlier)
+    + _non-uniform levels_, denser where weights are: `IQ4_NL`, or NF4 in QLoRA ([Dettmers et al., 2023](https://arxiv.org/abs/2305.14314))
+    + _more bits_ for sensitive weights or tensors: [mixes](#/quant-mixes), [importance matrix](#/imatrix), AWQ, LLM.int8()
 
 ---
 
