@@ -64,7 +64,7 @@ jobs:
         uses: ruby/setup-ruby@v1.343.0
         with:
           working-directory: shared-slides
-          ruby-version: "3.4" # shared-slides pins 3.3.5, unavailable on newer runner images
+          ruby-version: "4.0" # shared-slides pins 3.3.5, unavailable on newer runner images
       - name: Run the preprocessor
         run: shared-slides/preprocess.rb
       - name: Build slides with hugo
@@ -113,7 +113,7 @@ jobs:
         uses: ruby/setup-ruby@v1.343.0
         with:
           working-directory: shared-slides
-          ruby-version: "3.4" # shared-slides pins 3.3.5, unavailable on newer runner images
+          ruby-version: "4.0" # shared-slides pins 3.3.5, unavailable on newer runner images
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
         with:
