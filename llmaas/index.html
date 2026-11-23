@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795384006"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795401850"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-11-22
+<p>Compiled on: 2026-11-23
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
@@ -919,10 +919,10 @@
 </ul>
 </section><section>
 <h2 id="chat-completion-an-intuitive-example">Chat Completion: an intuitive example</h2>
-<figure id="plantuml-figure-1795384015826157962" class="plantuml" data-source="CkBzdGFydHVtbApoaWRlIGZvb3Rib3gKYWN0b3IgIlVzZXIiIGFzIFUKcGFydGljaXBhbnQgIlByb2dyYW0gKGNsaWVudCkiIGFzIFAKcGFydGljaXBhbnQgIkxMTSBwcm92aWRlciAoc2VydmVyKSIgYXMgTApub3RlIG92ZXIgUDogaGlzdG9yeSA9IFtzeXN0ZW06ICJiZSBmcmllbmRseSJdClUgLT4gUDogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Igpub3RlIG92ZXIgUDogaGlzdG9yeSArPSBbdXNlcjogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXJdfQpMIC0tPiBQOiB7Y2hvaWNlczogW3ttZXNzYWdlOiB7YXNzaXN0YW50OiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyJ9fV0sIHVzYWdlOiB7Li4ufX0Kbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW2Fzc2lzdGFudDogIkkgaGF2ZSBubyBjbG9jaywgLi4uIl0KUCAtPiBVOiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyIKVSAtPiBQOiAiQ2VzZW5hLCBJdGFseSIKbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW3VzZXI6ICJDZXNlbmEsIEl0YWx5Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXIsIGFzc2lzdGFudCwgdXNlcl19Cm5vdGUgb3ZlciBMOiBrZWVwcyBub3RoaW5nIGJldHdlZW4gcmVxdWVzdHM6IHRoZSBXSE9MRSBoaXN0b3J5IGlzIHJlLXNlbnQKTCAtLT4gUDoge2Nob2ljZXM6IFt7bWVzc2FnZToge2Fzc2lzdGFudDogIkl0J3MgLi4uIGluIENlc2VuYSJ9fV0sIHVzYWdlOiB7Li4ufX0KUCAtPiBVOiAiSXQncyAuLi4gaW4gQ2VzZW5hIgpAZW5kdW1sCg==" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
+<figure id="plantuml-figure-1795401861866322512" class="plantuml" data-source="CkBzdGFydHVtbApoaWRlIGZvb3Rib3gKYWN0b3IgIlVzZXIiIGFzIFUKcGFydGljaXBhbnQgIlByb2dyYW0gKGNsaWVudCkiIGFzIFAKcGFydGljaXBhbnQgIkxMTSBwcm92aWRlciAoc2VydmVyKSIgYXMgTApub3RlIG92ZXIgUDogaGlzdG9yeSA9IFtzeXN0ZW06ICJiZSBmcmllbmRseSJdClUgLT4gUDogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Igpub3RlIG92ZXIgUDogaGlzdG9yeSArPSBbdXNlcjogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXJdfQpMIC0tPiBQOiB7Y2hvaWNlczogW3ttZXNzYWdlOiB7YXNzaXN0YW50OiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyJ9fV0sIHVzYWdlOiB7Li4ufX0Kbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW2Fzc2lzdGFudDogIkkgaGF2ZSBubyBjbG9jaywgLi4uIl0KUCAtPiBVOiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyIKVSAtPiBQOiAiQ2VzZW5hLCBJdGFseSIKbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW3VzZXI6ICJDZXNlbmEsIEl0YWx5Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXIsIGFzc2lzdGFudCwgdXNlcl19Cm5vdGUgb3ZlciBMOiBrZWVwcyBub3RoaW5nIGJldHdlZW4gcmVxdWVzdHM6IHRoZSBXSE9MRSBoaXN0b3J5IGlzIHJlLXNlbnQKTCAtLT4gUDoge2Nob2ljZXM6IFt7bWVzc2FnZToge2Fzc2lzdGFudDogIkl0J3MgLi4uIGluIENlc2VuYSJ9fV0sIHVzYWdlOiB7Li4ufX0KUCAtPiBVOiAiSXQncyAuLi4gaW4gQ2VzZW5hIgpAZW5kdW1sCg==" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
 </figure>
 <script>
-    handlePlantumlFigureByID("plantuml-figure-1795384015826157962");
+    handlePlantumlFigureByID("plantuml-figure-1795401861866322512");
 </script>
 <ul>
 <li>Notice that the <strong>same</strong> interaction is implemented by <em>all</em> providers, only the <em>syntax</em> changes
@@ -2492,7 +2492,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-11-22
+<p>Compiled on: 2026-11-23
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>
