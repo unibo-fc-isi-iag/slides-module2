@@ -36,17 +36,18 @@ outputs = ["Reveal"]
 
 ## What is a _prompt_? The general concept
 
-- A __prompt__ is _the whole input_ that is given to an LLM, in order to elicit some _desired output_
-    + in the Chat Completion API, it is the _list of messages_ sent in a request (system, user, assistant, ...)
-    + the model sees nothing else: _everything_ it needs to know must be in there
+- A __prompt__ is the __user-supplied input__ given to an LLM to communicate a _task_ and elicit some _desired output_
+    + as opposed to __(model) context__: _all the information available to the model_ at a generation step
+        * e.g. the Chat Completion history (system, user, assistant messages, ...), including the current prompt
 
-- __Prompt engineering__ is the practice of _designing_, _testing_, and _refining_ prompts, so that the model's responses become more _accurate_, _consistent_, and _useful_ for the task at hand
-    + it is __empirical__: there is no theory telling in advance which prompt works best on which model
-    + hence, it is only meaningful when paired with some form of _evaluation_ (more on this in the next lectures)
+> - __Prompt engineering__ is the practice of _designing_, _testing_, and _refining_ prompts, so that the model's responses become more _accurate_, _consistent_, and _useful_ for the task at hand
+>     + it is __empirical__: there is no theory telling in advance which prompt works best on which model
+>     + hence, it is only meaningful when paired with some form of _evaluation_ (more on this in the next lectures)
 
 - A prompt is commonly made of _four_ (optional) __elements__ (cf. [Prompt Engineering Guide](https://www.promptingguide.ai/introduction/elements)):
     1. __instructions__: the _task_ to be performed, and _how_ to perform it (e.g. "score this letter")
-    2. __context__: _background information_ that may help the model (e.g. "you are assisting a PhD admission committee")
+    2. __(task) context__: _background information_ that may help the model (e.g. "you are assisting a PhD admission committee")
+        + not to be confused with _model context_: task context is just one element of the prompt
     3. __input data__: the _specific_ data to be processed (e.g. the text of the letter)
     4. __output indicator__: the _format_ or _type_ of the expected output (e.g. "answer in JSON, with fields ...")
 
@@ -75,7 +76,7 @@ outputs = ["Reveal"]
 | Be _clear_ and _specific_ | the model cannot read your mind | "summarise in 3 bullet points, max 15 words each" vs. "summarise" |
 | Give a _role_ / _context_ | narrows down the space of plausible answers (personas add little _accuracy_, cf. [Zheng et al., 2024](https://arxiv.org/abs/2311.10054)) | "You are assisting the admission committee of ..." |
 | Use _delimiters_ | separates instructions from data (and _mitigates_, not prevents, [prompt injection](../agents/#/security)) | `<letter> ... </letter>`, Markdown headings, triple quotes |
-| Say what _to do_, not only what _not to do_ | negative instructions are followed less reliably | "use plain words" vs. "don't use jargon" |
+| Say what _to do_, <u>and</u> what _not to do_ | unspecified constraints may lead to unexpected results | "use plain words" + "don't use jargon" |
 | Provide _examples_ | showing is more effective than telling | cf. [few-shot prompting](#/prompting-techniques) |
 | Specify the _output format_ | downstream code needs to parse the response | cf. [structured outputs](#/structured-output) |
 | Let the model _think_ first | complex tasks benefit from intermediate steps | cf. [chain-of-thought](#/prompting-techniques) and [reasoning models](#/reasoning-models) |
