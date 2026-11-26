@@ -242,6 +242,7 @@ From _weakest_ to _strongest_ guarantees:
     + information about the _applicant_ (name, strengths, weaknesses, etc.), to see whether the letter is actually _positive_
     + information about the _authors_ of the letter (e.g. name, position, relationship with the applicant, etc.), to see whether the letter is actually _credible_
     + give a reproducible and grounded _recipe_ for __scoring__ the letter based on these aspects
+    + cf. the [running example](../#/running-example) of the PhD admission committee's assistant for testing end examples
 
 {{% fragment %}}
 
@@ -281,6 +282,83 @@ From _weakest_ to _strongest_ guarantees:
 
 ---
 
+{{< slide id="letter-info-class-diagram" >}}
+
+## Example 1: the structured output model
+
+{{< plantuml max-h="70vh" alt="LetterInfo contains exactly one ApplicantInfo and one AuthorInfo, shown by composition relationships with filled diamonds at LetterInfo. Each class lists its fields and Python types, with notes from the model documentation. LetterInfo.score is bold and amber, with a note explaining its scoring rules." >}}
+@startuml
+left to right direction
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 22
+skinparam noteFontSize 20
+skinparam classBorderColor #334155
+skinparam arrowColor #334155
+skinparam noteBackgroundColor #FFF7DB
+skinparam noteBorderColor #B45309
+hide methods
+hide circle
+
+class LetterInfo #E8EFFB {
+  applicant: ApplicantInfo
+  author: AuthorInfo
+  application_for: str
+  <b><color:#B45309>score: int</color></b>
+}
+
+class ApplicantInfo #E7F3EC {
+  name: str
+  degree: Optional[str]
+  alma_mater: Optional[str]
+  attended: list[str]
+  skills: list[str]
+  strengths: list[str]
+  weaknesses: list[str]
+}
+
+class AuthorInfo #F0EAF8 {
+  name: str
+  affiliation: str
+  position: Optional[str]
+  seniority: Optional[int]
+  email: str
+  nationality: Optional[str]
+  relationship_with_applicant: Optional[str]
+}
+
+LetterInfo "1" *-- "1" ApplicantInfo : applicant
+LetterInfo "1" *-- "1" AuthorInfo : author
+
+note bottom of ApplicantInfo
+  Structured information about the applicant,
+  extracted from the letter.
+end note
+
+note bottom of AuthorInfo
+  Structured information about the author of
+  the letter, extracted from the letter.
+end note
+
+note left of LetterInfo
+  application_for: the PhD programme
+  for which the applicant is applying.
+  ----
+  <b><color:#B45309>score: the score assigned to the letter</color></b>
+  according to the scoring rules.
+  Start at 5; subtract 1 per issue (minimum 0).
+  The recipe is in the field's description.
+end note
+@enduml
+{{< /plantuml >}}
+
+{{% small "80%" %}}
+All three classes inherit from `pydantic.BaseModel`. __Filled diamonds__ denote _composition_: applicant and author information are nested parts of the letter's output. `Optional[T]` allows `None`; these fields are still _required_ because they have no defaults.
+{{% /small %}}
+
+---
+
 ## Example 1: Structured Output with Pydantic Classes (pt. 3)
 
 {{% small "90%" %}}
@@ -288,6 +366,16 @@ From _weakest_ to _strongest_ guarantees:
 4. _Instructions_ for _scoring_ can be provided as well in _natural language_, yet better to be precise and give the LLM a _"recipe"_ for scoring
 
     {{% code path="static/lab-snippets/snippets/lecture_prompting/example1/letter_scoring_openai.py" from="28" to="38" %}}
+
+{{< image src="./letter-scoring-flow.svg" width="100%" max-h="18vh" alt="Left-to-right scoring procedure: start at 5, inspect the letter against the checklist and count penalties N, subtract N with a floor of zero, then return LetterInfo.score. Count each missing non-optional field separately and each other listed issue once." >}}
+
+{{% /small %}}
+
+---
+
+## Example 1: Structured Output with Pydantic Classes (pt. 3, cont.)
+
+{{% small "90%" %}}
 
 5. With these ingredients in mind, the automatic scoring logic is as simple as a _single request–response interaction_ with the LLM:
 
@@ -491,7 +579,9 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
     + the hallucination margin is reduced, as the model is not asked to directly produce a score, but rather to fill in the boolean fields based on the content of the letter, which is an easier task
 {{% /fragment %}}
 
+{{% fragment %}}
 > __Solution__: a walkthrough follows in the next (vertical) column — try on your own first!
+{{% /fragment %}}
 
 ---
 
@@ -543,7 +633,7 @@ Files of this example, in the [`lab-snippets`]({{< github-url repo="lab-snippets
 
 {{% multicol %}}
 {{% col class="col-7" %}}
-{{% code path="static/lab-snippets/snippets/lecture_prompting/exercise1/letter_scoring_checklist.py" from="34" to="54" %}}
+{{% code path="static/lab-snippets/snippets/lecture_prompting/exercise1/letter_scoring_checklist.py" from="34" to="54" unindent="4" %}}
 {{% /col %}}
 {{% col %}}
 - _Properties_ are __not__ part of the JSON Schema: the LLM never sees (nor generates) them

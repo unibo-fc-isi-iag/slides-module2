@@ -6,6 +6,10 @@
 {{- $end := .Get "to" | default (len $content) | int }}
 {{- $end := sub $end $start }}
 {{- $content := after $start (first (add $start $end) $content) -}}
+{{- $unindent := .Get "unindent" | default 0 | int -}}
+{{- if gt $unindent 0 -}}
+    {{- $content = apply $content "replaceRE" (printf "^ {0,%d}" $unindent) "" "." -}}
+{{- end -}}
 {{- $highlight := .Get "highlight" | default "true" -}}
 {{- if eq $highlight "true" }}
     {{- $language := .Get "language" | default (
