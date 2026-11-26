@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795689134"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795691191"></script>
 
   </head>
   <body>
@@ -63,25 +63,35 @@
 <section data-noprocess="" data-shortcode-slide="" id="prompt-anatomy">
 <h2 id="what-is-a-prompt-the-general-concept">What is a <em>prompt</em>? The general concept</h2>
 <ul>
-<li>
-<p>A <strong>prompt</strong> is <em>the whole input</em> that is given to an LLM, in order to elicit some <em>desired output</em></p>
+<li>A <strong>prompt</strong> is the <strong>user-supplied input</strong> given to an LLM to communicate a <em>task</em> and elicit some <em>desired output</em>
 <ul>
-<li>in the Chat Completion API, it is the <em>list of messages</em> sent in a request (system, user, assistant, …)</li>
-<li>the model sees nothing else: <em>everything</em> it needs to know must be in there</li>
+<li>as opposed to <strong>(model) context</strong>: <em>all the information available to the model</em> at a generation step
+<ul>
+<li>e.g. the Chat Completion history (system, user, assistant messages, …), including the current prompt</li>
 </ul>
 </li>
-<li>
-<p><strong>Prompt engineering</strong> is the practice of <em>designing</em>, <em>testing</em>, and <em>refining</em> prompts, so that the model’s responses become more <em>accurate</em>, <em>consistent</em>, and <em>useful</em> for the task at hand</p>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>Prompt engineering</strong> is the practice of <em>designing</em>, <em>testing</em>, and <em>refining</em> prompts, so that the model’s responses become more <em>accurate</em>, <em>consistent</em>, and <em>useful</em> for the task at hand
 <ul>
 <li>it is <strong>empirical</strong>: there is no theory telling in advance which prompt works best on which model</li>
 <li>hence, it is only meaningful when paired with some form of <em>evaluation</em> (more on this in the next lectures)</li>
 </ul>
 </li>
-<li>
-<p>A prompt is commonly made of <em>four</em> (optional) <strong>elements</strong> (cf. <a href="https://www.promptingguide.ai/introduction/elements">Prompt Engineering Guide</a>):</p>
+</ul>
+</blockquote>
+<ul>
+<li>A prompt is commonly made of <em>four</em> (optional) <strong>elements</strong> (cf. <a href="https://www.promptingguide.ai/introduction/elements">Prompt Engineering Guide</a>):
 <ol>
 <li><strong>instructions</strong>: the <em>task</em> to be performed, and <em>how</em> to perform it (e.g. “score this letter”)</li>
-<li><strong>context</strong>: <em>background information</em> that may help the model (e.g. “you are assisting a PhD admission committee”)</li>
+<li><strong>(task) context</strong>: <em>background information</em> that may help the model (e.g. “you are assisting a PhD admission committee”)
+<ul>
+<li>not to be confused with <em>model context</em>: task context is just one element of the prompt</li>
+</ul>
+</li>
 <li><strong>input data</strong>: the <em>specific</em> data to be processed (e.g. the text of the letter)</li>
 <li><strong>output indicator</strong>: the <em>format</em> or <em>type</em> of the expected output (e.g. “answer in JSON, with fields …”)</li>
 </ol>
@@ -134,9 +144,9 @@
 					<td><code>&lt;letter&gt; ... &lt;/letter&gt;</code>, Markdown headings, triple quotes</td>
 			</tr>
 			<tr>
-					<td>Say what <em>to do</em>, not only what <em>not to do</em></td>
-					<td>negative instructions are followed less reliably</td>
-					<td>“use plain words” vs. “don’t use jargon”</td>
+					<td>Say what <em>to do</em>, <u>and</u> what <em>not to do</em></td>
+					<td>unspecified constraints may lead to unexpected results</td>
+					<td>“use plain words” + “don’t use jargon”</td>
 			</tr>
 			<tr>
 					<td>Provide <em>examples</em></td>
