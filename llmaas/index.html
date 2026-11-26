@@ -15,7 +15,7 @@
 <link href="https://cdn.jsdelivr.net/gh/DanySK/css-blur-animation/blur.css" rel="stylesheet" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" crossorigin="anonymous">
 <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795531271"></script>
+<script src="https://unibo-fc-isi-iag.github.io/slides-module2/plantuml.js?v=1795689134"></script>
 
   </head>
   <body>
@@ -31,7 +31,7 @@
 <h3 id="hahahugoshortcode1s2hbhb"><a href="mailto:giovanni.ciatto@unibo.it">Giovanni Ciatto</a></h3>
 <br>
 <br>
-<p>Compiled on: 2026-11-24
+<p>Compiled on: 2026-11-26
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section><section>
@@ -919,10 +919,10 @@
 </ul>
 </section><section>
 <h2 id="chat-completion-an-intuitive-example">Chat Completion: an intuitive example</h2>
-<figure id="plantuml-figure-1795531280433286619" class="plantuml" data-source="CkBzdGFydHVtbApoaWRlIGZvb3Rib3gKYWN0b3IgIlVzZXIiIGFzIFUKcGFydGljaXBhbnQgIlByb2dyYW0gKGNsaWVudCkiIGFzIFAKcGFydGljaXBhbnQgIkxMTSBwcm92aWRlciAoc2VydmVyKSIgYXMgTApub3RlIG92ZXIgUDogaGlzdG9yeSA9IFtzeXN0ZW06ICJiZSBmcmllbmRseSJdClUgLT4gUDogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Igpub3RlIG92ZXIgUDogaGlzdG9yeSArPSBbdXNlcjogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXJdfQpMIC0tPiBQOiB7Y2hvaWNlczogW3ttZXNzYWdlOiB7YXNzaXN0YW50OiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyJ9fV0sIHVzYWdlOiB7Li4ufX0Kbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW2Fzc2lzdGFudDogIkkgaGF2ZSBubyBjbG9jaywgLi4uIl0KUCAtPiBVOiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyIKVSAtPiBQOiAiQ2VzZW5hLCBJdGFseSIKbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW3VzZXI6ICJDZXNlbmEsIEl0YWx5Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXIsIGFzc2lzdGFudCwgdXNlcl19Cm5vdGUgb3ZlciBMOiBrZWVwcyBub3RoaW5nIGJldHdlZW4gcmVxdWVzdHM6IHRoZSBXSE9MRSBoaXN0b3J5IGlzIHJlLXNlbnQKTCAtLT4gUDoge2Nob2ljZXM6IFt7bWVzc2FnZToge2Fzc2lzdGFudDogIkl0J3MgLi4uIGluIENlc2VuYSJ9fV0sIHVzYWdlOiB7Li4ufX0KUCAtPiBVOiAiSXQncyAuLi4gaW4gQ2VzZW5hIgpAZW5kdW1sCg==" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
+<figure id="plantuml-figure-1795689143220190304" class="plantuml" data-source="CkBzdGFydHVtbApoaWRlIGZvb3Rib3gKYWN0b3IgIlVzZXIiIGFzIFUKcGFydGljaXBhbnQgIlByb2dyYW0gKGNsaWVudCkiIGFzIFAKcGFydGljaXBhbnQgIkxMTSBwcm92aWRlciAoc2VydmVyKSIgYXMgTApub3RlIG92ZXIgUDogaGlzdG9yeSA9IFtzeXN0ZW06ICJiZSBmcmllbmRseSJdClUgLT4gUDogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Igpub3RlIG92ZXIgUDogaGlzdG9yeSArPSBbdXNlcjogImhpLCB3aGF0IHRpbWUgaXMgaXQ/Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXJdfQpMIC0tPiBQOiB7Y2hvaWNlczogW3ttZXNzYWdlOiB7YXNzaXN0YW50OiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyJ9fV0sIHVzYWdlOiB7Li4ufX0Kbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW2Fzc2lzdGFudDogIkkgaGF2ZSBubyBjbG9jaywgLi4uIl0KUCAtPiBVOiAiSSBoYXZlIG5vIGNsb2NrLCB3aGVyZSBhcmUgeW91PyIKVSAtPiBQOiAiQ2VzZW5hLCBJdGFseSIKbm90ZSBvdmVyIFA6IGhpc3RvcnkgKz0gW3VzZXI6ICJDZXNlbmEsIEl0YWx5Il0KUCAtPiBMOiBQT1NUIC9jaGF0L2NvbXBsZXRpb25zIHttb2RlbCwgbWVzc2FnZXM6IFtzeXN0ZW0sIHVzZXIsIGFzc2lzdGFudCwgdXNlcl19Cm5vdGUgb3ZlciBMOiBrZWVwcyBub3RoaW5nIGJldHdlZW4gcmVxdWVzdHM6IHRoZSBXSE9MRSBoaXN0b3J5IGlzIHJlLXNlbnQKTCAtLT4gUDoge2Nob2ljZXM6IFt7bWVzc2FnZToge2Fzc2lzdGFudDogIkl0J3MgLi4uIGluIENlc2VuYSJ9fV0sIHVzYWdlOiB7Li4ufX0KUCAtPiBVOiAiSXQncyAuLi4gaW4gQ2VzZW5hIgpAZW5kdW1sCg==" alt="" style="width: 100%;max-width: calc(95 * 19.2px);max-height: calc(70 * 10.8px);">
 </figure>
 <script>
-    handlePlantumlFigureByID("plantuml-figure-1795531280433286619");
+    handlePlantumlFigureByID("plantuml-figure-1795689143220190304");
 </script>
 <ul>
 <li>Notice that the <strong>same</strong> interaction is implemented by <em>all</em> providers, only the <em>syntax</em> changes
@@ -1601,25 +1601,119 @@
 
 
 <section data-shortcode-section="">
+<section data-noprocess="" data-shortcode-slide="" id="responses-vs-chat-completions">
+<h2 id="chat-completions-vs-responses-api">Chat Completions vs. Responses API</h2>
+<div style="font-size: 85%;">
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th><strong>Chat Completions</strong></th>
+					<th><strong>Responses</strong></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Endpoint / Python SDK</td>
+					<td><code>POST /v1/chat/completions</code> / <code>client.chat.completions.create(...)</code></td>
+					<td><code>POST /v1/responses</code> / <code>client.responses.create(...)</code></td>
+			</tr>
+			<tr>
+					<td>Instructions</td>
+					<td>A message: <code>{role: "system", content: "Be brief"}</code></td>
+					<td>A top-level parameter: <code>instructions="Be brief"</code> (also accepts system/developer messages)</td>
+			</tr>
+			<tr>
+					<td>Conversation</td>
+					<td><code>messages=[...]</code>: a list of messages</td>
+					<td><code>input=[...]</code>: <strong>typed items</strong>, including messages, tool calls/results, etc.</td>
+			</tr>
+			<tr>
+					<td>Message content</td>
+					<td>Text, or typed parts: <code>text</code>, <code>image_url</code>, <code>file</code>, …</td>
+					<td>Text, or typed parts: <code>input_text</code>, <code>input_image</code>, <code>input_file</code>, …</td>
+			</tr>
+			<tr>
+					<td>Answer (without streaming)</td>
+					<td><code>response.choices[0].message.content</code></td>
+					<td>Typed items in <code>response.output</code>; SDK text helper: <code>response.output_text</code></td>
+			</tr>
+			<tr>
+					<td>Streaming</td>
+					<td>Chunks: <code>chunk.choices[0].delta.content</code></td>
+					<td><strong>Typed events</strong>: <code>response.created</code>, <code>response.output_text.delta</code>, <code>response.completed</code></td>
+			</tr>
+			<tr>
+					<td>History across turns</td>
+					<td>Client resends the conversation in <code>messages</code></td>
+					<td>Resend history in <code>input</code> (<strong>stateless</strong>), or chain with <code>previous_response_id="resp_..."</code> + <code>store=True</code> (<strong>stateful</strong>)</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li><strong>Attachments exist in both APIs</strong>: the <em>field names</em> and supported formats differ; choose a compatible <em>model</em> too</li>
+<li>With Responses, <code>instructions</code> applies to the <strong>current request</strong>: send it again when chaining responses</li>
+<li><strong>Portability</strong> (cf. <a href="#/api-comparison">compatibility</a>): <a href="https://openrouter.ai/docs/api/reference/responses/overview">OpenRouter</a> and <a href="https://docs.ollama.com/api/openai-compatibility">Ollama</a> support <em>stateless</em> Responses; provider-side history is not portable</li>
+</ul>
+<p>Cf. OpenAI’s <a href="https://developers.openai.com/api/docs/guides/migrate-to-responses">migration guide</a>.</p>
+</div>
+</section>
+<section data-noprocess="" data-shortcode-slide="" id="responses-attachments">
+<h2 id="responses-api-a-message-with-attachments">Responses API: a message with attachments</h2>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col col-7" style="text-align: left;"><p><strong>Request body</strong>, shown as YAML for readability (HTTP sends JSON):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">model</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">gpt-4.1-mini</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">instructions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">Answer questions about the files.</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">store</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">stream</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">input</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">  </span>- <span style="color:#204a87;font-weight:bold">role</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">user</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">    </span><span style="color:#204a87;font-weight:bold">content</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">      </span>- <span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">input_text</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">        </span><span style="color:#204a87;font-weight:bold">text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000;font-weight:bold">|</span><span style="color:#8f5902;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">          &lt;file name='regulations.md'&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">          Applicants must hold a Master's degree.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">          &lt;/file&gt;</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">      </span>- <span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">input_image</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">        </span><span style="color:#204a87;font-weight:bold">image_url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#4e9a06">"data:image/png;base64,iVBORw0KGgo..."</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">      </span>- <span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">input_file</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">        </span><span style="color:#204a87;font-weight:bold">filename</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">transcript.pdf</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">        </span><span style="color:#204a87;font-weight:bold">file_data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#4e9a06">"data:application/pdf;base64,JVBERi0..."</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">      </span>- <span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">input_text</span><span style="color:#f8f8f8">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8">        </span><span style="color:#204a87;font-weight:bold">text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8"> </span><span style="color:#000">Is the passport holder eligible?</span><span style="color:#f8f8f8">
+</span></span></span></code></pre></div><div style="font-size: 75%;">
+<p>Text files are <em>inlined</em> here, as in Example 3; <code>...</code> abbreviates the binary attachments’ Base64 payloads.
+Cf. <a href="https://developers.openai.com/api/docs/guides/images-vision">image inputs</a> / <a href="https://developers.openai.com/api/docs/guides/file-inputs">file inputs</a>.</p>
+</div>
+</div>
+<div class="col col-5" style="text-align: left;"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types">
+<img src="./mime-types.svg" alt="File icons labelled regulations.md, passport.png and transcript.pdf map to MIME types text/markdown, image/png and application/pdf; type/subtype describes the format." style="max-width: calc(95 * 19.2px); max-height: calc(27 * 10.8px); object-fit: contain;">
+</a>
+<div style="font-size: 80%;">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types"><strong>MIME type</strong></a>: a format label, <code>type/subtype</code>, telling the receiver how to interpret the bytes.</p>
+</div>
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">
+<img src="./base64-data-url.svg" alt="Three bytes for Man, hexadecimal 4D 61 6E, encode to the four Base64 characters TWFu. A data URL separates the MIME type, encoding marker and encoded payload." style="max-width: calc(95 * 19.2px); max-height: calc(29 * 10.8px); object-fit: contain;">
+</a>
+<div style="font-size: 80%;">
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64"><strong>Base64</strong></a>: bytes encoded as text (~33% larger); reversible, <strong>not encryption</strong>. A <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data">data URL</a> adds the format and encoding prefix.</p>
+</div>
+</div>
+</div>
+</div>
+
+</section>
+</section>
+
+
+<section data-shortcode-section="">
 <section data-noprocess="" data-shortcode-slide="" id="responses-example">
 <h2 id="example-3-cli-chat-with-attachments-via-the-responses-api-pt-1">Example 3: CLI Chat with Attachments, via the Responses API (pt. 1)</h2>
 <blockquote>
 <p><strong>Goal</strong>: the same chat as Example 2, via OpenAI’s <a href="https://developers.openai.com/api/reference/resources/responses/methods/create"><strong>Responses API</strong></a> (<code>POST /v1/responses</code>), letting users <em>attach files</em> (pictures, PDFs, text) to their messages</p>
 </blockquote>
 <ul>
-<li>The Responses API is OpenAI’s <em>newer</em> API, which differs from Chat Completions in that:
-<ul>
-<li>the system prompt is a <em>parameter</em> (<code>instructions=...</code>), and the history is a list of <strong>typed items</strong> (<code>input=[...]</code>)</li>
-<li>messages are lists of typed <strong>content parts</strong>: <code>input_text</code>, <code>input_image</code>, <code>input_file</code>, …</li>
-<li>streaming produces <strong>typed events</strong> (e.g. <code>response.created</code>, <code>response.output_text.delta</code>, <code>response.completed</code>), rather than generic <em>deltas</em></li>
-<li>it <em>can</em> be <strong>stateful</strong>: the provider stores the history (<code>store=True</code>), and the next request just points to the previous response (<code>previous_response_id=...</code>)</li>
-</ul>
-</li>
-<li><strong>Portability</strong> is limited (cf. <a href="#/api-comparison">compatibility</a>): Open Router and Ollama support it in its <em>stateless</em> flavour only
-<ul>
-<li>Open Router <em>rejects</em> stateful requests (<a href="https://openrouter.ai/docs/api/reference/responses/overview">docs</a>), Ollama <em>silently ignores</em> them (<a href="https://docs.ollama.com/api/openai-compatibility">docs</a>)</li>
-</ul>
-</li>
+<li>Recall the <a href="#/responses-vs-chat-completions">API differences</a> and <a href="#/responses-attachments">attachment format</a>: we will build those content parts from local files, then consume the stream of <em>typed events</em></li>
 </ul>
 <ol>
 <li>
@@ -2492,7 +2586,7 @@
 </section><section>
 <h1 id="lecture-is-over">Lecture is Over</h1>
 <br>
-<p>Compiled on: 2026-11-24
+<p>Compiled on: 2026-11-26
  — <a href="?print-pdf&amp;pdfSeparateFragments=false"><i class="fa fa-print" aria-hidden="true"></i> printable version</a></p>
 <p><a href="../#/toc"><i class="fa fa-undo" aria-hidden="true"></i> back to ToC</a></p>
 </section>

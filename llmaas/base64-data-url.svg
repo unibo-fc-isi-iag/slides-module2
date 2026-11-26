@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320" role="img" aria-labelledby="title desc">
+  <title id="title">Base64 and the parts of a data URL</title>
+  <desc id="desc">The three bytes 4D 61 6E, spelling Man, become the four Base64 characters TWFu. The data URL data:text/plain;base64,TWFu contains a MIME type, a Base64 marker and the payload.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#526b9d"/></marker></defs>
+  <rect width="760" height="320" rx="18" fill="#f5f7fb"/>
+  <g font-family="sans-serif" fill="#17243b">
+    <text x="30" y="40" font-size="26" font-weight="bold">Base64 = bytes → printable text</text>
+    <rect x="30" y="65" width="250" height="88" rx="10" fill="#e1e8f6"/>
+    <rect x="460" y="65" width="270" height="88" rx="10" fill="#e0f0e5"/>
+    <g font-family="monospace" font-size="32" font-weight="bold" text-anchor="middle">
+      <text x="155" y="103">4D 61 6E</text>
+      <text x="595" y="103" fill="#137137">TWFu</text>
+    </g>
+    <g font-size="22" text-anchor="middle"><text x="155" y="136">3 bytes ("Man")</text><text x="595" y="136">4 characters</text></g>
+    <path d="M297 100h143" stroke="#526b9d" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="369" y="135" text-anchor="middle" font-size="22">encode</text>
+    <g font-family="monospace" font-size="29" font-weight="bold">
+      <text x="42" y="210">data:</text>
+      <text x="129" y="210" fill="#0616cc">text/plain</text>
+      <text x="303" y="210" fill="#8b417d">;base64,</text>
+      <text x="442" y="210" fill="#137137">TWFu</text>
+    </g>
+    <g fill="none" stroke-width="3">
+      <path d="M130 223h169" stroke="#0616cc"/>
+      <path d="M308 223h129" stroke="#8b417d"/>
+      <path d="M444 223h68" stroke="#137137"/>
+    </g>
+    <g font-size="21" text-anchor="middle"><text x="214" y="254" fill="#0616cc">MIME type</text><text x="372" y="254" fill="#8b417d">encoding</text><text x="479" y="254" fill="#137137">payload</text></g>
+    <text x="30" y="295" font-size="22">Same structure for image/png or application/pdf.</text>
+  </g>
+</svg>
