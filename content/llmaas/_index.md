@@ -1209,19 +1209,99 @@ you> Goodbye!
 
 {{% section %}}
 
+{{< slide id="responses-vs-chat-completions" >}}
+
+## Chat Completions vs. Responses API
+
+{{% small "85%" %}}
+
+| | __Chat Completions__ | __Responses__ |
+|---|---|---|
+| Endpoint / Python SDK | `POST /v1/chat/completions` / `client.chat.completions.create(...)` | `POST /v1/responses` / `client.responses.create(...)` |
+| Instructions | A message: `{role: "system", content: "Be brief"}` | A top-level parameter: `instructions="Be brief"` (also accepts system/developer messages) |
+| Conversation | `messages=[...]`: a list of messages | `input=[...]`: __typed items__, including messages, tool calls/results, etc. |
+| Message content | Text, or typed parts: `text`, `image_url`, `file`, ... | Text, or typed parts: `input_text`, `input_image`, `input_file`, ... |
+| Answer (without streaming) | `response.choices[0].message.content` | Typed items in `response.output`; SDK text helper: `response.output_text` |
+| Streaming | Chunks: `chunk.choices[0].delta.content` | __Typed events__: `response.created`, `response.output_text.delta`, `response.completed` |
+| History across turns | Client resends the conversation in `messages` | Resend history in `input` (__stateless__), or chain with `previous_response_id="resp_..."` + `store=True` (__stateful__) |
+
+- __Attachments exist in both APIs__: the _field names_ and supported formats differ; choose a compatible _model_ too
+- With Responses, `instructions` applies to the __current request__: send it again when chaining responses
+- __Portability__ (cf. [compatibility](#/api-comparison)): [OpenRouter](https://openrouter.ai/docs/api/reference/responses/overview) and [Ollama](https://docs.ollama.com/api/openai-compatibility) support _stateless_ Responses; provider-side history is not portable
+
+Cf. OpenAI's [migration guide](https://developers.openai.com/api/docs/guides/migrate-to-responses).
+
+{{% /small %}}
+
+---
+
+{{< slide id="responses-attachments" >}}
+
+## Responses API: a message with attachments
+
+{{% multicol %}}
+{{% col class="col-7" %}}
+
+__Request body__, shown as YAML for readability (HTTP sends JSON):
+
+```yaml
+model: gpt-4.1-mini
+instructions: Answer questions about the files.
+store: false
+stream: true
+input:
+  - role: user
+    content:
+      - type: input_text
+        text: |
+          <file name='regulations.md'>
+          Applicants must hold a Master's degree.
+          </file>
+      - type: input_image
+        image_url: "data:image/png;base64,iVBORw0KGgo..."
+      - type: input_file
+        filename: transcript.pdf
+        file_data: "data:application/pdf;base64,JVBERi0..."
+      - type: input_text
+        text: Is the passport holder eligible?
+```
+
+{{% small "75%" %}}
+Text files are _inlined_ here, as in Example 3; `...` abbreviates the binary attachments' Base64 payloads.
+Cf. [image inputs](https://developers.openai.com/api/docs/guides/images-vision) / [file inputs](https://developers.openai.com/api/docs/guides/file-inputs).
+{{% /small %}}
+
+{{% /col %}}
+{{% col class="col-5" %}}
+
+{{< image src="./mime-types.svg" max-h="27vh" alt="File icons labelled regulations.md, passport.png and transcript.pdf map to MIME types text/markdown, image/png and application/pdf; type/subtype describes the format." link="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types" >}}
+
+{{% small "80%" %}}
+[__MIME type__](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types): a format label, `type/subtype`, telling the receiver how to interpret the bytes.
+{{% /small %}}
+
+{{< image src="./base64-data-url.svg" max-h="29vh" alt="Three bytes for Man, hexadecimal 4D 61 6E, encode to the four Base64 characters TWFu. A data URL separates the MIME type, encoding marker and encoded payload." link="https://developer.mozilla.org/en-US/docs/Glossary/Base64" >}}
+
+{{% small "80%" %}}
+[__Base64__](https://developer.mozilla.org/en-US/docs/Glossary/Base64): bytes encoded as text (~33% larger); reversible, __not encryption__. A [data URL](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data) adds the format and encoding prefix.
+{{% /small %}}
+
+{{% /col %}}
+{{% /multicol %}}
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
 {{< slide id="responses-example" >}}
 
 ## Example 3: CLI Chat with Attachments, via the Responses API (pt. 1)
 
 > __Goal__: the same chat as Example 2, via OpenAI's [__Responses API__](https://developers.openai.com/api/reference/resources/responses/methods/create) (`POST /v1/responses`), letting users _attach files_ (pictures, PDFs, text) to their messages
 
-- The Responses API is OpenAI's _newer_ API, which differs from Chat Completions in that:
-    + the system prompt is a _parameter_ (`instructions=...`), and the history is a list of __typed items__ (`input=[...]`)
-    + messages are lists of typed __content parts__: `input_text`, `input_image`, `input_file`, ...
-    + streaming produces __typed events__ (e.g. `response.created`, `response.output_text.delta`, `response.completed`), rather than generic _deltas_
-    + it _can_ be __stateful__: the provider stores the history (`store=True`), and the next request just points to the previous response (`previous_response_id=...`)
-- __Portability__ is limited (cf. [compatibility](#/api-comparison)): Open Router and Ollama support it in its _stateless_ flavour only
-    + Open Router _rejects_ stateful requests ([docs](https://openrouter.ai/docs/api/reference/responses/overview)), Ollama _silently ignores_ them ([docs](https://docs.ollama.com/api/openai-compatibility))
+- Recall the [API differences](#/responses-vs-chat-completions) and [attachment format](#/responses-attachments): we will build those content parts from local files, then consume the stream of _typed events_
 
 1. Client setup is the same as in Example 1, plus a command-line flag to choose between _stateless_ and _stateful_ mode:
 

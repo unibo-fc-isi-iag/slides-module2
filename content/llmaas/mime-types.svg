@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="title desc">
+  <title id="title">MIME types label file formats</title>
+  <desc id="desc">A text document, an image and a PDF map to text/markdown, image/png and application/pdf. MIME types have the form type/subtype.</desc>
+  <rect width="760" height="300" rx="18" fill="#f5f7fb"/>
+  <g font-family="sans-serif" fill="#17243b">
+    <text x="30" y="40" font-size="26" font-weight="bold">MIME = format label: type/subtype</text>
+    <g fill="#fff" stroke="#526b9d" stroke-width="3">
+      <path d="M35 65h44l17 17v40H35z"/>
+      <path d="M35 143h44l17 17v40H35z"/>
+      <path d="M35 221h44l17 17v40H35z"/>
+    </g>
+    <g fill="none" stroke="#526b9d" stroke-width="3">
+      <path d="M46 87h35M46 98h35M46 109h24"/>
+      <path d="m44 188 15-18 12 12 9-8 9 14z"/>
+      <circle cx="79" cy="160" r="5"/>
+    </g>
+    <text x="44" y="259" font-size="20" font-weight="bold" fill="#b33c40">PDF</text>
+    <g font-size="24">
+      <text x="120" y="104">regulations.md</text>
+      <text x="120" y="182">passport.png</text>
+      <text x="120" y="260">transcript.pdf</text>
+    </g>
+    <g font-size="30" fill="#526b9d"><text x="325" y="104">→</text><text x="325" y="182">→</text><text x="325" y="260">→</text></g>
+    <g font-family="monospace" font-size="27" font-weight="bold" fill="#0616cc">
+      <text x="380" y="104">text/markdown</text>
+      <text x="380" y="182">image/png</text>
+      <text x="380" y="260">application/pdf</text>
+    </g>
+  </g>
+</svg>
